@@ -1,0 +1,22 @@
+<%= form_with(model: tag2, local: true) do |form| %>
+  <% if tag2.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tag2.errors.count, "error") %> prohibited this tag2 from being saved:</h2>
+
+      <ul>
+      <% tag2.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name, "タグ名" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "完了" %>
+  </div>
+<% end %>

@@ -1,0 +1,8 @@
+
+<h1 class= "record-edit">編集</h1>
+
+<%= render 'form', record: @record %>
+
+<%= link_to '表示', folder_record_path %>
+<%= link_to '削除', folder_record_path, method: :delete, data: { confirm: '削除しますか?' }%>
+<%= link_to '戻る', folder_records_path %>

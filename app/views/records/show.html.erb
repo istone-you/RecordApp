@@ -1,0 +1,69 @@
+<p id="notice"><%= notice %></p>
+
+<div class= "back-btn">
+  <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3" %>
+</div>
+<div class="text-center">
+  <p>
+    <strong>タイトル</strong>
+    <%= @record.title %>
+  </p>
+  
+  <p>
+    <strong>カウント</strong>
+    <p><%= @record.count %>
+    <% if @record.goal_count? %>
+     /<%= @record.goal_count %>
+    <% end %> 
+  </p>
+  
+  <p>
+    <strong>時間</strong>
+    <% if @record.hours? %>
+     <%= @record.hours %>時間
+    <% end %> 
+    <% if @record.minutes? %>
+     <%= @record.minutes %>分
+    <% end %> 
+  </p>
+  
+  <p>
+    <strong>金額</strong>
+    ¥<%= @record.money %>
+  </p>
+  
+  <p>
+    <strong>コメント</strong>
+    <%= @record.coment %>
+  </p>
+  
+  <p>
+    <strong>画像</strong>
+    <% if @record.image? %>
+      <%= image_tag @record.image.url, class: "record-img" %>
+    <% end %>  
+  </p>
+  
+  <p>
+    <strong>Done?</strong>
+    <% if @record.done == 0 %>
+     <p>Yes</p>
+    <% end %> 
+  </p>
+  
+  <p>タグ</p>
+  <% @record.tag2s.each do |tag2| %>
+    <span><%= tag2.name %></span>
+  <% end %>
+  <br>
+   
+  <p>
+    <strong>最終更新時間</strong>
+    <%= @record.updated_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+  </p> 
+  
+  
+  <%= link_to '編集', edit_folder_record_path %>
+</div>
+
+

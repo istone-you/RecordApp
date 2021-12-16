@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル:</strong>
+  <%= @folder.title %>
+</p>
+
+<%= link_to '編集', edit_folder_path(@folder) %> 
+<%= link_to '戻る', folders_path %>

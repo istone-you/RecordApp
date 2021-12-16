@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タグ名</strong>
+  <%= @tag.name %>
+</p>
+
+  <div class="card-deck">
+    <% @tag.folders.each do |folder| %>
+      <div class="card-deck text-center record-index">
+        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
+          <div class="card-body">
+              <h2 class="card-title"><%= folder.title %></h2>
+                <% folder.tags.each do |tag| %>
+                  <span class="badge badge-secondary mr-1"><%= tag.name %></span>
+                <% end %><br>
+              <a><%= link_to '表示', folder_records_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
+              <a><%= link_to '編集', edit_folder_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
+              
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<%= link_to '編集', edit_tag_path(@tag) %> 
+<a href="javascript:history.back()" style="color:black">戻る</a>

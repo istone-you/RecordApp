@@ -1,0 +1,103 @@
+main {
+  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+  padding-top: 60px;
+}
+
+footer {
+  height: 50px;
+}
+
+.bg-home {
+  background-color: white;
+}
+
+header {
+  background-color: black;
+}
+
+.folder {
+  width: 200px;
+}
+
+
+.new-tag {
+  width: 110px;
+}
+
+.back_to_folder {
+  width: 80px;
+}
+
+.record-img {
+  height: 315px;
+  width: 100%;
+  object-fit: contain;
+  background-color: white;
+}
+
+.record-img:hover {
+  opacity: 0.8;
+}
+
+.record-money {
+  position: absolute;
+  top: 375px;
+  left: 120px;
+}
+
+.record-count {
+  position: absolute;
+  top: 420px;
+  left: 170px;
+}
+
+.record-card {
+  height: 440px;
+}
+
+.fixed-btn {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}
+
+.fixed-btn:hover {
+  opacity: 0.8;
+}
+
+.back-btn {
+  position: fixed;
+  bottom: 110px;
+  right: 60px;
+  z-index: 50;
+}
+
+.back-btn:hover {
+  opacity: 0.8;
+}
+
+.record-edit {
+  padding-top: 50px;
+}
+
+.record-tag-search {
+  padding-top: 150px;
+}
+
+.record-hour {
+  position: absolute;
+  left: 19px;
+  top: 399px;
+  
+}
+
+.record-minute {
+  position: absolute;
+  left: 60px;
+  top: 399px;
+}
+
+.show_done {
+  width: 110px;
+}

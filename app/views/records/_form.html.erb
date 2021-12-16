@@ -1,0 +1,67 @@
+
+<div class= "back-btn">
+  <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3 " %>
+</div>
+<%= form_with(model: [@folder, @record], local: true) do |form| %>
+  <% if record.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(record.errors.count, "error") %> prohibited this record from being saved:</h2>
+
+      <ul>
+      <% record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= form.label :done, "Done or Want to?" %>
+    <%= form.select :done, [['Done', 0],['Want to', 1]]%>
+  </div>    
+
+  <div class="field">
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :count, "カウント" %>
+    <%= form.number_field :count %> / <%= form.number_field :goal_count %>
+  </div>
+  
+  <div class="field">
+    <%= form.number_field :hours %> 時間 <%= form.number_field :minutes, max: "59" %> 分
+  </div>
+  
+  <div class="field">
+    <%= form.label :money, "金額" %>
+    <%= form.number_field :money %>
+  </div>
+
+  <div class="field">
+    <%= form.label :coment, "コメント"%>
+    <%= form.text_area :coment %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image, "画像をアップロード" %><br>
+    <%= form.file_field :image %>
+  </div>
+  
+  <div class="check_box">
+    <span>タグ</span>
+    <%= form.collection_check_boxes(:tag2_ids, Tag2.all, :id, :name) do |tag2| %>
+     <div>
+       <%= tag2.label do %>
+         <%= tag2.check_box %>
+         <%= tag2.text %>
+       <% end %>
+     </div>
+   <% end %>
+ </div>
+
+  <div class="actions">
+    <%= form.submit "完了"%>
+  </div>
+<% end %>
