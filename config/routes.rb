@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :tag2s
   resources :folders do
     get "records/want_index" => "records#want_index"
+    get "records/coment_show_index" => "records#coment_show_index"
     resources :records do
       member do
         get "sort"

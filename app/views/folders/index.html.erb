@@ -15,6 +15,8 @@
               <a><%= link_to '表示', folder_records_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
               <a><%= link_to '編集', edit_folder_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
               <h5><%= folder.count_sum %></h5>
+              <h5><%= folder.hour_sum %>時間<%= folder.minute_sum %>分</h5>
+              <h5>¥<%= folder.money_sum %></h5>
           </div>
         </div>
       </div>

@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @folder.title %></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <div class= "back-btn">
+      <%= link_to image_tag("back.png"),folders_path, class: "d-inline-block  mb-3" %>
+    </div>
+    <a><%= link_to 'Want_to', folder_records_want_index_path(@folder), class: " show_done" %></a>
+    <div class="card-deck">
+      <% @records.each do |record| %>
+      <% if record.done == 0 %>
+        <div class="card-deck" >
+          <div class="card text-dark bg-light mb-3 mr-4 ml-4 mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <% if record.image? %>
+                      <%= link_to image_tag(record.image.url, class: "card-img-top"),folder_record_path(record.folder,record)  %>
+                    <% else %>
+                      <%=  link_to image_tag("no_image.png", class: "card-img-top"),folder_record_path(record.folder,record) %>
+                    <% end %>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title"><%= record.title.truncate(16) %></h5>
+                      <h4><span class="badge rounded-pill bg-secondary text-white"><%= record.count %></span></h4>
+                      <h6><%= record.coment %></h6>
+                      <h6 class=""><% if record.money? %><h6 >¥<%= record.money %></h6><% end %></h6>
+                    　<h6 class=""><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %></h6>
+                    </div>
+                </div>
+            </div> 
+          </div>
+        </div>
+      <% end %> 
+      <% end %>
+    </div> 
+  </tbody>
+</table>
+
+<a><%= link_to 'コメントを非表示', folder_records_path(@folder), class: " show_done" %></a>
+
+<br>
+
+<h5><span class="badge rounded-pill bg-secondary text-white"><%= @folder.count_sum %></span></h5>
+<h5>¥<%= @record_money_sum %></h5>
+<div class="flex-row">
+  <h5 class="d-inline-flex"><%= @record_hours_sum %>時間</h5>
+  <h5 class="d-inline-flex"><%= @record_minutes_sum %>分</h5>
+</div>
+<div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
+<a><%= link_to 'タグを管理', tag2s_path, class: "btn btn-outline-dark new-tag"%></a>
+
