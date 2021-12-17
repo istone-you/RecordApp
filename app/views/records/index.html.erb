@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2><%= @folder.title %></h2>
+<h2><%= @folder.title %>(<%= @record_sum %>)</h2>
 
 <table>
   <thead>
@@ -17,7 +17,7 @@
     <div class="view_select>">
       <%= form_with(model: @folder,local: true) do |form| %>
         <div class="d-inline-block">
-          <%= form.select :record_view, [['コメントを非表示', 0],['コメントを表示', 1]]%>
+          <%= form.select :record_view, [['コメントを非表示', 0],['コメントを表示', 1],['画像のみ表示', 2]]%>
         </div> 
         <div class="d-inline-block">
           <%= form.submit "◯", :class=>"view-btn"%>
@@ -27,7 +27,7 @@
     <% if @folder.record_view == 0 %>
     <div class="card-deck">
       <% @records.each do |record| %>
-        <% if record.done == 0 %>
+        <% if record.done == 1 %>
           <div class="card-deck">
             <div class="card text-dark bg-light mb-3 folder mr-4 ml-4 record-card">
               <% if record.image? %>
@@ -57,7 +57,10 @@
     </div> 
     <% end %>
     <% if @folder.record_view == 1 %>
-    <%=render "records/coment_show_index" %>
+      <%=render "records/coment_show_index" %>
+    <% end %>
+    <% if @folder.record_view == 2 %>
+      <%=render "records/only_img_index" %>
     <% end %>
   </tbody>
 </table>

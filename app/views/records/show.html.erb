@@ -45,6 +45,11 @@
   </p>
   
   <p>
+    <strong>リンク</strong>
+    <a href="<%= @record.link %>"><%= @record.link %></a>
+  </p>
+  
+  <p>
     <strong>Done?</strong>
     <% if @record.done == 0 %>
      <p>Yes</p>
@@ -54,7 +59,7 @@
    <%= form_with(model: [@folder, @record],local: true,id:"form1") do |form| %>
        <div class="">
         <%= form.label :done, "Done or Want to?" %>
-        <%= form.select :done, [['Done', 0],['Want to', 1]],id:"select"%>
+        <%= form.select :done, [['Want_to', 0],['Done', 1]],id:"select"%>
       </div> 
       <div class="actions">
        <%= form.submit "完了"%>

@@ -5,45 +5,46 @@ class RecordsController < ApplicationController
 
   def index
     @records = @folder.records.all
-      @record_count_sum = @records.where(done: 0).sum(:count)
-      @record_hours_sum = @records.where(done: 0).sum(:hours)+@records.where(done: 0).sum(:minutes)/60
+      @record_sum = @records.where(done: 1).sum(:done)
+      @record_count_sum = @records.where(done: 1).sum(:count)
+      @record_hours_sum = @records.where(done: 1).sum(:hours)+@records.where(done: 1).sum(:minutes)/60
       @record_minutes_sum = 
-       if @records.where(done: 0).sum(:minutes) < 60
-        @records.where(done: 0).sum(:minutes)
+       if @records.where(done: 1).sum(:minutes) < 60
+        @records.where(done: 1).sum(:minutes)
        else
-        @records.where(done: 0).sum(:minutes)%60
+        @records.where(done: 1).sum(:minutes)%60
        end
-      @record_money_sum = @records.where(done: 0).sum(:money)
+      @record_money_sum = @records.where(done: 1).sum(:money)
       @folder.update_columns(count_sum: @record_count_sum,money_sum: @record_money_sum,hour_sum: @record_hours_sum,minute_sum: @record_minutes_sum)
   end
   
   def want_index
     @records =  @folder.records.all
-    @record_count_sum = @records.where(done: 1).sum(:count)
-    @record_hours_sum = @records.where(done: 1).sum(:hours)+@records.where(done: 1).sum(:minutes)/60
+    @record_count_sum = @records.where(done: 0).sum(:count)
+    @record_hours_sum = @records.where(done: 0).sum(:hours)+@records.where(done: 0).sum(:minutes)/60
     @record_minutes_sum = 
-     if @records.where(done: 1).sum(:minutes) < 60
-      @records.where(done: 1).sum(:minutes)
+     if @records.where(done: 0).sum(:minutes) < 60
+      @records.where(done: 0).sum(:minutes)
      else
-      @records.where(done: 1).sum(:minutes)%60
+      @records.where(done: 0).sum(:minutes)%60
      end  
-    @record_money_sum = @records.where(done: 1).sum(:money)
+    @record_money_sum = @records.where(done: 0).sum(:money)
   end 
   
   def coment_show_index
     @records = @folder.records.all
-      @record_count_sum = @records.where(done: 0).sum(:count)
+      @record_count_sum = @records.where(done: 1).sum(:count)
       @folder.update_column(:count_sum,@record_count_sum)
-      @record_hours_sum = @records.where(done: 0).sum(:hours)+@records.where(done: 0).sum(:minutes)/60
+      @record_hours_sum = @records.where(done: 1).sum(:hours)+@records.where(done: 1).sum(:minutes)/60
       @record_minutes_sum = 
-       if @records.where(done: 0).sum(:minutes) < 60
-        @records.where(done: 0).sum(:minutes)
+       if @records.where(done: 1).sum(:minutes) < 60
+        @records.where(done: 1).sum(:minutes)
        else
-        @records.where(done: 0).sum(:minutes)%60
+        @records.where(done: 1).sum(:minutes)%60
        end
       @folder.update_column(:hour_sum,@record_hours_sum)
       @folder.update_column(:minute_sum,@record_minutes_sum)
-      @record_money_sum = @records.where(done: 0).sum(:money)
+      @record_money_sum = @records.where(done: 1).sum(:money)
       @folder.update_column(:money_sum,@record_money_sum)
   end
 
