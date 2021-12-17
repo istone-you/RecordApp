@@ -1,32 +1,32 @@
     <div class="card-deck">
       <% @records.each do |record| %>
-      <% if record.done == 0 %>
-        <div class="card-deck" >
-          <div class="card text-dark bg-light mb-3 mr-4 ml-4 mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <% if record.image? %>
-                      <%= link_to image_tag(record.image.url, class: "card-img-top"),folder_record_path(record.folder,record)  %>
-                    <% else %>
-                      <%=  link_to image_tag("no_image.png", class: "card-img-top"),folder_record_path(record.folder,record) %>
-                    <% end %>
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title"><%= record.title.truncate(16) %></h5>
-                      <h4><span class="badge rounded-pill bg-secondary text-white"><%= record.count %></span></h4>
-                      <h6><%= record.coment %></h6>
-                      <h6 class=""><% if record.money? %><h6 >¥<%= record.money %></h6><% end %></h6>
-                    　<h6 class=""><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %></h6>
-                    　<% if record.link? %>
-                          <a href="<%= record.link %>" class="record-link"><img src="/assets/link.png"width="20"></a>
-                      <% end %> 
-                    </div>
-                </div>
-            </div> 
+        <% if record.done == 0 %>
+          <div class="card-deck" >
+            <div class="card text-dark bg-light mb-3 mr-4 ml-4 mb-3" style="max-width: 540px;">
+              <div class="row g-0">
+                  <div class="col-md-4">
+                      <% if record.image? %>
+                        <%= link_to image_tag(record.image.url, class: "card-img-top"),folder_record_path(record.folder,record)  %>
+                      <% else %>
+                        <%=  link_to image_tag("no_image.png", class: "card-img-top"),folder_record_path(record.folder,record) %>
+                      <% end %>
+                  </div>
+                  <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title"><%= record.title.truncate(16) %></h5>
+                        <h4><span class="badge rounded-pill bg-secondary text-white"><%= record.count %></span></h4>
+                        <h6><%= record.coment %></h6>
+                        <h6 class=""><% if record.money? %><h6 >¥<%= record.money %></h6><% end %></h6>
+                      　<h6 class=""><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %></h6>
+                      　<% if record.link? %>
+                            <a href="<%= record.link %>" class="record-link"><img src="/assets/link.png"width="20"></a>
+                        <% end %> 
+                      </div>
+                  </div>
+              </div> 
+            </div>
           </div>
-        </div>
-      <% end %> 
+        <% end %> 
       <% end %>
     </div> 
 

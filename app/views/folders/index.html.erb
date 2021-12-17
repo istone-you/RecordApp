@@ -8,7 +8,7 @@
       <div class="card-deck text-center record-index">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <h2 class="card-title"><%= folder.title %></h2>
+              <h2 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h2>
                 <% folder.tags.each do |tag| %>
                   <span class="badge badge-secondary mr-1"><%= tag.name %></span>
                 <% end %><br>
