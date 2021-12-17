@@ -51,6 +51,16 @@
     <% end %> 
   </p>
   
+   <%= form_with(model: [@folder, @record],local: true,id:"form1") do |form| %>
+       <div class="">
+        <%= form.label :done, "Done or Want to?" %>
+        <%= form.select :done, [['Done', 0],['Want to', 1]],id:"select"%>
+      </div> 
+      <div class="actions">
+       <%= form.submit "完了"%>
+      </div>  
+    <% end %>  
+  
   <p>タグ</p>
   <% @record.tag2s.each do |tag2| %>
     <span><%= tag2.name %></span>

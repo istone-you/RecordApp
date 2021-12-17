@@ -42,8 +42,8 @@ header {
 
 .record-money {
   position: absolute;
-  top: 375px;
-  left: 120px;
+  top: 380px;
+  left: 110px;
 }
 
 .record-count {
@@ -88,7 +88,7 @@ header {
 .record-hour {
   position: absolute;
   left: 19px;
-  top: 399px;
+  top: 404px;
   
 }
 
@@ -100,4 +100,35 @@ header {
 
 .show_done {
   width: 110px;
+}
+
+.view_select{
+  width: 110px;
+}
+
+.view-btn {
+  display       : inline-block;
+  border-radius : 50%;          /* 角丸       */
+  font-size     : 2pt;        /* 文字サイズ */
+  text-align    : center;      /* 文字位置   */
+  cursor        : pointer;     /* カーソル   */
+  padding       : 10px 7px;   /* 余白       */
+  background    : #ffffff;     /* 背景色     */
+  color         : #ffffff;     /* 文字色     */
+  line-height   : 1em;         /* 1行の高さ  */
+  opacity       : 1;           /* 透明度     */
+  transition    : .3s;         /* なめらか変化 */
+  /*box-shadow    : 2px 2px #666666;  /* 影の設定 */
+  background-image: url("reload.png");
+  background-size: cover;
+}
+.view-btn:hover {
+  box-shadow    : none;        /* カーソル時の影消去 */
+  opacity       : 0.8;         /* カーソル時透明度 */
+}
+
+.record-link {
+  position: absolute;
+  top: 333px;
+  left: 170px;
 }

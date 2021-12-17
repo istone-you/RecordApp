@@ -6,7 +6,6 @@ class RecordsController < ApplicationController
   def index
     @records = @folder.records.all
       @record_count_sum = @records.where(done: 0).sum(:count)
-      @folder.update_column(:count_sum,@record_count_sum)
       @record_hours_sum = @records.where(done: 0).sum(:hours)+@records.where(done: 0).sum(:minutes)/60
       @record_minutes_sum = 
        if @records.where(done: 0).sum(:minutes) < 60
@@ -14,10 +13,8 @@ class RecordsController < ApplicationController
        else
         @records.where(done: 0).sum(:minutes)%60
        end
-      @folder.update_column(:hour_sum,@record_hours_sum)
-      @folder.update_column(:minute_sum,@record_minutes_sum)
       @record_money_sum = @records.where(done: 0).sum(:money)
-      @folder.update_column(:money_sum,@record_money_sum)
+      @folder.update_columns(count_sum: @record_count_sum,money_sum: @record_money_sum,hour_sum: @record_hours_sum,minute_sum: @record_minutes_sum)
   end
   
   def want_index
@@ -93,7 +90,7 @@ end
   # PATCH/PUT /records/1
   def update
     if @record.update(record_params)
-      redirect_to folder_records_path(@record.folder, @record), notice: 'Record was successfully updated.'
+      redirect_to folder_record_path(@record.folder, @record), notice: 'Record was successfully updated.'
     else
       render :edit
     end

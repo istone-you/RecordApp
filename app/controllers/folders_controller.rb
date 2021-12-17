@@ -34,7 +34,7 @@ class FoldersController <  ApplicationController
   # PATCH/PUT /folders/1
   def update
     if @folder.update(folder_params)
-      redirect_to folders_path, notice: 'Folder was successfully updated.'
+      redirect_to folder_records_path(@folder), notice: 'Folder was successfully updated.'
     else
       render :edit
     end
@@ -55,6 +55,6 @@ class FoldersController <  ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def folder_params
-      params.require(:folder).permit(:title, :user_id, tag_ids: [])
+      params.require(:folder).permit(:title, :user_id,:record_view, tag_ids: [])
     end
 end
