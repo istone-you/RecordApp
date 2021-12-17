@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h2><%= @folder.title %></h2>
+
 <table>
   <thead>
     <tr>
@@ -44,7 +46,7 @@
 
 <br>
 
-<h5><span class="badge rounded-pill bg-secondary text-white"><%= @record_count_sum %></span></h5>
+<h5><span class="badge rounded-pill bg-secondary text-white"><%= @folder.count_sum %></span></h5>
 <h5>¥<%= @record_money_sum %></h5>
 <div class="flex-row">
   <h5 class="d-inline-flex"><%= @record_hours_sum %>時間</h5>
