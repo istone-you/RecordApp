@@ -61,3 +61,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   gem 'acts_as_list', '~> 0.9.19'
   
   gem 'carrierwave'
+  
+  gem 'dotenv-rails'
+  gem 'fog-aws'
