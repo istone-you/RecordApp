@@ -116,7 +116,7 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def record_params
-      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, tag2_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
+      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, tag2_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
     end
     
 end

@@ -18,7 +18,9 @@
                       <h6><%= record.coment %></h6>
                       <h6 class=""><% if record.money? %><h6 >¥<%= record.money %></h6><% end %></h6>
                     　<h6 class=""><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %></h6>
-                    　<a href="<%= record.coment %>" class="record-link"><img src="/assets/link.png"width="20"></a>
+                    　<% if record.link? %>
+                          <a href="<%= record.link %>" class="record-link"><img src="/assets/link.png"width="20"></a>
+                      <% end %> 
                     </div>
                 </div>
             </div> 
