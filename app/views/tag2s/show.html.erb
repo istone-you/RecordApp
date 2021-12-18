@@ -1,13 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>タグ名</strong>
+<h4>
   <%= @tag2.name %>
-</p>
+</h4>
+  
+<%= @tag2.records.all.where(done: 1).sum(:count) %>  
 
 <div class="card-deck">
       <% @tag2.records.each do |record| %>
-      <% if record.done == 0 %>
+      <% if record.done == 1 %>
         <div class="card-deck">
           <div class="card text-dark bg-light mb-3 folder mr-4 ml-4 record-card">
             <% if record.image? %>
@@ -35,3 +36,4 @@
 
 <%= link_to '編集', edit_tag2_path(@tag2) %> 
 <a href="javascript:history.back()" style="color:black">戻る</a>
+
