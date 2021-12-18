@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_17_130120) do
+ActiveRecord::Schema.define(version: 2021_12_17_153831) do
 
   create_table "folder_tags", force: :cascade do |t|
     t.integer "folder_id"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_12_17_130120) do
     t.string "image"
     t.integer "folder_id"
     t.integer "money"
-    t.integer "done", default: 0
+    t.integer "done", default: 1
     t.integer "goal_count"
     t.integer "minutes"
     t.integer "hours"

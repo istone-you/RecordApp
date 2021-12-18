@@ -12,7 +12,7 @@ CarrierWave.configure do |config|
       provider: 'AWS',
       aws_access_key_id: ENV['AKIA4BMQ2F4GWMQYYGDQ'], # アクセスキー
       aws_secret_access_key: ENV['K6aUVNkqR6WfxTduH7TeVqWh2EGS0LDHDW9rtMa6'], # シークレットアクセスキー
-      region: 'ap-northeast-1', # リージョン
+      region: 'ap-northeast-3', # リージョン
       path_style: true
     }
   else # 本番環境以外の場合はアプリケーション内にアップロード
