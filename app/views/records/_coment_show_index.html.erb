@@ -1,10 +1,10 @@
-    <div class="card-deck">
+    <div class="card-deck folreccard">
       <% @records.each do |record| %>
           <% if record.done == 1 %>
             <div class="card-deck" >
               <div class="card text-dark bg-light mb-3 mr-4 ml-4 mb-3" style="max-width: 540px;">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-md-4 max-height: 159.33px">
                         <% if record.image? %>
                           <%= link_to image_tag(record.image.url, class: "card-img-top"),folder_record_path(record.folder,record)  %>
                         <% else %>

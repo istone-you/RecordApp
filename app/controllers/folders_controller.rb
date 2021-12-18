@@ -29,7 +29,7 @@ class FoldersController <  ApplicationController
     @folder = current_user.folders.new(folder_params)
 
     if @folder.save
-      redirect_to folders_path, notice: 'Folder was successfully created.'
+      redirect_to folder_records_path(@folder), notice: 'Folder was successfully created.'
     else
       render :new
     end

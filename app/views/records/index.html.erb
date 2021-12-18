@@ -1,6 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h2 class="text-center"><%= @folder.title %>(<%= @record_sum %>)</h2>
+<div class= "index-header">
+  <div class="float-right">
+      <%= form_with(model: @folder,local: true) do |form| %>
+        <div class="d-inline-block">
+          <%= form.select :done_view, [['Done', 0],['Want to', 1]], {}, {class: 'sel'}%>
+        </div> 
+        <div class="d-inline-block">
+          <%= form.select :record_view, [['ノーマル', 0],['コメントを表示', 1],['画像のみ表示', 2],['リンクと画像表示', 3]], {}, {class: 'sel'}%>
+        </div> 
+        <div class="d-inline-block">
+          <%= form.submit "◯", :class=>"view-btn"%>
+        </div>  
+      <% end %>
+    </div>
+</div>
+
+<h2 class="text-center folder-title"><%= @folder.title %></h2>
 
 <table>
   <thead>
@@ -12,19 +28,6 @@
   <tbody>
     <div class= "back-btn">
       <%= link_to image_tag("back.png"),folders_path, class: "d-inline-block  mb-3" %>
-    </div>
-    <div class="">
-      <%= form_with(model: @folder,local: true) do |form| %>
-        <div class="d-inline-block">
-          <%= form.select :done_view, [['Done表示', 0],['Want to表示', 1]]%>
-        </div> 
-        <div class="d-inline-block">
-          <%= form.select :record_view, [['ノーマル', 0],['コメントを表示', 1],['画像のみ表示', 2],['リンクと画像表示', 3]]%>
-        </div> 
-        <div class="d-inline-block">
-          <%= form.submit "◯", :class=>"view-btn"%>
-        </div>  
-      <% end %>
     </div>
     <% if @folder.done_view == 0 %>
      <%= render "records/done_index" %>

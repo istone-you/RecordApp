@@ -68,8 +68,8 @@ header {
 
 .back-btn {
   position: fixed;
-  bottom: 110px;
-  right: 60px;
+  bottom: 50px;
+  left: 50px;
   z-index: 50;
 }
 
@@ -108,18 +108,18 @@ header {
 
 .view-btn {
   display       : inline-block;
-  border-radius : 50%;          /* 角丸       */
+  border:none;         
   font-size     : 2pt;        /* 文字サイズ */
   text-align    : center;      /* 文字位置   */
   cursor        : pointer;     /* カーソル   */
-  padding       : 10px 7px;   /* 余白       */
+  padding       : 11px 8px;   /* 余白       */
   background    : #ffffff;     /* 背景色     */
-  color         : #ffffff;     /* 文字色     */
+  color         : transparent;     /* 文字色     */
   line-height   : 1em;         /* 1行の高さ  */
   opacity       : 1;           /* 透明度     */
   transition    : .3s;         /* なめらか変化 */
   /*box-shadow    : 2px 2px #666666;  /* 影の設定 */
-  background-image: url("reload.png");
+  background-image: url("right.png");
   background-size: cover;
 }
 .view-btn:hover {
@@ -134,6 +134,38 @@ header {
 }
 
 .folreccard {
-  margin: 40px;
+  margin: 50px;
 }
 
+.index-header {
+  height: 38px;
+  width: 100%;
+  position: fixed;
+  top: 56px;
+  border-bottom: 1px solid;
+  z-index: 50;
+  background-color: white;
+  padding: 5px;
+}
+
+.folder-title {
+  margin-top: 40px;
+}
+
+.folder-count {
+  position: absolute;
+  top: 200px;
+  left: 175px;
+  z-index: 10;
+}
+
+.co {
+  display:flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-card {
+  margin-bottom: 30px;
+}

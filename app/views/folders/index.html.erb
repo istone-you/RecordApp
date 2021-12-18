@@ -4,27 +4,35 @@
 <table>
 
   <div class="card-deck folreccard">
-    <% @folders.each do |folder| %>
-      <div class="card-deck text-center record-index">
+    
+    <div class="card-deck text-center record-index">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <h2 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h2>
+              <h2 class="card-title d-flex align-items-center justify-content-center" style ="">ALL</h2>
+              <a><%= link_to '表示',folders_all_records_path, class: "btn btn-outline-dark btn-sm" %></a>
+          </div>
+        </div>
+      </div>
+    
+    <% @folders.each do |folder| %>
+      <div class="card-deck text-center record-index ">
+        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
+          <div class="card-body">
+              <h5 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h5>
                 <% folder.tags.each do |tag| %>
                   <span class="badge badge-secondary mr-1"><%= tag.name %></span>
                 <% end %><br>
+               <h5><span class="badge rounded-pill bg-secondary text-white folder-count"><%= folder.count_sum %></span></h5>
+              <h6><%= folder.hour_sum %>時間<%= folder.minute_sum %>分　¥<%= folder.money_sum %></h6>
               <a><%= link_to '表示', folder_records_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
               <a><%= link_to '編集', edit_folder_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
-              <h5><%= folder.count_sum %></h5>
-              <h5><%= folder.hour_sum %>時間<%= folder.minute_sum %>分</h5>
-              <h5>¥<%= folder.money_sum %></h5>
           </div>
         </div>
       </div>
     <% end %>
+    
   </div>
 </table>
-
-<a><%= link_to 'All',folders_all_records_path, class: "btn btn-outline-dark btn-sm" %></a>
 
 <br>
 
