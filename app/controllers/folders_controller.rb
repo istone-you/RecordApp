@@ -6,6 +6,10 @@ class FoldersController <  ApplicationController
   def index
     @folders = current_user.folders.all
   end
+  
+  def all_records
+    @records = Record.all
+  end  
 
   # GET /folders/1
   def show
