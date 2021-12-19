@@ -1,0 +1,11 @@
+<div>
+      <% @records.each do |record| %>
+        <% if record.done == 0 %>
+         <% if record.twitter? %>
+            <blockquote class="twitter-tweet tw-align-center">
+                <a href="<%= record.twitter %>"></a></blockquote>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+         <% end %>  
+        <% end %> 
+      <% end %>
+    </div>

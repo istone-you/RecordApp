@@ -1,0 +1,13 @@
+    <div class="co folreccard">
+      <% @records.each do |record| %>
+        <% if record.done == 0 %>
+         <% if record.youtebe? %>
+          <div class ="link-card">
+        　  <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        　</div>  
+         <% end %>  
+        <% end %> 
+      <% end %>
+    </div>
+    
+    

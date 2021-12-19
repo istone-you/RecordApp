@@ -73,6 +73,10 @@ end
     else
       render :new
     end
+    
+    url = params[:record][:youtube]
+    url = url.last(11)
+    @record.youtube = url
   end
 
   # PATCH/PUT /records/1
@@ -82,6 +86,10 @@ end
     else
       render :edit
     end
+    
+    url = params[:record][:youtube]
+    url = url.last(11)
+    @record.youtube = url
   end
 
   # DELETE /records/1
@@ -104,7 +112,7 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def record_params
-      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :updated_at, tag2_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
+      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :updated_at, :youtube, :twitter, tag2_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
     end
     
 end
