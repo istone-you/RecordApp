@@ -1,18 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @tag.name %></h1>
 
-  <div class="card-deck">
+  <div class="card-deck folreccard">
     <% @tag.folders.each do |folder| %>
       <div class="card-deck text-center record-index">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <h2 class="card-title"><%= folder.title %></h2>
-                <% folder.tags.each do |tag| %>
-                  <span class="badge badge-secondary mr-1"><%= tag.name %></span>
-                <% end %><br>
-              <a><%= link_to '表示', folder_records_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
-              <a><%= link_to '編集', edit_folder_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
-              
+              <%= link_to  folder_records_path(folder.id) do %><h5 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h5><% end %>
+              <h5><span class="badge rounded-pill bg-secondary text-white folder-count"><%= folder.count_sum %></span></h5>
+              <h6 class="folder-sum"><%= folder.hour_sum %>時間<%= folder.minute_sum %>分　¥<%= folder.money_sum %></h6>
+              <a><%= link_to  image_tag("edit.png", class: ""), edit_folder_path(folder.id), class: "folder-edit" %></a>
           </div>
         </div>
       </div>

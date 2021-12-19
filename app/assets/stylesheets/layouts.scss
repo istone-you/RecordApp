@@ -154,8 +154,8 @@ header {
 
 .folder-count {
   position: absolute;
-  top: 200px;
-  left: 175px;
+  top: -6px;
+  right: -6px;
   z-index: 10;
 }
 
@@ -168,4 +168,23 @@ header {
 
 .link-card {
   margin-bottom: 30px;
+}
+
+.link-card:hover {
+  opacity: 0.8;
+}
+
+.card-title {
+  color: black;
+}
+
+.folder-sum {
+  position: absolute;
+  bottom: -5px;
+}
+
+.folder-edit {
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
 }

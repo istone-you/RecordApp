@@ -18,14 +18,10 @@
       <div class="card-deck text-center record-index ">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <h5 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h5>
-                <% folder.tags.each do |tag| %>
-                  <span class="badge badge-secondary mr-1"><%= tag.name %></span>
-                <% end %><br>
+              <%= link_to  folder_records_path(folder.id) do %><h5 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h5><% end %>  
                <h5><span class="badge rounded-pill bg-secondary text-white folder-count"><%= folder.count_sum %></span></h5>
-              <h6><%= folder.hour_sum %>時間<%= folder.minute_sum %>分　¥<%= folder.money_sum %></h6>
-              <a><%= link_to '表示', folder_records_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
-              <a><%= link_to '編集', edit_folder_path(folder.id), class: "btn btn-outline-dark btn-sm" %></a>
+              <h6 class="folder-sum"><%= folder.hour_sum %>時間<%= folder.minute_sum %>分　¥<%= folder.money_sum %></h6>
+              <a><%= link_to  image_tag("edit.png", class: ""), edit_folder_path(folder.id), class: "folder-edit" %></a>
           </div>
         </div>
       </div>
@@ -37,5 +33,5 @@
 <br>
 
 <div><%= link_to image_tag("plus.png"), new_folder_path, class: "fixed-btn"  %></div>
-<a><%= link_to 'カテゴリーを管理', tags_path, class: "btn btn-outline-dark new-tag"%></a>
+<a><%= link_to '戻る', tags_path, class: "btn btn-outline-dark new-tag"%></a>
 

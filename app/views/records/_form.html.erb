@@ -65,6 +65,11 @@
      </div>
    <% end %>
  </div>
+ 
+ <div class="field">
+    <%= form.label :count, "カウント" %>
+    <%= form.datetime_select :updated_at %>
+  </div>
 
   <div class="actions">
     <%= form.submit "完了"%>
