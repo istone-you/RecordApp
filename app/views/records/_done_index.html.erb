@@ -23,7 +23,13 @@
                     　</h6>
                     　<% if record.link? %>
                     　  <a href="<%= record.link %>" class="record-link"><img src="/assets/link.png"width="20"></a>
-                    　<% end %>  
+                    　<% end %> 
+                    　<% if record.youtube? %>
+                    　  <a href="<%= record.youtube %>" class="record-link-youtube"><img src="/assets/youtube.png"width="20"></a>
+                    　<% end %> 
+                    　<% if record.twitter? %>
+                    　  <a href="<%= record.twitter %>" class="record-link-twitter"><img src="/assets/twitter.png"width="20"></a>
+                    　<% end %> 
                     </div>
                   </div> 
                 </div>
@@ -43,7 +49,7 @@
       <%= render "records/link_index" %>
     <% end %>
     <% if @folder.record_view == 4 %>
-      <%= render "records/youtebe_index" %>
+      <%= render "records/youtube_index" %>
     <% end %>
     <% if @folder.record_view == 5 %>
       <%= render "records/twitter_index" %>

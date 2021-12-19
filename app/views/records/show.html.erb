@@ -46,13 +46,11 @@
   
   <p>
     <% if @record.youtube? %>
-      <strong>Youtube:</strong>
       <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <% end %>  
   </p>
   <p>
-    <% if @record.twitter? %>
-      <strong>Twitter:</strong> 
+    <% if @record.twitter? %> 
       <blockquote class="twitter-tweet tw-align-center">
       <a href="<%= @record.twitter %>"></a></blockquote>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
