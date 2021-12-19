@@ -4,7 +4,12 @@ class RecordsController < ApplicationController
   before_action :set_record, only: [:index, :show, :edit, :update, :destroy, :sort,:done_index]
 
   def index
-    @records = @folder.records.all
+    if @folder.record_sort == 0
+      @records = @folder.records.all.order(created_at: :desc)
+    else
+      @records = @folder.records.all
+    end  
+      
       @record_sum = @records.where(done: 1).sum(:done)
       @record_count_sum = @records.where(done: 1).sum(:count)
       @record_hours_sum = @records.where(done: 1).sum(:hours)+@records.where(done: 1).sum(:minutes)/60

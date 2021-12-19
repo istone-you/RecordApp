@@ -38,21 +38,25 @@
   </p>
   
   <p>
-    <strong>画像</strong>
     <% if @record.image? %>
+    <strong>画像</strong>
       <%= image_tag @record.image.url, class: "record-img" %>
     <% end %>  
   </p>
   
   <p>
-    <strong>Youtube:</strong>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <% if @record.youtube? %>
+      <strong>Youtube:</strong>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <% end %>  
   </p>
   <p>
-    <strong>Twitter:</strong> 
-    <blockquote class="twitter-tweet tw-align-center">
-    <a href="<%= @record.twitter %>"></a></blockquote>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <% if @record.twitter? %>
+      <strong>Twitter:</strong> 
+      <blockquote class="twitter-tweet tw-align-center">
+      <a href="<%= @record.twitter %>"></a></blockquote>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <% end %>  
   </p>
   <p>
     <strong>リンク</strong>

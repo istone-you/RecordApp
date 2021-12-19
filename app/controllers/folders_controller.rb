@@ -59,6 +59,6 @@ class FoldersController <  ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def folder_params
-      params.require(:folder).permit(:title, :user_id,:record_view,:done_view, tag_ids: [])
+      params.require(:folder).permit(:title, :user_id,:record_view,:done_view,:record_sort, tag_ids: [])
     end
 end
