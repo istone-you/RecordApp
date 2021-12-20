@@ -8,7 +8,17 @@ class FoldersController <  ApplicationController
   end
   
   def all_records
-    @records = Record.all
+    if current_user.All_reecord_sort == 0
+      @records = Record.all.order(created_at: :desc)
+    elsif current_user.All_reecord_sort == 1
+      @records = Record.all.order(created_at: :asc)
+    elsif current_user.All_reecord_sort == 2
+      @records = Record.all.order(updated_at: :desc)
+    elsif current_user.All_reecord_sort == 3
+      @records = Record.all.order(updated_at: :asc)
+    else 
+      @records = Record.all
+    end  
   end  
 
   # GET /folders/1

@@ -4,7 +4,7 @@
   <div class="float-right">
       <%= form_with(model: @folder,local: true) do |form| %>
         <div class="d-inline-block">
-          <%= form.select :record_sort, [['新しい順', 0],['古い順', 1]], {}, {class: 'sel'}%>
+          <%= form.select :record_sort, [['時間新しい順', 0],['時間古い順', 1],['更新新しい順', 2],['更新古い順', 3]], {}, {class: 'sel'}%>
         </div>
         <div class="d-inline-block">
           <%= form.select :done_view, [['Done', 0],['Want to', 1]], {}, {class: 'sel'}%>

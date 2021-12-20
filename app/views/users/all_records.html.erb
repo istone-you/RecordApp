@@ -1,0 +1,33 @@
+      <div class= "index-header">
+        <div class="float-right">  
+          <%= form_with(model: @user,local: true) do |form| %>
+            <div class="d-inline-block">
+              <%= form.select :All_reecord_sort, [['時間新しい順', 0],['時間古い順', 1],['更新新しい順', 2],['更新古い順', 3]], {}, {class: 'sel'}%>
+            </div>
+            <div class="d-inline-block">
+            <%= form.select :All_reecord_view, [['ノーマル', 0],['コメントを表示', 1],['画像のみ表示', 2],['リンクと画像表示', 3],['Youtube表示', 4],['Twitter表示', 5]], {}, {class: 'sel'}%>
+            </div> 
+            <div class="d-inline-block">
+              <%= form.submit "◯", :class=>"view-btn"%>
+            </div>  
+          <% end %>
+        </div>  
+      </div>
+      <% if current_user.All_reecord_view == 0 %>
+        <%= render "users/normal_index" %>
+      <% end %>
+      <% if current_user.All_reecord_view == 1 %>
+        <%=render "records/coment_show_index" %>
+      <% end %>
+      <% if current_user.All_reecord_view == 2 %>
+      <%= render "records/only_img_index" %>
+      <% end %>
+      <% if current_user.All_reecord_view == 3 %>
+        <%= render "records/link_index" %>
+      <% end %>
+      <% if current_user.All_reecord_view == 4 %>
+        <%= render "records/youtube_index" %>
+      <% end %>
+      <% if current_user.All_reecord_view == 5 %>
+        <%= render "records/twitter_index" %>
+      <% end %>

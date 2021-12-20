@@ -6,8 +6,12 @@ class RecordsController < ApplicationController
   def index
     if @folder.record_sort == 0
       @records = @folder.records.all.order(created_at: :desc)
-    else
-      @records = @folder.records.all
+    elsif @folder.record_sort == 1
+      @records = @folder.records.all.order(created_at: :asc)
+    elsif @folder.record_sort == 2
+      @records = @folder.records.all.order(updated_at: :desc)
+    elsif @folder.record_sort == 3
+      @records = @folder.records.all.order(updated_at: :asc)
     end  
       
       @record_sum = @records.where(done: 1).sum(:done)
@@ -117,7 +121,7 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def record_params
-      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :updated_at, :youtube, :twitter, tag2_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
+      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, tag2_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
     end
     
 end
