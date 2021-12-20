@@ -29,13 +29,13 @@ class UsersController < ApplicationController
   end
   
   def all_records
-    if current_user.All_reecord_sort == 0
+    if current_user.all_records_sort == 0
       @records = Record.all.order(created_at: :desc)
-    elsif current_user.All_reecord_sort == 1
+    elsif current_user.all_records_sort== 1
       @records = Record.all.order(created_at: :asc)
-    elsif current_user.All_reecord_sort == 2
+    elsif current_user.all_records_sort == 2
       @records = Record.all.order(updated_at: :desc)
-    elsif current_user.All_reecord_sort == 3
+    elsif current_user.all_records_sort == 3
       @records = Record.all.order(updated_at: :asc)
     else 
       @records = Record.all
@@ -46,6 +46,6 @@ class UsersController < ApplicationController
 
     def user_params
       params.permit(:name, :email, :password,
-                                   :All_reecord_sort,:All_reecord_view)
+                                   :all_records_sort,:all_records_view)
     end
 end

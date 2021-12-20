@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_20_061710) do
+ActiveRecord::Schema.define(version: 2021_12_20_155147) do
 
   create_table "folder_tags", force: :cascade do |t|
     t.integer "folder_id"
@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2021_12_20_061710) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "All_reecord_view", default: 0
-    t.integer "All_reecord_sort", default: 0
+    t.integer "all_records_view", default: 0
+    t.integer "all_records_sort", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
