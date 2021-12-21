@@ -9,6 +9,18 @@ class TagsController < ApplicationController
 
   # GET /tags/1 or /tags/1.json
   def show
+    @folders = @tag.folders.all
+    if current_user.all_records_sort == 0
+      @records = Record.all.order(created_at: :desc)
+    elsif current_user.all_records_sort== 1
+      @records = Record.all.order(created_at: :asc)
+    elsif current_user.all_records_sort == 2
+      @records = Record.all.order(updated_at: :desc)
+    elsif current_user.all_records_sort == 3
+      @records = Record.all.order(updated_at: :asc)
+    else 
+      @records = Record.all
+    end  
   end
 
   # GET /tags/new
@@ -56,6 +68,10 @@ class TagsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def all_records
+    @tag = current_user.tags.find(params[:tag_id])
+  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.

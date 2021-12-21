@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   get 'users/create'
   get 'users/edit'
   get 'users/update'
-  post 'users/all_records' => 'users#update'
-  resources :tags
-  resources :tag2s
   get "users/all_records" => "users#all_records"
+  post 'users/all_records' => 'users#update'
+  resources :tags do
+    get '/all_records' => 'tags#all_records'
+  end  
+  resources :tag2s
   resources :folders do
     get "records/want_index" => "records#want_index"
     get "records/coment_show_index" => "records#coment_show_index"
