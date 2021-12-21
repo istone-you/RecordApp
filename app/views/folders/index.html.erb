@@ -11,7 +11,7 @@
   <div class="card-deck folreccard">
     
     <div class="card-deck text-center record-index">
-        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
+        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4 folder-height">
           <div class="card-body">
               <%= link_to  users_all_records_path, {class: "card-title d-flex align-items-center justify-content-center"} do %><h3 class="" style ="">ALL</h3><% end %>
           </div>
@@ -20,9 +20,9 @@
     
     <% @folders.each do |folder| %>
       <div class="card-deck text-center record-index ">
-        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
+        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4 folder-height">
           <div class="card-body">
-              <%= link_to  folder_records_path(folder.id), {class: "card-title"} do %><h5 class=""><%= folder.title %>(<%= folder.record_sum %>)</h5><% end %>  
+              <%= link_to  folder_records_path(folder.id), {class: "card-title"} do %><h5 class=""><%= folder.title.truncate(15) %>(<%= folder.record_sum %>)</h5><% end %>  
                <h5><span class="badge rounded-pill bg-secondary text-white folder-count"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span></h5>
               <h6 class="folder-sum"><% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></h6>
               <a><%= link_to  image_tag("edit.png", class: ""), edit_folder_path(folder.id), class: "folder-edit" %></a>
