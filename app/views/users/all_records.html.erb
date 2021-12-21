@@ -1,4 +1,7 @@
       <div class= "index-header">
+        <div class= "back-btn">
+            <%= link_to image_tag("back.png"),folders_path, class: "d-inline-block  mb-3" %>
+        </div>
         <div class="float-right">  
           <%= form_with(model: @user,local: true) do |form| %>
             <div class="d-inline-block">
@@ -13,21 +16,23 @@
           <% end %>
         </div>  
       </div>
-      <% if current_user.all_records_view == 0 %>
-        <%= render "users/normal_index" %>
-      <% end %>
-      <% if current_user.all_records_view == 1 %>
-        <%=render "records/coment_show_index" %>
-      <% end %>
-      <% if current_user.all_records_view == 2 %>
-      <%= render "records/only_img_index" %>
-      <% end %>
-      <% if current_user.all_records_view == 3 %>
-        <%= render "records/link_index" %>
-      <% end %>
-      <% if current_user.all_records_view == 4 %>
-        <%= render "records/youtube_index" %>
-      <% end %>
-      <% if current_user.all_records_view == 5 %>
-        <%= render "records/twitter_index" %>
-      <% end %>
+      <div class="">
+        <% if current_user.all_records_view == 0 %>
+          <%= render "users/normal_index" %>
+        <% end %>
+        <% if current_user.all_records_view == 1 %>
+          <%=render "records/coment_show_index" %>
+        <% end %>
+        <% if current_user.all_records_view == 2 %>
+        <%= render "records/only_img_index" %>
+        <% end %>
+        <% if current_user.all_records_view == 3 %>
+          <%= render "records/link_index" %>
+        <% end %>
+        <% if current_user.all_records_view == 4 %>
+          <%= render "records/youtube_index" %>
+        <% end %>
+        <% if current_user.all_records_view == 5 %>
+          <%= render "records/twitter_index" %>
+        <% end %>
+      </div>

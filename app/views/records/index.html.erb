@@ -20,9 +20,13 @@
 </div>
 
 <h3 class="text-center folder-title"><%= @folder.title %></h3>
+<div class="co">
 <% @folder.tags.each do |tag| %>
-  <h5><span class="badge badge-secondary mr-1 "><%= tag.name %></span></h5>
-<% end %><br>
+    <div>
+      <h6 class="badge badge-secondary mr-1"><%= tag.name %></h6>
+    </div>
+<% end %>
+</div><br>
 
 <table>
   <thead>

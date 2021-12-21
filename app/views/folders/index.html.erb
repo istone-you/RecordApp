@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<div class= "index-header">
+  <div class= "back-btn">
+      <%= link_to image_tag("back.png"),tags_path, class: "d-inline-block  mb-3" %>
+  </div>
+</div> 
 
 <table>
 
@@ -8,8 +13,7 @@
     <div class="card-deck text-center record-index">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <h2 class="card-title d-flex align-items-center justify-content-center" style ="">ALL</h2>
-              <a><%= link_to '表示',users_all_records_path, class: "btn btn-outline-dark btn-sm" %></a>
+              <%= link_to  users_all_records_path, {class: "card-title d-flex align-items-center justify-content-center"} do %><h3 class="" style ="">ALL</h3><% end %>
           </div>
         </div>
       </div>
@@ -18,9 +22,9 @@
       <div class="card-deck text-center record-index ">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <%= link_to  folder_records_path(folder.id) do %><h5 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h5><% end %>  
-               <h5><span class="badge rounded-pill bg-secondary text-white folder-count"><%= folder.count_sum %></span></h5>
-              <h6 class="folder-sum"><%= folder.hour_sum %>時間<%= folder.minute_sum %>分　¥<%= folder.money_sum %></h6>
+              <%= link_to  folder_records_path(folder.id), {class: "card-title"} do %><h5 class=""><%= folder.title %>(<%= folder.record_sum %>)</h5><% end %>  
+               <h5><span class="badge rounded-pill bg-secondary text-white folder-count"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span></h5>
+              <h6 class="folder-sum"><% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></h6>
               <a><%= link_to  image_tag("edit.png", class: ""), edit_folder_path(folder.id), class: "folder-edit" %></a>
           </div>
         </div>
@@ -33,5 +37,4 @@
 <br>
 
 <div><%= link_to image_tag("plus.png"), new_folder_path, class: "fixed-btn"  %></div>
-<a><%= link_to '戻る', tags_path, class: "btn btn-outline-dark new-tag"%></a>
 

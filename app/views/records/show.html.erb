@@ -1,45 +1,51 @@
 <p id="notice"><%= notice %></p>
 
+<div class= "index-header">
+</div>  
+
 <div class= "back-btn">
   <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3" %>
 </div>
 <div class="text-center">
-  <p>
-    <strong>タイトル</strong>
+  <h3 class="folder-title">
     <%= @record.title %>
-  </p>
+  </h3>
   
-  <p>
-    <strong>カウント</strong>
-    <p><%= @record.count %>
-    <% if @record.goal_count? %>
-     /<%= @record.goal_count %>
+  <div class="co">
+    <% @record.tag2s.each do |tag| %>
+        <div>
+          <h6 class="badge badge-secondary mr-1"><%= tag.name %></h6>
+        </div>
+    <% end %>
+  </div><br>
+  
+  <div>
+    <% if @record.count? %> 
+      <h3 class=""><%= @record.count %><% end %><% if @record.goal_count? %> / <%= @record.goal_count %></h3>
     <% end %> 
-  </p>
-  
-  <p>
-    <strong>時間</strong>
+  </div>  
+    
+  <h3>
     <% if @record.hours? %>
      <%= @record.hours %>時間
     <% end %> 
     <% if @record.minutes? %>
      <%= @record.minutes %>分
     <% end %> 
-  </p>
+  </h3>
+  
+  <h3>
+    <% if @record.money? %>
+      ¥<%= @record.money %>
+    <% end %>   
+  </h3>
   
   <p>
-    <strong>金額</strong>
-    ¥<%= @record.money %>
-  </p>
-  
-  <p>
-    <strong>コメント</strong>
     <%= @record.coment %>
   </p>
   
   <p>
     <% if @record.image? %>
-    <strong>画像</strong>
       <%= image_tag @record.image.url, class: "record-img" %>
     <% end %>  
   </p>
@@ -68,22 +74,9 @@
     <% end %> 
   </p>
   
-   <%= form_with(model: [@folder, @record],local: true,id:"form1") do |form| %>
-       <div class="">
-        <%= form.label :done, "Done or Want to?" %>
-        <%= form.select :done, [['Want_to', 0],['Done', 1]],id:"select"%>
-      </div> 
-      <div class="actions">
-       <%= form.submit "完了"%>
-      </div>  
-    <% end %>  
   
-  <p>タグ</p>
-  <% @record.tag2s.each do |tag2| %>
-    <span><%= tag2.name %></span>
-  <% end %>
-  <br>
-   
+  
+
   <p>
     <strong>最終更新時間</strong>
     <%= @record.updated_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>

@@ -215,6 +215,10 @@ header {
   color: black;
 }
 
+.card-title:hover {
+  text-decoration: none;
+}
+
 .folder-sum {
   position: absolute;
   bottom: -5px;

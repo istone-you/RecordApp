@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>カテゴリー</h1>
+<h3 class="card-title text-center">カテゴリー</h3>
 
 <table>
 
@@ -11,7 +11,7 @@
       <div class="card-deck text-center record-index">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <h2 class="card-title d-flex align-items-center justify-content-center" style ="">ALL</h2>
+              <h5 class="card-title d-flex align-items-center justify-content-center" style ="">ALL</h5>
               <a><%= link_to '表示',folders_path, class: "btn btn-outline-dark btn-sm" %></a>
           </div>
         </div>
@@ -21,7 +21,7 @@
       <div class="card-deck text-center record-index">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-            <h2 class="card-title"><%= tag.name %></h2>
+            <h5 class="card-title"><%= tag.name %></h5>
             <a><%= link_to '表示', tag %></a>
             <a><%= link_to '編集', edit_tag_path(tag) %></a>
             
