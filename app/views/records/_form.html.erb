@@ -2,6 +2,8 @@
 <div class= "back-btn">
   <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3 " %>
 </div>
+
+<div class="record-form text-center">
 <%= form_with(model: [@folder, @record], local: true) do |form| %>
   <% if record.errors.any? %>
     <div id="error_explanation">
@@ -26,7 +28,7 @@
   </div>
 
   <div class="field">
-    <%= form.label :count, "カウント" %>
+    <p>カウント</p>
     <%= form.number_field :count %> / <%= form.number_field :goal_count %>
   </div>
   
@@ -85,3 +87,4 @@
     <%= form.submit "完了"%>
   </div>
 <% end %>
+</div>
