@@ -22,7 +22,7 @@
       <div class="card-deck text-center record-index">
         <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
           <div class="card-body">
-              <%= link_to  folder_records_path(folder.id) do %><h5 class="card-title"><%= folder.title %>(<%= folder.record_sum %>)</h5><% end %>
+              <%= link_to  folder_records_path(folder.id), {class: "card-title"} do %><h5 class=""><%= folder.title %>(<%= folder.record_sum %>)</h5><% end %>
               <h5><span class="badge rounded-pill bg-secondary text-white folder-count"><%= folder.count_sum %></span></h5>
               <h6 class="folder-sum"><%= folder.hour_sum %>時間<%= folder.minute_sum %>分　¥<%= folder.money_sum %></h6>
               <a><%= link_to  image_tag("edit.png", class: ""), edit_folder_path(folder.id), class: "folder-edit" %></a>

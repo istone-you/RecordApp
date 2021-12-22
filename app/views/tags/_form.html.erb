@@ -16,6 +16,11 @@
     <%= form.label :name, "カテゴリー名" %>
     <%= form.text_field :name %>
   </div>
+  
+  <div class="field">
+    <%= form.label :image, "画像をアップロード" %><br>
+    <%= form.file_field :image %>
+  </div>
 
   <div class="actions">
     <%= form.submit "完了" %>

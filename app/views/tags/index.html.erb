@@ -6,29 +6,18 @@
 
   <tbody>
     
-    <div class="card-deck folreccard">
-      
-      <div class="card-deck text-center record-index">
-        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
-          <div class="card-body">
-              <h5 class="card-title d-flex align-items-center justify-content-center" style ="">ALL</h5>
-              <a><%= link_to '表示',folders_path, class: "btn btn-outline-dark btn-sm" %></a>
-          </div>
-        </div>
-      </div>
-      
-    <% @tags.each do |tag| %>
-      <div class="card-deck text-center record-index">
-        <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
-          <div class="card-body">
-            <h5 class="card-title"><%= tag.name %></h5>
-            <a><%= link_to '表示', tag %></a>
-            <a><%= link_to '編集', edit_tag_path(tag) %></a>
-            
-          </div>
-        </div>
-      </div>     
-    <% end %>
+    <div class="co folreccard">
+          <div class ="tag-card mr-5"> <%=link_to folders_path do %><img class="tag-img" src="assets/folder.png"><% end %>
+        　  <h5 class="card-title text-center">ALL</h5>
+        　</div>  
+      <% @tags.each do |tag| %>
+          <div class ="tag-card mr-5">
+           <% if tag.image? %><%=link_to image_tag(tag.image.url, class: "tag-img"),tag %><% else %> <%=link_to tag do %><img class="tag-img" src="assets/folder.png"><% end %><% end %>   
+        　  <h5 class="card-title text-center mt-3"><%= tag.name %></h5>
+        　</div>  
+         <% end %>  
+    </div>
+    
   </tbody>
 </table>
 

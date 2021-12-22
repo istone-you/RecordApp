@@ -237,3 +237,18 @@ header {
 .record-form {
   margin: 50px 300px;
 }
+
+.tag-img {
+  width: 98px;
+  height: auto;
+  object-fit: contain;
+  background-color: white;
+}
+
+.tag-img:hover {
+  opacity: 0.8;
+}
+
+.tag-card {
+  width: 98px;
+}
