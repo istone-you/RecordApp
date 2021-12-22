@@ -6,11 +6,15 @@ class CreateRecords < ActiveRecord::Migration[5.0]
       t.text :coment
       t.string :image
       t.references :folder
+      t.references :user
       t.integer :money
-      t.integer :done, default: 0
+      t.integer :done, default: 1
       t.integer :goal_count
       t.integer :minutes
       t.integer :hours
+      t.text :link
+      t.string :youtube
+      t.string :twitter
 
       t.timestamps
     end

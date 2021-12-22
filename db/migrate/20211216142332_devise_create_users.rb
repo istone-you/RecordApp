@@ -11,6 +11,9 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
+      t.integer :all_records_view, default: 0
+      t.integer :all_records_sort, default: 0
+      
       ## Rememberable
       t.datetime :remember_created_at
 

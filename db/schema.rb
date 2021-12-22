@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_22_073126) do
+ActiveRecord::Schema.define(version: 2021_12_19_150241) do
 
   create_table "folder_tags", force: :cascade do |t|
     t.integer "folder_id"
@@ -27,12 +27,9 @@ ActiveRecord::Schema.define(version: 2021_12_22_073126) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "count_sum"
-    t.integer "hour_sum"
     t.integer "money_sum"
     t.integer "minute_sum"
     t.integer "record_view", default: 0
-    t.integer "record_sum"
-    t.integer "done_view", default: 0
     t.integer "record_sort", default: 0
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
@@ -59,12 +56,9 @@ ActiveRecord::Schema.define(version: 2021_12_22_073126) do
     t.integer "hours"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.text "link"
-    t.string "youtube"
     t.string "twitter"
     t.index ["folder_id"], name: "index_records_on_folder_id"
-    t.index ["user_id"], name: "index_records_on_user_id"
   end
 
   create_table "tag2s", force: :cascade do |t|
@@ -80,7 +74,6 @@ ActiveRecord::Schema.define(version: 2021_12_22_073126) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
     t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
@@ -92,8 +85,6 @@ ActiveRecord::Schema.define(version: 2021_12_22_073126) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "all_records_view", default: 0
-    t.integer "all_records_sort", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
