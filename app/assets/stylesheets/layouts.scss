@@ -119,7 +119,7 @@ header {
   opacity       : 1;           /* 透明度     */
   transition    : .3s;         /* なめらか変化 */
   /*box-shadow    : 2px 2px #666666;  /* 影の設定 */
-  background-image: url("right.png");
+  background-image: url("check.png");
   background-size: cover;
 }
 .view-btn:hover {
@@ -239,8 +239,8 @@ header {
 }
 
 .tag-img {
-  width: 98px;
-  height: auto;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   background-color: white;
 }
@@ -250,5 +250,15 @@ header {
 }
 
 .tag-card {
-  width: 98px;
+  width: 100px;
+}
+
+.manage-tag {
+  position: absolute;
+  top: 90px;
+  right: 60px;
+}
+
+.manage-tag-img {  
+  width: 40px;
 }

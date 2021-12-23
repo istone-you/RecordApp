@@ -27,7 +27,7 @@ class TagsController < ApplicationController
   def new
     @tag = current_user.tags.new
   end
-
+  
   # GET /tags/1/edit
   def edit
   end
@@ -83,4 +83,5 @@ class TagsController < ApplicationController
     def tag_params
       params.require(:tag).permit(:name, :user_id, :image)
     end
+ 
 end

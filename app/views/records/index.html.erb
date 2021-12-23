@@ -1,25 +1,36 @@
 <p id="notice"><%= notice %></p>
 
 <div class= "index-header">
-  <div class="float-right">
+  <div class="float-right select-div">
       <%= form_with(model: @folder,local: true) do |form| %>
         <div class="d-inline-block">
           <%= form.select :record_sort, [['時間新しい順', 0],['時間古い順', 1],['更新新しい順', 2],['更新古い順', 3]], {}, {class: 'sel'}%>
         </div>
+        /
         <div class="d-inline-block">
-          <%= form.select :done_view, [['Done', 0],['Want to', 1]], {}, {class: 'sel'}%>
+          <%= form.select :done_view, [[' Done表示 ', 0],['Want to表示', 1]], {}, {class: 'sel'}%>
         </div> 
+        /
         <div class="d-inline-block">
           <%= form.select :record_view, [['ノーマル', 0],['コメントを表示', 1],['画像のみ表示', 2],['リンクと画像表示', 3],['Youtube表示', 4],['Twitter表示', 5]], {}, {class: 'sel'}%>
         </div> 
-        <div class="d-inline-block">
+        <div class="d-inline-block view-btn-div">
           <%= form.submit "◯", :class=>"view-btn"%>
         </div>  
-      <% end %>
+      <% end %> 
     </div>
 </div>
 
+
+
 <h3 class="text-center folder-title"><%= @folder.title %></h3>
+<h5><span class="badge rounded-pill bg-secondary text-white"><% unless @folder.count_sum == 0 %><%= @folder.count_sum %><% end %></span></h5>
+<h5><% unless @folder.money_sum == 0 %>¥<%= @record_money_sum %><% end %></h5>
+<div class="flex-row">
+  <h5 class="d-inline-flex"><% unless @folder.hour_sum == 0 %><%= @record_hours_sum %>時間<% end %></h5>
+  <h5 class="d-inline-flex"><% unless @folder.minute_sum == 0 %><%= @record_minutes_sum %>分<% end %></h5>
+</div>
+<div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 <div class="co">
 <% @folder.tags.each do |tag| %>
     <div>
@@ -50,14 +61,5 @@
   </tbody>
 </table>
 
-<br>
-
-<h5><span class="badge rounded-pill bg-secondary text-white"><%= @folder.count_sum %></span></h5>
-<h5>¥<%= @record_money_sum %></h5>
-<div class="flex-row">
-  <h5 class="d-inline-flex"><%= @record_hours_sum %>時間</h5>
-  <h5 class="d-inline-flex"><%= @record_minutes_sum %>分</h5>
-</div>
-<div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
-<a><%= link_to 'タグを管理', tag2s_path, class: "btn btn-outline-dark new-tag"%></a>
+<a><%= link_to  image_tag("tag.png", class: "manage-tag-img"), tag2s_path, class: "manage-tag" %></a>
 
