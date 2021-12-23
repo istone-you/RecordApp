@@ -3,7 +3,7 @@
         <% if record.done == 1 %>
          <% if record.link? %>
           <div class ="link-card">
-        　  <%=link_to record.link do %><img class="" src="<%= record.image %>"class="" width="auto" height="80"><% end %>
+        　  <%=link_to record.link do %><img class="link-img" src="<%= record.image %>" ><% end %>
         　</div>  
          <% end %>  
         <% end %> 

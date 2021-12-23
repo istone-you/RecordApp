@@ -2,7 +2,7 @@
       <% @records.each do |record| %>
         <% if record.done == 1 %>
           <div class="card-deck">
-            <div class="card text-dark bg-light mb-3 folder mr-4 ml-4">
+            <div class="text-dark bg-light mb-3 folder mr-4 ml-4">
               <% if record.image? %>
                 <%= link_to image_tag(record.image.url, class: "card-img-top record-img"),folder_record_path(record.folder,record)  %>
               <% else %>
