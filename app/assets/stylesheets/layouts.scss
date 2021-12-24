@@ -206,19 +206,16 @@ header {
   justify-content: center;
 }
 
-.link-card {
-  margin-bottom: 30px;
-}
-
-.link-card:hover {
-  opacity: 0.8;
-}
-
 .link-img {
   width: 200px;
   height: auto;
   max-height: 120px;
   object-fit: contain;
+  margin: 30px;
+}
+
+.link-img:hover {
+  opacity: 0.8;
 }
 
 .card-title {
