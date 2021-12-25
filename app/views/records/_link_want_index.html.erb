@@ -2,7 +2,7 @@
       <% @records.each do |record| %>
         <% if record.done == 0 %>
          <% if record.link? %>
-        　  <%=link_to record.link do %><img class="" src="<%= record.image %>"class="" width="100" height="auto"><% end %>
+        　  <%=link_to record.link do %><img class="link-img" src="<%= record.image %>" ><% end %>
          <% end %>  
         <% end %> 
       <% end %>
