@@ -91,7 +91,7 @@ end
   # PATCH/PUT /records/1
   def update
     if @record.update(record_params)
-      redirect_to folder_record_path(@record.folder, @record), notice: 'Record was successfully updated.'
+      redirect_to folder_records_path(@record.folder, @record), notice: 'Record was successfully updated.'
     else
       render :edit
     end
