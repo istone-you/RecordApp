@@ -18,6 +18,11 @@
     <%= form.text_field :title %>
   </div>
   
+  <div class="field">
+    <%= form.label :image, "画像をアップロード" %><br>
+    <%= form.file_field :image %>
+  </div>
+  
   <div class="check_box">
     <span>カテゴリ</span>
     <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>

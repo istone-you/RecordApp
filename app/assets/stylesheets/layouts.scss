@@ -339,8 +339,7 @@ header {
 }
 
 .folder-sum {
-  position: absolute;
-  bottom: -5px;
+  margin-top: -20px;
 }
 
 .folder-edit {
@@ -377,6 +376,23 @@ header {
 
 .tag-card {
   width: 100px;
+  height: 150px;
+}
+
+.folder-img {
+  width: 198px;
+  height: 100px;
+  object-fit: contain;
+  background-color: white;
+}
+
+.folder-img:hover {
+  opacity: 0.8;
+}
+
+.folder-card {
+  width: 198px;
+  height: 171px;
 }
 
 .manage-tag {
