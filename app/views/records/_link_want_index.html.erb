@@ -2,7 +2,10 @@
       <% @records.each do |record| %>
         <% if record.done == 0 %>
          <% if record.link? %>
-        　  <%=link_to record.link do %><img class="link-img" src="<%= record.image %>" ><% end %>
+             <div class ="folder-card mr-1 ml-1">
+            　  <%=link_to record.link do %><img class="folder-img" src="<%= record.image %>" ><% end %>
+            　  <h5 class=" text-center mt-2"><%= record.title.truncate(15)%></h5>
+             </div>　  
          <% end %>  
         <% end %> 
       <% end %>
