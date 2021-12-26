@@ -32,38 +32,84 @@ header {
   width: 80px;
 }
 
+.record-card {
+  height: 225px;
+  width: 100px;
+  margin: 3px;
+}
+
+@media screen and (min-width:480px) {
+.record-card {
+  height: 440px;
+  width: 198px;
+  margin: 10px;
+}
+}
+
+.record-img {
+  height: 150px;
+  width: 100%;
+  object-fit: contain;
+  background-color: white;
+}
+
+@media screen and (min-width:480px) {
 .record-img {
   height: 315px;
   width: 100%;
   object-fit: contain;
   background-color: white;
 }
+}
 
 .record-img:hover {
   opacity: 0.8;
 }
 
-.record-money {
+.record-count {
   position: absolute;
-  top: 380px;
-  left: 110px;
+  top: 215px;
+  left: 90px;
+  font-size: 10px;
 }
 
+.record-hour {
+  position: absolute;
+  left: 13px;
+  top: 200px;
+  font-size: 6px;
+}
+
+@media screen and (min-width:480px) {
 .record-count {
   position: absolute;
   top: 420px;
   left: 170px;
+  font-size: 18px;
 }
 
-.record-card {
-  height: 440px;
+.record-hour {
+  position: absolute;
+  left: 19px;
+  top: 404px;
+  font-size: 16px;
+}
 }
 
+.fixed-btn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 50;
+}
+
+@media screen and (min-width:480px) {
 .fixed-btn {
   position: fixed;
   bottom: 50px;
   right: 50px;
   z-index: 50;
+}
 }
 
 .fixed-btn:hover {
@@ -87,19 +133,6 @@ header {
 
 .record-tag-search {
   padding-top: 150px;
-}
-
-.record-hour {
-  position: absolute;
-  left: 19px;
-  top: 404px;
-  
-}
-
-.record-minute {
-  position: absolute;
-  left: 60px;
-  top: 399px;
 }
 
 .show_done {
@@ -133,6 +166,29 @@ header {
 
 .record-link {
   position: absolute;
+  top: 200px;
+  left: 80px;
+}
+
+.record-link-youtube {
+  position: absolute;
+  top: 180px;
+  left: 80px;
+}
+
+.record-link-twitter {
+  position: absolute;
+  top: 160px;
+  left: 80px;
+}
+
+.link-img-size {
+  width: 5px;
+}
+
+@media screen and (min-width:480px) {
+.record-link {
+  position: absolute;
   top: 390px;
   left: 175px;
 }
@@ -147,6 +203,7 @@ header {
   position: absolute;
   top: 330px;
   left: 175px;
+}
 }
 
 .record-link1 {
@@ -175,8 +232,15 @@ header {
 }
 
 .folreccard {
+  margin: 50px 2px;
+}
+
+@media screen and (min-width:480px) {
+.folreccard {
   margin: 50px;
 }
+}
+
 
 .index-header {
   height: 38px;
@@ -221,6 +285,13 @@ header {
 
 .card-title {
   color: black;
+  font-size: 10px;
+}
+
+@media screen and (min-width:480px) {
+.card-title {
+  font-size: 20px;
+}
 }
 
 .card-title:hover {
@@ -240,7 +311,17 @@ header {
 
 
 .record-form {
+  margin: 50px 50px;
+}
+
+@media screen and (min-width:1024px) {
+.record-form {
   margin: 50px 300px;
+}
+}
+
+.coment-field {
+  height: 50px;
 }
 
 .tag-img {

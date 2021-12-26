@@ -28,7 +28,7 @@
   </div>
 
   <div class="field">
-    <p>カウント</p>
+    <h6>カウント</h6>
     <%= form.number_field :count %> / <%= form.number_field :goal_count %>
   </div>
   
@@ -37,13 +37,12 @@
   </div>
   
   <div class="field">
-    <%= form.label :money, "金額" %>
-    <%= form.number_field :money %>
+    ¥<%= form.number_field :money %>
   </div>
 
   <div class="field">
     <%= form.label :coment, "コメント"%>
-    <%= form.text_area :coment %>
+    <%= form.text_area :coment, class: "coment-field" %>
   </div>
   
   <div class="field">
@@ -80,7 +79,19 @@
  
  <div class="field">
     <%= form.label :created_at, "時間" %>
-    <%= form.datetime_select :created_at %>
+    <%= raw sprintf(
+    form.datetime_select(
+      :create_at,# プロパティ名
+      {
+        use_two_digit_numbers: true,# 月日を2桁の値で表示
+        date_separator: '%s',# 年, 月
+        datetime_separator: '%s',# 日
+        time_separator: '%s'# 時
+      },# オプション
+      { class: 'date-select' }# htmlオプションを指定する場合は別で指定
+    ),
+    '年 ', '月 ', '日 ', '時 ') + '分'# 分 は最後につけ加えられる
+    %>
   </div>
 
   <div class="actions">
