@@ -6,6 +6,11 @@
 <div class= "back-btn">
   <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3" %>
 </div>
+
+<div class= "fixed-btn">
+  <%= link_to image_tag("show-edit.png"),edit_folder_record_path, class: "d-inline-block" %>
+</div>
+
 <div class="text-center">
   <h3 class="folder-title">
     <%= @record.title %>
@@ -18,6 +23,13 @@
         </div>
     <% end %>
   </div><br>
+  
+   
+  <div>
+    <% if @record.done == 1 %>
+     <%= image_tag "done.png", class: "mb-2" %>
+    <% end %> 
+  </div>
   
   <div>
     <% if @record.count? %> 
@@ -46,13 +58,18 @@
   
   <p>
     <% if @record.image? %>
-      <%= image_tag @record.image.url, class: "record-img" %>
+      <%= image_tag @record.image.url, class: "record-img-show" %>
     <% end %>  
   </p>
   
   <p>
+    <strong>リンク</strong>
+    <a href="<%= @record.link %>"><%= @record.link %></a>
+  </p>
+  
+  <p>
     <% if @record.youtube? %>
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="400" height="250" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <% end %>  
   </p>
   <p>
@@ -62,17 +79,7 @@
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <% end %>  
   </p>
-  <p>
-    <strong>リンク</strong>
-    <a href="<%= @record.link %>"><%= @record.link %></a>
-  </p>
-  
-  <p>
-    <strong>Done?</strong>
-    <% if @record.done == 1 %>
-     <p>Yes</p>
-    <% end %> 
-  </p>
+ 
   
   
   
@@ -82,8 +89,6 @@
     <%= @record.updated_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
   </p> 
   
-  
-  <%= link_to '編集', edit_folder_record_path %>
 </div>
 
 

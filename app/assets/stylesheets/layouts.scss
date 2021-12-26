@@ -68,6 +68,13 @@ header {
   background-color: white;
 }
 
+.record-img-show {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
+  margin: 20px;
+}
+
 @media screen and (min-width:480px) {
 .record-img {
   height: 315px;
@@ -245,7 +252,7 @@ header {
   position: absolute;
   bottom: 1px;
   left: 10px;
-  font-size: 5px;
+  font-size: 7px;
 }  
 
 @media screen and (min-width:480px) {
@@ -253,7 +260,7 @@ header {
   position: absolute;
   bottom: 1px;
   left: 350px;
-  font-size: 5px;
+  font-size: 7px;
 }
 }
 
