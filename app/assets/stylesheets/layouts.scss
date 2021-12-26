@@ -55,6 +55,8 @@ header {
 }
 
 .img-only {
+  height: 440px;
+  width: 198px;
   margin: 10px;
 }
 }
@@ -81,9 +83,10 @@ header {
 
 .record-count {
   position: absolute;
-  top: 215px;
-  left: 90px;
+  top: 205px;
+  left: 85px;
   font-size: 12px;
+  z-index: 40;
 }
 
 .record-hour {
@@ -99,6 +102,7 @@ header {
   top: 420px;
   left: 170px;
   font-size: 18px;
+  z-index: 40;
 }
 
 .record-hour {
@@ -240,17 +244,33 @@ header {
 .record-time {
   position: absolute;
   bottom: 1px;
-  left: 200px;
+  left: 10px;
   font-size: 5px;
+}  
+
+@media screen and (min-width:480px) {
+.record-time {
+  position: absolute;
+  bottom: 1px;
+  left: 350px;
+  font-size: 5px;
+}
 }
 
 .folreccard {
   margin: 50px 2px;
 }
 
+.coment-card {
+  margin: 50px 2px ;
+}
+
 @media screen and (min-width:480px) {
 .folreccard {
   margin: 50px;
+}
+.coment-card {
+  margin: 50px 200px ;
 }
 }
 
@@ -354,10 +374,25 @@ header {
 
 .manage-tag {
   position: absolute;
+  top: 170px;
+  right: 10px;
+}
+
+@media screen and (min-width:480px) {
+.manage-tag {
+  position: absolute;
   top: 110px;
   right: 60px;
+}
 }
 
 .manage-tag-img {  
   width: 40px;
+}
+
+.coment-img {
+  height: 150px;
+  width: 100%;
+  object-fit: contain;
+  background-color: white;
 }
