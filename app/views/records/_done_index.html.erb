@@ -1,46 +1,37 @@
-    <% if @folder.record_view == 0 %>
-      <div class="co folreccard">
-        <% @records.each do |record| %>
-          <% if record.done == 1 %>
-              <div class="card text-dark bg-light folder record-card">
-                <% if record.image? %>
-                  <%= link_to image_tag(record.image.url, class: "card-img-top record-img"),folder_record_path(record.folder,record)  %>
-                <% else %>
-                  <%=  link_to image_tag("no_image.png", class: "card-img-top record-img"),folder_record_path(record.folder,record) %>
-                <% end %>
-                <div class="card-body">
-                  <h5 class="card-title text-center"><%= record.title.truncate(16) %></h5>
-                  <h4><span class="badge rounded-pill bg-secondary text-white record-count"><%= record.count %></span></h4>
-                  
-                　<h6 class="record-hour"><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
-                　<% if record.link? %>
-                　  <a href="<%= record.link %>" class="record-link link-img-size"><img src="/assets/link.png"width="20"></a>
-                　<% end %> 
-                　<% if record.youtube? %>
-                　  <a href="<%= record.youtube %>" class="record-link-youtube link-img-size"><img src="/assets/youtube.png"width="20"></a>
-                　<% end %> 
-                　<% if record.twitter? %>
-                　  <a href="<%= record.twitter %>" class="record-link-twitter link-img-size"><img src="/assets/twitter.png"width="20"></a>
-                　<% end %> 
-                </div>
-              </div> 
-          <% end %>
-        <% end %>
-      </div>
+<% if @folder.record_view == 0 %>
+  <div class="co folreccard">
+    <% @records.each do |record| %>
+      <% if record.done == 1 %>
+          <div class="card text-dark bg-light folder record-card">
+            <% if record.image? %>
+              <%= link_to image_tag(record.image.url, class: "card-img-top record-img"),folder_record_path(record.folder,record)  %>
+            <% else %>
+              <%=  link_to image_tag("no_image.png", class: "card-img-top record-img"),folder_record_path(record.folder,record) %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title text-center"><%= record.title.truncate(16) %></h5>
+              <h4><span class="badge rounded-pill bg-secondary text-white record-count"><%= record.count %></span></h4>
+              
+            　<h6 class="record-hour"><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
+            </div>
+          </div> 
+      <% end %>
     <% end %>
-    
-    <% if @folder.record_view == 1 %>
-      <%=render "records/coment_show_index" %>
-    <% end %>
-    <% if @folder.record_view == 2 %>
-      <%= render "records/only_img_index" %>
-    <% end %>
-    <% if @folder.record_view == 3 %>
-      <%= render "records/link_index" %>
-    <% end %>
-    <% if @folder.record_view == 4 %>
-      <%= render "records/youtube_index" %>
-    <% end %>
-    <% if @folder.record_view == 5 %>
-      <%= render "records/twitter_index" %>
-    <% end %>
+  </div>
+<% end %>
+
+<% if @folder.record_view == 1 %>
+  <%=render "records/coment_show_index" %>
+<% end %>
+<% if @folder.record_view == 2 %>
+  <%= render "records/only_img_index" %>
+<% end %>
+<% if @folder.record_view == 3 %>
+  <%= render "records/link_index" %>
+<% end %>
+<% if @folder.record_view == 4 %>
+  <%= render "records/youtube_index" %>
+<% end %>
+<% if @folder.record_view == 5 %>
+  <%= render "records/twitter_index" %>
+<% end %>

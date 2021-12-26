@@ -47,9 +47,7 @@
   </thead>
 
   <tbody>
-    <div class= "back-btn">
-      <%= link_to image_tag("back.png"),folders_path, class: "d-inline-block  mb-3" %>
-    </div>
+    
     <% if @folder.done_view == 0 %>
      <%= render "records/done_index" %>
     <% end %>
