@@ -11,16 +11,13 @@
   <h3 class="text-center folder-title">ALL</h3>
   
   <div class="co folreccard">
-    <div class ="folder-card mr-1 ml-1"> <%=link_to users_all_records_path do %><img class="folder-img" src="assets/record.png"><% end %>
-    　<h5 class=" text-center mt-2">ALL</h5>
+    <div class ="folder-card mr-1 ml-1"><%= link_to image_tag("record.png", class:"folder-img"), users_all_records_path %>
+      <h5 class=" text-center mt-2">ALL</h5>
     </div>  
-    
     <% @folders.each do |folder| %>
       <div class ="folder-card mr-1 ml-1">
-        <% if folder.image? %><%=link_to image_tag(folder.image.url, class: "folder-img"),folder_records_path(folder.id) %><% else %> <%=link_to folder_records_path(folder.id) do %><img class="folder-img" src="assets/record.png"><% end %><% end %>   
-      　<h5 class=" text-center mt-2"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)
-      　<p class="text-center"><span class="badge rounded-pill bg-secondary text-white"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span> <% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></p>
-        </h5>
+        <% if folder.image? %><%=link_to image_tag(folder.image.url, class: "folder-img"),folder_records_path(folder.id) %><% else %><%= link_to image_tag("record.png", class:"folder-img"), folder_records_path(folder.id) %><% end %>   
+      　<h5 class=" text-center mt-2"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)<p class="text-center"><span class="badge rounded-pill bg-secondary text-white"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span> <% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></p></h5>
       </div>  
     <% end %>  
   </div>
@@ -30,4 +27,3 @@
 <br>
 
 <div><%= link_to image_tag("plus.png"), new_folder_path, class: "fixed-btn"  %></div>
-
