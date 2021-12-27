@@ -12,6 +12,7 @@ class CreateFolders < ActiveRecord::Migration[5.0]
       t.integer :done_view, default: 0
       t.integer :record_sort, default: 0
       t.string  :image
+      t.datetime :start_time
         t.timestamps
     end
   end

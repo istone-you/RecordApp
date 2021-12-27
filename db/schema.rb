@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_26_124758) do
+ActiveRecord::Schema.define(version: 2021_12_27_145036) do
 
   create_table "folder_tags", force: :cascade do |t|
     t.integer "folder_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_12_26_124758) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
+    t.datetime "start_time"
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_12_26_124758) do
     t.string "twitter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_time"
     t.index ["folder_id"], name: "index_records_on_folder_id"
     t.index ["user_id"], name: "index_records_on_user_id"
   end

@@ -15,6 +15,7 @@ class CreateRecords < ActiveRecord::Migration[5.0]
       t.text :link
       t.string :youtube
       t.string :twitter
+      t.datetime :start_time
 
       t.timestamps
     end

@@ -1,0 +1,11 @@
+<div class="rec-calendar">
+    <%= month_calendar events: @records do |date, records| %>
+      <%= date.day %>
+    
+      <% records.each do |record| %>
+        <div>
+          <%= link_to record.title,folder_record_path(record.folder,record) %>
+        </div>
+      <% end %>
+    <% end %>
+</div>    

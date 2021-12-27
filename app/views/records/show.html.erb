@@ -62,10 +62,10 @@
     <% end %>  
   </p>
   
-  <p>
+  <h6>
     <strong>リンク</strong>
     <a href="<%= @record.link %>"><%= @record.link %></a>
-  </p>
+  </h6>
   
   <p>
     <% if @record.youtube? %>
@@ -81,7 +81,12 @@
   </p>
  
   
-  
+  <h6>
+    <% if @record.start_time? %>
+      <strong>カレンダー</strong>
+      <%= @record.start_time.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+    <% end %>  
+  </h6> 
   
 
   <p>

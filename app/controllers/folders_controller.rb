@@ -1,12 +1,12 @@
 class FoldersController <  ApplicationController
   before_action :authenticate_user!
-  before_action :set_folder, only: [:show, :edit, :update, :destroy]
+  before_action :set_folder, only: [:show, :edit, :update, :destroy, :calendar]
 
   # GET /folders
   def index
     @folders = current_user.folders.all
   end
-
+  
   # GET /folders/1
   def show
   end
