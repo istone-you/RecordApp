@@ -17,15 +17,31 @@
     </div>
   <% end %>
   
-  <div class="field">
-    <%= form.label :done, "Done or Want to?" %>
-    <%= form.select :done, [['Want to', 0],['Done', 1]]%>
-  </div>    
+  <div>
+  
+    <div class="mb-3 mr-3 d-inline-block">
+      <%= form.select :done, [['Want to', 0],['Done', 1]]%>
+    </div> 
+    
+    <div class="d-inline-block">
+      <%= form.file_field :image %>
+    </div>
+    
+  </div>  
 
   <div class="field">
     <%= form.label :title, "タイトル" %>
     <%= form.text_field :title %>
   </div>
+  
+  <div class="mb-3">
+    <%= form.label :coment, "コメント"%>
+    <%= form.text_area :coment, class: "record-coment" %>
+  </div>
+  
+  <div class="mb-3">
+      <%= form.datetime_field :start_time %>
+    </div>
 
   <div class="field">
     <h6>カウント</h6>
@@ -38,11 +54,6 @@
   
   <div class="field">
     ¥<%= form.number_field :money %>
-  </div>
-
-  <div class="field">
-    <%= form.label :coment, "コメント"%>
-    <%= form.text_area :coment, class: "coment-field" %>
   </div>
   
   <div class="field">
@@ -60,27 +71,19 @@
     <%= form.text_area :twitter %>
   </div>
   
-  <div class="field">
-    <%= form.label :image, "画像をアップロード" %><br>
-    <%= form.file_field :image %>
-  </div>
-  
   <div class="check_box">
-    <span>タグ</span>
-    <%= form.collection_check_boxes(:tag2_ids, Tag2.all, :id, :name) do |tag2| %>
-     <div>
-       <%= tag2.label do %>
-         <%= tag2.check_box %>
-         <%= tag2.text %>
-       <% end %>
-     </div>
-   <% end %>
+    <span>Tag</span>
+    <div class="form-inline">
+      <%= form.collection_check_boxes(:tag2_ids, Tag2.all, :id, :name) do |tag2| %>
+       <div>
+         <%= tag2.label do %>
+           <%= tag2.check_box %>
+           <%= tag2.text %>
+         <% end %>
+       </div>
+      <% end %>
+    </div>
  </div>
- 
- <div class="field">
-    <%= form.label :start_time, "時間" %>
-    <%= form.datetime_field :start_time %>
-  </div>
 
   <div class="actions">
     <%= form.submit "完了"%>

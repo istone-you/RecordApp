@@ -1,0 +1,15 @@
+<% @records.each do |record| %>
+    <div class="card folreccard" style="width: 18rem;">
+        <% if record.done == 1 %> 
+            <%= link_to folder_record_path(record.folder,record), class: "card-letter" do %>
+              <% if record.image? %>
+                  <%= link_to image_tag(record.image.url, class: "card-img-top record-img"),folder_record_path(record.folder,record)  %>
+              <% end %>
+              <div class="card-body">
+                <h5 class="card-title card-letter"><%= record.title %></h5>
+                <p class="card-text card-letter"><%= record.coment %></p>
+              </div>
+             <% end %> 
+         <% end %>
+    </div>     
+ <% end %>

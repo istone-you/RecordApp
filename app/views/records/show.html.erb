@@ -11,7 +11,7 @@
   <%= link_to image_tag("show-edit.png"),edit_folder_record_path, class: "d-inline-block" %>
 </div>
 
-<div class="text-center">
+<div class="text-center folreccard">
   <h3 class="folder-title">
     <%= @record.title %>
   </h3>
@@ -25,11 +25,15 @@
   </div><br>
   
    
-  <div>
-    <% if @record.done == 1 %>
-     <%= image_tag "done.png", class: "mb-2" %>
-    <% end %> 
-  </div>
+  <p>
+    <% if @record.image? %>
+      <%= image_tag @record.image.url, class: "record-img-show" %>
+    <% end %>  
+  </p>
+  
+  <h6>
+    <%= @record.coment %>
+  </h6>
   
   <div>
     <% if @record.count? %> 
@@ -52,19 +56,11 @@
     <% end %>   
   </h3>
   
-  <p>
-    <%= @record.coment %>
-  </p>
-  
-  <p>
-    <% if @record.image? %>
-      <%= image_tag @record.image.url, class: "record-img-show" %>
-    <% end %>  
-  </p>
-  
   <h6>
-    <strong>リンク</strong>
-    <a href="<%= @record.link %>"><%= @record.link %></a>
+    <% if @record.link? %>
+      <strong>リンク</strong>
+      <a href="<%= @record.link %>"><%= @record.link %></a>
+    <% end %> 
   </h6>
   
   <p>
@@ -88,8 +84,16 @@
     <% end %>  
   </h6> 
   
+  <div>
+    <% if @record.done == 1 %>
+     <%= image_tag "done.png", class: "mb-2" %>
+    <% end %> 
+  </div>
+  
 
   <p>
+    <strong>作成時間</strong>
+    <%= @record.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
     <strong>最終更新時間</strong>
     <%= @record.updated_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
   </p> 
