@@ -22,31 +22,31 @@
     </div>
       
     <div class="">
-        <% if @tag.all_records_view == 0 %>
-          <%= render "tags/normal_index" %>
-        <% end %>
-        <% if @tag.all_records_view == 1 %>
-          <%=render "records/all_info" %>
-        <% end %>
-        <% if @tag.all_records_view == 2 %>
-        <%= render "records/only_img" %>
-        <% end %>
-        <% if @tag.all_records_view == 3 %>
-          <%= render "records/link" %>
-        <% end %>
-        <% if @tag.all_records_view == 4 %>
-          <%= render "records/youtube" %>
-        <% end %>
-        <% if @tag.all_records_view == 5 %>
-          <%= render "records/twitter" %>
-        <% end %>
-        <% if @tag.all_records_view == 6 %>
-          <%= render "records/calendar" %>
-        <% end %>
-        <% if @tag.all_records_view == 7 %>
-          <%= render "records/graph" %>
-        <% end %>
-        <% if @tag.all_records_view == 8 %>
-          <%= render "records/coment" %>
-        <% end %>
-      </div>
+          <% if @tag.all_records_view == 0 %>
+            <%= render "tags/normal_index" %>
+          <% end %>
+          <% if @tag.all_records_view == 1 %>
+            <%=render "tags/all_info" %>
+          <% end %>
+          <% if @tag.all_records_view == 2 %>
+          <%= render "tags/only_img" %>
+          <% end %>
+          <% if @tag.all_records_view == 3 %>
+            <%= render "tags/link" %>
+          <% end %>
+          <% if @tag.all_records_view == 4 %>
+            <%= render "records/youtube" %>
+          <% end %>
+          <% if @tag.all_records_view == 5 %>
+            <%= render "records/twitter" %>
+          <% end %>
+          <% if @tag.all_records_view == 6 %>
+            <%= render "records/calendar" %>
+          <% end %>
+          <% if @tag.all_records_view == 7 %>
+            <%= render "records/graph" %>
+          <% end %>
+          <% if @tag.all_records_view == 8 %>
+            <%= render "records/coment" %>
+          <% end %>
+    </div>

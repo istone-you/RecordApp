@@ -60,9 +60,6 @@ class TagsController < ApplicationController
   
   def all_records
     @tag = current_user.tags.find(params[:tag_id])
-    @tag.folders.each do |folder|
-      @records = folder.records.all
-    end   
   end  
 
   private

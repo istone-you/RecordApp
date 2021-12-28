@@ -1,5 +1,6 @@
         <div class="card-deck folreccard">
-              <% @records.each do |record| %>
+          <% @tag.folders.each do |folder| %>
+              <% folder.records.all.each do |record| %>
                 <% if record.done == 1 %>
                   <div class="card-deck">
                     <div class="card text-dark bg-light mb-3 folder mr-4 ml-4 record-card">
@@ -25,6 +26,7 @@
                       </div>
                     </div> 
                   </div>
-                <% end %>
-              <% end %>   
+                <% end %> 
+              <% end %> 
+            <% end %>   
         </div>
