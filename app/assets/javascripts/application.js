@@ -14,8 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require chartkick
+//= require Chart.bundle
 
  // Bootstrap4
  //= require jquery3
  //= require popper
  //= require bootstrap-sprockets  
+ 
+ //= require chartkick
+ //= require Chart.bundle

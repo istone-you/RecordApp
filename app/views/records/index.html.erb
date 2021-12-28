@@ -12,7 +12,7 @@
         </div> 
         /
         <div class="d-inline-block">
-          <%= form.select :record_view, [['normal', 0],['coment', 1],['image', 2],['link', 3],['Youtube', 4],['Twitter', 5],['calendar', 6]], {}, {class: 'sel'}%>
+          <%= form.select :record_view, [['normal', 0],['coment', 1],['image', 2],['link', 3],['Youtube', 4],['Twitter', 5],['calendar', 6],['graph', 7]], {}, {class: 'sel'}%>
         </div> 
         <div class="d-inline-block view-btn-div">
           <%= form.submit "◯", :class=>"view-btn"%>
@@ -61,6 +61,4 @@
 
 <a><%= link_to  image_tag("tag.png", class: "manage-tag-img"), tag2s_path, class: "manage-tag" %></a>
 <a><%= link_to  image_tag("show-edit.png", class: "edit-btn-img"), edit_folder_path(@folder), class: "edit-btn" %></a>
-
-
 
