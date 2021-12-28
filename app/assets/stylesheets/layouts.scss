@@ -438,5 +438,25 @@ header {
 }
 
 .rec-calendar {
-  margin: 30px;
+}
+
+.cal-rec {
+  background-color: #00CCFF;
+  margin-bottom: 1px;
+  border-radius: 10px;
+  text-align: center;
+  padding: 5px;
+}
+
+.cal-rec:hober {
+  opacity: 0.8;
+}
+
+.cal-rec-link {
+  color: black;
+}
+
+.cal-rec-link:hover {
+  color: black;
+  text-decoration: none;
 }

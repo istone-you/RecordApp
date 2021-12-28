@@ -3,8 +3,8 @@
       <%= date.day %>
     
       <% records.each do |record| %>
-        <div>
-          <%= link_to record.title,folder_record_path(record.folder,record) %>
+        <div class="cal-rec">
+          <%= link_to record.title.truncate(10),folder_record_path(record.folder,record), class: "cal-rec-link" %>
         </div>
       <% end %>
     <% end %>

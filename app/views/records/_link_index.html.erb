@@ -3,7 +3,7 @@
         <% if record.done == 1 %>
          <% if record.link? %>
              <div class ="folder-card mr-1 ml-1">
-            　  <%=link_to record.link do %><img class="folder-img" src="<%= record.image %>" ><% end %>
+            　  <% if record.image? %><%=link_to image_tag(record.image.url, class: "folder-img"),record.link %><% else %><%= link_to image_tag("link-img.png", class:"folder-img"), record.link %><% end %>
             　  <h5 class=" text-center mt-2"><%= record.title.truncate(15)%></h5>
              </div>　  
          <% end %>  
