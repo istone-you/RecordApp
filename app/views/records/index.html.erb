@@ -1,20 +1,22 @@
 <p id="notice"><%= notice %></p>
 
 <div class= "index-header">
-  <div class="float-right select-div">
-      <%= form_with(model: @folder,local: true) do |form| %>
+  <div class="text-center select-div">
+      <%= form_with(model: @folder,remote: true,id: 'form1') do |form| %>
         <div class="d-inline-block">
-          <%= form.select :record_sort, [['時間新しい順', 0],['時間古い順', 1],['更新新しい順', 2],['更新古い順', 3]], {}, {class: 'sel'}%>
+          <%= form.select :record_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel select'}%>
         </div>
-        /
+        |
         <div class="d-inline-block">
-          <%= form.select :done_view, [[' Done表示 ', 0],['Want to表示', 1]], {}, {class: 'sel'}%>
+          <%= form.select :done_view, [[' Done', 0],['Want to', 1]], {}, {class: 'sel'}%>
         </div> 
-        /
+        |
         <div class="d-inline-block">
-          <%= form.select :record_view, [['normal', 0],['coment', 1],['image', 2],['link', 3],['Youtube', 4],['Twitter', 5],['calendar', 6],['graph', 7]], {}, {class: 'sel'}%>
+          <%= form.select :record_view, [['Normal', 0],['Coment', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel'}%>
         </div> 
-        <div class="d-inline-block view-btn-div">
+        |
+        <br>
+        <div class="d-inline-block">
           <%= form.submit "◯", :class=>"view-btn"%>
         </div>  
       <% end %> 
@@ -34,7 +36,7 @@
 <div class="co">
 <% @folder.tags.each do |tag| %>
     <div>
-      <h6 class="badge badge-secondary mr-1"><%= tag.name %></h6>
+      <h6 class="badge badge-secondary mr-1"><%=link_to tag.name,tag_path(tag.id), class: "folder-to-tag" %></h6>
     </div>
 <% end %>
 </div><br>
