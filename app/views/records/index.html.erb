@@ -3,6 +3,7 @@
 <div class= "index-header">
   <div class="text-center select-div">
       <%= form_with(model: @folder,remote: true,id: 'form1') do |form| %>
+        |
         <div class="d-inline-block">
           <%= form.select :record_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel select'}%>
         </div>

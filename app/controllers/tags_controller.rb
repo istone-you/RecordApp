@@ -10,17 +10,6 @@ class TagsController < ApplicationController
   # GET /tags/1 or /tags/1.json
   def show
     @folders = @tag.folders.all
-    if current_user.all_records_sort == 0
-      @records = Record.all.order(created_at: :desc)
-    elsif current_user.all_records_sort== 1
-      @records = Record.all.order(created_at: :asc)
-    elsif current_user.all_records_sort == 2
-      @records = Record.all.order(updated_at: :desc)
-    elsif current_user.all_records_sort == 3
-      @records = Record.all.order(updated_at: :asc)
-    else 
-      @records = Record.all
-    end  
   end
 
   # GET /tags/new
@@ -51,7 +40,7 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to @tag, notice: "Tag was successfully updated." }
+        format.html { redirect_to tag_all_records_path(@tag), notice: "Tag was successfully updated." }
         format.json { render :show, status: :ok, location: @tag }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -71,6 +60,9 @@ class TagsController < ApplicationController
   
   def all_records
     @tag = current_user.tags.find(params[:tag_id])
+    @tag.folders.each do |folder|
+      @records = folder.records.all
+    end   
   end  
 
   private
@@ -81,7 +73,7 @@ class TagsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tag_params
-      params.require(:tag).permit(:name, :user_id, :image)
+      params.require(:tag).permit(:name, :user_id, :image,:all_records_sort,:all_records_view)
     end
  
 end

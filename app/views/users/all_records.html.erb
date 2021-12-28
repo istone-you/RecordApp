@@ -2,14 +2,18 @@
         <div class= "back-btn">
             <%= link_to image_tag("back.png"),folders_path, class: "d-inline-block  mb-3" %>
         </div>
-        <div class="float-right">  
+        <div class="text-center select-div">  
           <%= form_with(model: @user,local: true) do |form| %>
+            |
             <div class="d-inline-block">
-              <%= form.select :all_records_sort, [['時間新しい順', 0],['時間古い順', 1],['更新新しい順', 2],['更新古い順', 3]], {}, {class: 'sel'}%>
+              <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel'}%>
             </div>
+            |
             <div class="d-inline-block">
-            <%= form.select :all_records_view, [['ノーマル', 0],['コメントを表示', 1],['画像のみ表示', 2],['リンクと画像表示', 3],['Youtube表示', 4],['Twitter表示', 5]], {}, {class: 'sel'}%>
-            </div> 
+            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Coment', 8]], {}, {class: 'sel'}%>
+            </div>
+            |
+            <br>
             <div class="d-inline-block">
               <%= form.submit "◯", :class=>"view-btn"%>
             </div>  
@@ -17,25 +21,34 @@
         </div>  
       </div>
       
-      <h3 class="text-center folder-title">ALL</h3>
+      <h3 class="text-center folder-title pt-3">ALL</h3>
       
       <div class="">
         <% if current_user.all_records_view == 0 %>
           <%= render "users/normal_index" %>
         <% end %>
         <% if current_user.all_records_view == 1 %>
-          <%=render "records/coment_show_index" %>
+          <%=render "records/all_info" %>
         <% end %>
         <% if current_user.all_records_view == 2 %>
-        <%= render "records/only_img_index" %>
+        <%= render "records/only_img" %>
         <% end %>
         <% if current_user.all_records_view == 3 %>
-          <%= render "records/link_index" %>
+          <%= render "records/link" %>
         <% end %>
         <% if current_user.all_records_view == 4 %>
-          <%= render "records/youtube_index" %>
+          <%= render "records/youtube" %>
         <% end %>
         <% if current_user.all_records_view == 5 %>
-          <%= render "records/twitter_index" %>
+          <%= render "records/twitter" %>
+        <% end %>
+        <% if current_user.all_records_view == 6 %>
+          <%= render "records/calendar" %>
+        <% end %>
+        <% if current_user.all_records_view == 7 %>
+          <%= render "records/graph" %>
+        <% end %>
+        <% if current_user.all_records_view == 8 %>
+          <%= render "records/coment" %>
         <% end %>
       </div>

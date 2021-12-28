@@ -1,5 +1,6 @@
-<h1>タグを編集</h1>
+<h3 class="text-center">タグを編集</h3>
 
 <%= render 'form', tag2: @tag2 %>
 
+<a><%= link_to '削除', @tag, method: :delete, data: { confirm: '削除しますか?' } %></a>
 <a href="javascript:history.back()" style="color: black;">戻る</a>

@@ -9,6 +9,7 @@ class Tag2sController < ApplicationController
 
   # GET /tag2s/1 or /tag2s/1.json
   def show
+    @records = @tag2.records
   end
 
   # GET /tag2s/new
@@ -65,6 +66,6 @@ class Tag2sController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tag2_params
-      params.require(:tag2).permit(:name, :user_id)
+      params.require(:tag2).permit(:name, :user_id,:all_records_sort,:all_records_view)
     end
 end

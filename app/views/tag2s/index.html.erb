@@ -1,28 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>タグ</h1>
+<h3 class=" text-center">Tag</h3>
 
 <table>
-  <thead>
-    <tr>
-      <th>タグ名</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
-    <% @tag2s.each do |tag2| %>
-      <tr>
-        <td><%= tag2.name %></td>
-        <td><%= link_to '表示', tag2 %></td>
-        <td><%= link_to '編集', edit_tag2_path(tag2) %></td>
-        <td><%= link_to '削除', tag2, method: :delete, data: { confirm: '削除しますか?' } %></td>
-      </tr>
-    <% end %>
+    
+    <div class="co folreccard">  
+      <% @tag2s.each do |tag2| %>
+          <div class ="tag-card mr-4 ml-4 mb-4"> 
+            <% if tag2.image? %><%=link_to image_tag(tag2.image.url, class: "tag-img"),tag2 %><% else %> <%=link_to tag2 do %><img class="tag-img" src="assets/folder.png"><% end %><% end %>   
+        　   <h6 class=" text-center mt-2"><%= tag2.name.truncate(14) %></h6>    
+        　</div>  
+         <% end %>  
+    </div>
+    
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'タグを作成', new_tag2_path %>
-<a href="javascript:history.back()" style="color: black;">戻る</a>
+<div><%= link_to image_tag("plus.png"), new_tag2_path, class: "fixed-btn"  %></div>
