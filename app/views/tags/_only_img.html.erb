@@ -4,9 +4,9 @@
             <% if record.done == 1 %>
               <div class="text-dark folder img-only">
                 <% if record.image? %>
-                  <%= link_to image_tag(record.image.url, class: "record-img"),folder_record_path(record.folder,record)  %>
+                  <%= link_to image_tag(record.image.url, class: "img-only-img"),folder_record_path(record.folder,record)  %>
                 <% else %>
-                  <%=  link_to image_tag("no_image.png", class: "record-img"),folder_record_path(record.folder,record) %>
+                  <%=  link_to image_tag("no_image.png", class: "img-only-img"),folder_record_path(record.folder,record) %>
                 <% end %>
               </div> 
             <% end %> 
