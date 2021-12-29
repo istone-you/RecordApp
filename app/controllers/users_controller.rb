@@ -29,8 +29,10 @@ class UsersController < ApplicationController
   end
   
   def all_records
+    @record = current_user.records
+    
     if current_user.all_records_sort == 0
-      @records = Record.all.order(created_at: :desc)
+      @records = @record.all.order(created_at: :desc)
     elsif current_user.all_records_sort== 1
       @records = Record.all.order(created_at: :asc)
     elsif current_user.all_records_sort == 2

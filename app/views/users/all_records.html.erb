@@ -22,7 +22,7 @@
       </div>
       
       <h3 class="text-center folder-title pt-3">ALL</h3>
-      
+
       <div class="">
         <% if current_user.all_records_view == 0 %>
           <%= render "users/normal_index" %>
@@ -51,4 +51,5 @@
         <% if current_user.all_records_view == 8 %>
           <%= render "records/coment" %>
         <% end %>
+     
       </div>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :folders
+  has_many :records
   has_many :tags
   has_many :tag2s
 end
