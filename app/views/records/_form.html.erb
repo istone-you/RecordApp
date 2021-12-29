@@ -74,7 +74,7 @@
   <div class="check_box">
     <span>Tag</span>
     <div class="form-inline">
-      <%= form.collection_check_boxes(:tag2_ids, Tag2.all, :id, :name) do |tag2| %>
+      <%= form.collection_check_boxes(:tag2_ids, current_user.tag2s.all, :id, :name) do |tag2| %>
        <div>
          <%= tag2.label do %>
            <%= tag2.check_box %>
