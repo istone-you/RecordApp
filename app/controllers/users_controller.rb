@@ -32,13 +32,13 @@ class UsersController < ApplicationController
     @record = current_user.records
     
     if current_user.all_records_sort == 0
-      @records = @record.all.order(created_at: :desc)
+      @records = @record.all.order(created_at: :desc).page(params[:page]).per(25)
     elsif current_user.all_records_sort== 1
-      @records = Record.all.order(created_at: :asc)
+      @records = Record.all.order(created_at: :asc).page(params[:page]).per(25)
     elsif current_user.all_records_sort == 2
-      @records = Record.all.order(updated_at: :desc)
+      @records = Record.all.order(updated_at: :desc).page(params[:page]).per(25)
     elsif current_user.all_records_sort == 3
-      @records = Record.all.order(updated_at: :asc)
+      @records = Record.all.order(updated_at: :asc).page(params[:page]).per(25)
     else 
       @records = Record.all
     end  

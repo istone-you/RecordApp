@@ -51,5 +51,6 @@
         <% if current_user.all_records_view == 8 %>
           <%= render "records/coment" %>
         <% end %>
-     
+        
+        <%= paginate @records %>
       </div>
