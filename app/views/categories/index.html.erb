@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h3 class=" text-center">Category</h3>
+
+
+
+<table>
+
+  <tbody>
+    
+    
+    
+    <div class="co folreccard">
+          <div class ="tag-card mr-4 ml-4 mb-4"> <%=link_to folders_path do %><img class="tag-img" src="assets/folder.png"><% end %>
+        　  <h6 class=" text-center mt-2">ALL</h6>
+        　</div>  
+      <% @categories.each do |category| %>
+          <div class ="tag-card mr-4 ml-4 mb-4"> 
+            <% if category.image? %><%=link_to image_tag(category.image.url, class: "tag-img"),category %><% else %> <%=link_to category do %><img class="tag-img" src="assets/folder.png"><% end %><% end %>   
+        　   <h6 class=" text-center mt-2"><%=category.name.truncate(14) %></h6>    
+        　</div>  
+      <% end %> 
+    </div>
+    
+  </tbody>
+</table>
+
+
+
+<br>
+
+<div><%= link_to image_tag("plus.png"), new_category_path, class: "fixed-btn"  %></div>

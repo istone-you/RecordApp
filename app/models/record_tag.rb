@@ -1,6 +1,6 @@
 class RecordTag < ApplicationRecord
   belongs_to :record
-  belongs_to :tag2
+  belongs_to :tag
   
-  validates :record_id, :uniqueness => { :scope => :tag2_id }
+  validates :record_id, :uniqueness => { :scope => :tag_id }
 end

@@ -26,11 +26,11 @@
   <div class="check_box">
     <span>Category</span>
     <div class="form-inline">
-    <%= form.collection_check_boxes(:tag_ids, current_user.tags.all, :id, :name) do |tag| %>
+    <%= form.collection_check_boxes(:category_ids, current_user.categories.all, :id, :name) do |category| %>
      <div class="mr-3">
-       <%= tag.label do %>
-         <%= tag.check_box %>
-         <%= tag.text %>
+       <%= category.label do %>
+         <%= category.check_box %>
+         <%= category.text %>
        <% end %>
      </div>
    <% end %>

@@ -1,27 +1,63 @@
 <p id="notice"><%= notice %></p>
 
 <div class= "index-header">
-  <div class= "back-btn">
-      <%= link_to image_tag("back.png"),tags_path, class: "d-inline-block  mb-3" %>
-  </div>
-</div> 
+        <div class= "back-btn">
+            <%= link_to image_tag("back.png"),tags_path, class: "d-inline-block  mb-3" %>
+        </div>
+        <div class="text-center select-div">  
+          <%= form_with(model: @tag,local: true) do |form| %>
+            |
+            <div class="d-inline-block">
+              <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel'}%>
+            </div>
+            |
+            <div class="d-inline-block">
+            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Coment', 8]], {}, {class: 'sel'}%>
+            </div>
+            |
+            <br>
+            <div class="d-inline-block">
+              <%= form.submit "◯", :class=>"view-btn"%>
+            </div>  
+          <% end %>
+        </div>  
+    </div>
 
-<h3 class="text-center folder-title"><%= @tag.name %></h3>
+<h4 class="text-center folder-title">
+  <%= @tag.name %>
+</h4>
   
-  <div class="co folreccard">
-    <div class ="folder-card mr-1 ml-1"><%= link_to image_tag("record.png", class:"folder-img"), tag_all_records_path(@tag) %>
-      <h5 class=" text-center mt-2">ALL</h5>
-    </div>  
-    
-    <% @tag.folders.each do |folder| %>
-      <div class ="folder-card mr-1 ml-1">
-        <% if folder.image? %><%=link_to image_tag(folder.image.url, class: "folder-img"),folder_records_path(folder.id) %><% else %><%= link_to image_tag("record.png", class:"folder-img"), folder_records_path(folder.id) %><% end %>   
-      　<h5 class=" text-center mt-2"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)<p class="text-center"><span class="badge rounded-pill bg-secondary text-white"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span> <% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></p></h5>
-      </div>  
-    <% end %> 
-  </div>  
-  
+<%= @tag.records.all.where(done: 1).sum(:count) %>  
+
+      <div class="">
+        <% if @tag.all_records_view == 0 %>
+          <%= render "categories/normal_index" %>
+        <% end %>
+        <% if @tag.all_records_view == 1 %>
+          <%=render "records/all_info" %>
+        <% end %>
+        <% if @tag.all_records_view == 2 %>
+        <%= render "records/only_img" %>
+        <% end %>
+        <% if @tag.all_records_view == 3 %>
+          <%= render "records/link" %>
+        <% end %>
+        <% if @tag.all_records_view == 4 %>
+          <%= render "records/youtube" %>
+        <% end %>
+        <% if @tag.all_records_view == 5 %>
+          <%= render "records/twitter" %>
+        <% end %>
+        <% if @tag.all_records_view == 6 %>
+          <%= render "records/calendar" %>
+        <% end %>
+        <% if @tag.all_records_view == 7 %>
+          <%= render "records/graph" %>
+        <% end %>
+        <% if @tag.all_records_view == 8 %>
+          <%= render "records/coment" %>
+        <% end %>
+      </div>
 
 <a><%= link_to  image_tag("show-edit.png", class: "edit-btn-img"), edit_tag_path(@tag), class: "edit-btn" %></a>
-<div><%= link_to image_tag("plus.png"), new_folder_path, class: "fixed-btn"  %></div>
 

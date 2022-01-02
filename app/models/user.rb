@@ -6,6 +6,6 @@ class User < ApplicationRecord
          
   has_many :folders
   has_many :records
+  has_many :categories
   has_many :tags
-  has_many :tag2s
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   get 'users/index'
   get 'users/show'
   get 'users/new'
@@ -7,10 +8,10 @@ Rails.application.routes.draw do
   get 'users/update'
   get "users/all_records" => "users#all_records"
   post 'users/all_records' => 'users#update'
-  resources :tags do
+  resources :categories do
     get '/all_records' => 'tags#all_records'
   end  
-  resources :tag2s
+  resources :tags
   resources :folders do
     resources :records do
       member do

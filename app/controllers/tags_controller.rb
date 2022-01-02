@@ -1,6 +1,6 @@
 class TagsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_tag, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
   # GET /tags or /tags.json
   def index
@@ -9,14 +9,14 @@ class TagsController < ApplicationController
 
   # GET /tags/1 or /tags/1.json
   def show
-    @folders = @tag.folders.all
+    @records = @tag.records
   end
 
   # GET /tags/new
   def new
     @tag = current_user.tags.new
   end
-  
+
   # GET /tags/1/edit
   def edit
   end
@@ -40,7 +40,7 @@ class TagsController < ApplicationController
   def update
     respond_to do |format|
       if @tag.update(tag_params)
-        format.html { redirect_to tag_all_records_path(@tag), notice: "Tag was successfully updated." }
+        format.html { redirect_to @tag, notice: "Tag was successfully updated." }
         format.json { render :show, status: :ok, location: @tag }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -57,10 +57,6 @@ class TagsController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
-  def all_records
-    @tag = current_user.tags.find(params[:tag_id])
-  end  
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,7 +66,6 @@ class TagsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tag_params
-      params.require(:tag).permit(:name, :user_id, :image,:all_records_sort,:all_records_view)
+      params.require(:tag).permit(:name, :user_id,:all_records_sort,:all_records_view)
     end
- 
 end

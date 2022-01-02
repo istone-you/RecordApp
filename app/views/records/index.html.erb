@@ -35,9 +35,9 @@
 </div>
 <div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 <div class="co">
-<% @folder.tags.each do |tag| %>
+<% @folder.categories.each do |category| %>
     <div>
-      <h6 class="badge badge-secondary mr-1"><%=link_to tag.name,tag_path(tag.id), class: "folder-to-tag" %></h6>
+      <h6 class="badge badge-secondary mr-1"><%=link_to category.name,category_path(category.id), class: "" %></h6>
     </div>
 <% end %>
 </div><br>
@@ -62,6 +62,6 @@
   </tbody>
 </table>
 
-<a><%= link_to  image_tag("tag.png", class: "manage-tag-img"), tag2s_path, class: "manage-tag" %></a>
+<a><%= link_to  image_tag("tag.png", class: "manage-tag-img"), tags_path, class: "manage-tag" %></a>
 <a><%= link_to  image_tag("show-edit.png", class: "edit-btn-img"), edit_folder_path(@folder), class: "edit-btn" %></a>
 

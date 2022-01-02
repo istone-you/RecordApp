@@ -1,0 +1,13 @@
+    <div>
+      <% @category.folders.each do |folder| %>
+        <% folder.records.all.each do |record| %>
+            <% if record.done == 1 %>
+             <% if record.twitter? %>
+                <blockquote class="twitter-tweet tw-align-center">
+                    <a href="<%= record.twitter %>"></a></blockquote>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+             <% end %>  
+            <% end %> 
+        <% end %> 
+      <% end %>
+    </div>

@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_28_161444) do
+ActiveRecord::Schema.define(version: 2022_01_02_144136) do
 
-  create_table "folder_tags", force: :cascade do |t|
-    t.integer "folder_id"
-    t.integer "tag_id"
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.string "image"
+    t.integer "all_records_view", default: 0
+    t.integer "all_records_sort", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["folder_id"], name: "index_folder_tags_on_folder_id"
-    t.index ["tag_id"], name: "index_folder_tags_on_tag_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "folder_categories", force: :cascade do |t|
+    t.integer "folder_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_folder_categories_on_category_id"
+    t.index ["folder_id"], name: "index_folder_categories_on_folder_id"
   end
 
   create_table "folders", force: :cascade do |t|
@@ -32,20 +43,20 @@ ActiveRecord::Schema.define(version: 2021_12_28_161444) do
     t.integer "record_sum"
     t.integer "done_view", default: 0
     t.integer "record_sort", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "image"
     t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
   create_table "record_tags", force: :cascade do |t|
     t.integer "record_id"
-    t.integer "tag2_id"
+    t.integer "tag_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["record_id"], name: "index_record_tags_on_record_id"
-    t.index ["tag2_id"], name: "index_record_tags_on_tag2_id"
+    t.index ["tag_id"], name: "index_record_tags_on_tag_id"
   end
 
   create_table "records", force: :cascade do |t|
@@ -63,32 +74,21 @@ ActiveRecord::Schema.define(version: 2021_12_28_161444) do
     t.text "link"
     t.string "youtube"
     t.string "twitter"
+    t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "start_time"
     t.index ["folder_id"], name: "index_records_on_folder_id"
     t.index ["user_id"], name: "index_records_on_user_id"
-  end
-
-  create_table "tag2s", force: :cascade do |t|
-    t.string "name"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "image"
-    t.integer "all_records_view", default: 0
-    t.integer "all_records_sort", default: 0
-    t.index ["user_id"], name: "index_tag2s_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
     t.string "image"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "all_records_view", default: 0
     t.integer "all_records_sort", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_tags_on_user_id"
   end
 
