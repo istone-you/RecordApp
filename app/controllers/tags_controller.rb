@@ -9,7 +9,7 @@ class TagsController < ApplicationController
 
   # GET /tags/1 or /tags/1.json
   def show
-    @records = @tag.records
+    @records = @tag.records.all
   end
 
   # GET /tags/new

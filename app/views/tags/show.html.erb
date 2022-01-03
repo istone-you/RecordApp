@@ -12,7 +12,7 @@
             </div>
             |
             <div class="d-inline-block">
-            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Coment', 8]], {}, {class: 'sel'}%>
+            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel'}%>
             </div>
             |
             <br>
@@ -23,38 +23,28 @@
         </div>  
     </div>
 
-<h4 class="text-center folder-title">
-  <%= @tag.name %>
-</h4>
-  
+<h3 class="text-center folder-title"><%= @tag.name %></h3>
+
 <%= @tag.records.all.where(done: 1).sum(:count) %>  
 
       <div class="">
         <% if @tag.all_records_view == 0 %>
-          <%= render "categories/normal_index" %>
-        <% end %>
-        <% if @tag.all_records_view == 1 %>
+          <%= render "tags/normal_index" %>
+        <% elsif @tag.all_records_view == 1 %>
           <%=render "records/all_info" %>
-        <% end %>
-        <% if @tag.all_records_view == 2 %>
-        <%= render "records/only_img" %>
-        <% end %>
-        <% if @tag.all_records_view == 3 %>
+        <% elsif @tag.all_records_view == 2 %>
+          <%= render "records/only_img" %>
+        <% elsif @tag.all_records_view == 3 %>
           <%= render "records/link" %>
-        <% end %>
-        <% if @tag.all_records_view == 4 %>
+        <% elsif @tag.all_records_view == 4 %>
           <%= render "records/youtube" %>
-        <% end %>
-        <% if @tag.all_records_view == 5 %>
+        <% elsif @tag.all_records_view == 5 %>
           <%= render "records/twitter" %>
-        <% end %>
-        <% if @tag.all_records_view == 6 %>
+        <% elsif @tag.all_records_view == 6 %>
           <%= render "records/calendar" %>
-        <% end %>
-        <% if @tag.all_records_view == 7 %>
+        <% elsif @tag.all_records_view == 7 %>
           <%= render "records/graph" %>
-        <% end %>
-        <% if @tag.all_records_view == 8 %>
+        <% elsif @tag.all_records_view == 8 %>
           <%= render "records/coment" %>
         <% end %>
       </div>

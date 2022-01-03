@@ -10,7 +10,7 @@
             </div>
             |
             <div class="d-inline-block">
-            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Coment', 8]], {}, {class: 'sel'}%>
+            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel'}%>
             </div>
             |
             <br>
@@ -20,33 +20,27 @@
           <% end %>
         </div>  
     </div>
+    
+    <h3 class="text-center folder-title">Category "<%= @category.name %>" ALL</h3>
       
     <div class="">
           <% if @category.all_records_view == 0 %>
             <%= render "categories/normal_index" %>
-          <% end %>
-          <% if @category.all_records_view == 1 %>
+          <% elsif @category.all_records_view == 1 %>
             <%=render "categories/all_info" %>
-          <% end %>
-          <% if @category.all_records_view == 2 %>
+          <% elsif @category.all_records_view == 2 %>
           <%= render "categories/only_img" %>
-          <% end %>
-          <% if @category.all_records_view == 3 %>
+          <% elsif @category.all_records_view == 3 %>
             <%= render "categories/link" %>
-          <% end %>
-          <% if @category.all_records_view == 4 %>
+          <% elsif @category.all_records_view == 4 %>
             <%= render "categories/youtube" %>
-          <% end %>
-          <% if @category.all_records_view == 5 %>
+          <% elsif @category.all_records_view == 5 %>
             <%= render "categories/twitter" %>
-          <% end %>
-          <% if @category.all_records_view == 6 %>
+          <% elsif @category.all_records_view == 6 %>
             <%= render "categories/calendar" %>
-          <% end %>
-          <% if @category.all_records_view == 7 %>
+          <% elsif @category.all_records_view == 7 %>
             <%= render "categories/graph" %>
-          <% end %>
-          <% if @category.all_records_view == 8 %>
+          <% elsif @category.all_records_view == 8 %>
             <%= render "categories/coment" %>
           <% end %>
     </div>

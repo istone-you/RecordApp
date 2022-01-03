@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "users/all_records" => "users#all_records"
   post 'users/all_records' => 'users#update'
   resources :categories do
-    get '/all_records' => 'tags#all_records'
+    get '/all_records' => 'categories#all_records'
   end  
   resources :tags
   resources :folders do
