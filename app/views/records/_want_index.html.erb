@@ -22,17 +22,13 @@
 
 <% if @folder.record_view == 1 %>
   <%=render "records/all_info_want" %>
-<% end %>
-<% if @folder.record_view == 2 %>
+<% elsif @folder.record_view == 2 %>
   <%=render "records/only_img_want" %>
-<% end %>
-<% if @folder.record_view == 3 %>
+<% elsif @folder.record_view == 3 %>
   <%= render "records/link_want" %>
-<% end %>
-<% if @folder.record_view == 4 %>
+<% elsif @folder.record_view == 4 %>
   <%= render "records/youtube_want" %>
-<% end %>
-<% if @folder.record_view == 5 %>
+<% elsif @folder.record_view == 5 %>
   <%= render "records/twitter_want" %>
 <% end %>
  

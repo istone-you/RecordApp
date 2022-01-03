@@ -2,7 +2,7 @@
 
 <style>
 #map {
-  height: 600px;
+  height: 800px;
   width: 100%;
 }
 </style>
@@ -18,8 +18,8 @@
           zoom: 6,
       });
 
-
       <% @records.each do |record| %>
+      <% if record.address? %>
           (function(){
           var contentString = "住所：<%= record.address %>"; 
 
@@ -38,6 +38,7 @@
  	      });
           
           })();
+      <% end %>
       <% end %>
       }
 </script>

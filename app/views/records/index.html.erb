@@ -35,9 +35,12 @@
 </div>
 <div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 <div class="co">
+<% if @folder.category_ids.empty? %>
+  <h6 class="badge badge-secondary">Not Category</h6>
+<% end %>   
 <% @folder.categories.each do |category| %>
     <div>
-      <h6 class="badge badge-secondary mr-1"><%=link_to category.name,category_path(category.id), class: "" %></h6>
+      <h6 class="badge badge-secondary mr-1"><%=link_to category.name,category_path(category.id), class: "folder-to-category" %></h6>
     </div>
 <% end %>
 </div><br>
@@ -53,12 +56,14 @@
     
     <% if @folder.done_view == 0 %>
      <%= render "records/done_index" %>
-    <% end %>
-    
-    <% if @folder.done_view == 1 %>
+    <% elsif @folder.done_view == 1 %>
       <%= render "records/want_index" %>
     <% end %> 
     
+    <% if @folder.record_view == 6 or @folder.record_view == 7 or @folder.record_view == 9 %>
+    <% else %>
+      <%= paginate @records %>
+    <% end %>  
   </tbody>
 </table>
 

@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'users/create'
   get 'users/edit'
   get 'users/update'
+  get 'users/search' => "users#search"
+  post 'users/search' => "users#update"
   get "users/all_records" => "users#all_records"
   post 'users/all_records' => 'users#update'
   resources :categories do

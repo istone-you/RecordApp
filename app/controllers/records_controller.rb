@@ -4,14 +4,30 @@ class RecordsController < ApplicationController
   before_action :set_record, only: [:index, :show, :edit, :update, :destroy, :sort,:done_index]
 
   def index
-    if @folder.record_sort == 0
-      @records = @folder.records.all.order(created_at: :desc)
-    elsif @folder.record_sort == 1
-      @records = @folder.records.all.order(created_at: :asc)
-    elsif @folder.record_sort == 2
-      @records = @folder.records.all.order(updated_at: :desc)
-    elsif @folder.record_sort == 3
-      @records = @folder.records.all.order(updated_at: :asc)
+    if @folder.record_view == 6 or @folder.record_view == 7 or @folder.record_view == 9
+      
+      if @folder.record_sort == 0
+        @records = @folder.records.all.order(created_at: :desc)
+      elsif @folder.record_sort == 1
+        @records = @folder.records.all.order(created_at: :asc)
+      elsif @folder.record_sort == 2
+        @records = @folder.records.all.order(updated_at: :desc)
+      elsif @folder.record_sort == 3
+        @records = @folder.records.all.order(updated_at: :asc)
+      end  
+      
+    else
+      
+      if @folder.record_sort == 0
+        @records = @folder.records.all.order(created_at: :desc).page(params[:page]).per(5)
+      elsif @folder.record_sort == 1
+        @records = @folder.records.all.order(created_at: :asc).page(params[:page]).per(25)
+      elsif @folder.record_sort == 2
+        @records = @folder.records.all.order(updated_at: :desc).page(params[:page]).per(25)
+      elsif @folder.record_sort == 3
+        @records = @folder.records.all.order(updated_at: :asc).page(params[:page]).per(25)
+      end 
+      
     end  
       
       @record_sum = @records.where(done: 1).sum(:done)

@@ -1,4 +1,4 @@
-      <div class= "index-header">
+<div class= "index-header">
         <div class= "back-btn">
             <%= link_to image_tag("back.png"),folders_path, class: "d-inline-block  mb-3" %>
         </div>
@@ -10,7 +10,7 @@
             </div>
             |
             <div class="d-inline-block">
-            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel'}%>
+            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Coment', 8]], {}, {class: 'sel'}%>
             </div>
             |
             <br>
@@ -29,27 +29,34 @@
       </div>
       
       <h3 class="text-center folder-title">ALL</h3>
-      
+
       <div class="">
         <% if current_user.all_records_view == 0 %>
           <%= render "users/normal_index" %>
-        <% elsif current_user.all_records_view == 1 %>
+        <% end %>
+        <% if current_user.all_records_view == 1 %>
           <%=render "records/all_info" %>
-        <% elsif current_user.all_records_view == 2 %>
+        <% end %>
+        <% if current_user.all_records_view == 2 %>
         <%= render "records/only_img" %>
-        <% elsif current_user.all_records_view == 3 %>
+        <% end %>
+        <% if current_user.all_records_view == 3 %>
           <%= render "records/link" %>
-        <% elsif current_user.all_records_view == 4 %>
+        <% end %>
+        <% if current_user.all_records_view == 4 %>
           <%= render "records/youtube" %>
-        <% elsif current_user.all_records_view == 5 %>
+        <% end %>
+        <% if current_user.all_records_view == 5 %>
           <%= render "records/twitter" %>
-        <% elsif current_user.all_records_view == 6 %>
+        <% end %>
+        <% if current_user.all_records_view == 6 %>
           <%= render "records/calendar" %>
-        <% elsif current_user.all_records_view == 7 %>
+        <% end %>
+        <% if current_user.all_records_view == 7 %>
           <%= render "records/graph" %>
-        <% elsif current_user.all_records_view == 8 %>
+        <% end %>
+        <% if current_user.all_records_view == 8 %>
           <%= render "records/coment" %>
         <% end %>
         
-        <%= paginate @records %>
       </div>

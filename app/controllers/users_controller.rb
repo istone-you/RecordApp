@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :set_q, only: [:all_records, :search]
+  
   def show
     @user = User.find(params[:id])
   end
@@ -24,8 +26,9 @@ class UsersController < ApplicationController
   
   def update
     @user = current_user
-    @user.update(user_params)
-    redirect_to users_all_records_path
+    if @user.update(user_params)
+      redirect_to users_all_records_path
+    end  
   end
   
   def all_records
@@ -43,11 +46,19 @@ class UsersController < ApplicationController
       @records = Record.all
     end  
   end  
+  
+  def search
+    @records = @q.result
+  end  
 
   private
 
     def user_params
       params.permit(:name, :email, :password,
                                    :all_records_sort,:all_records_view)
+    end
+    
+    def set_q
+      @q = Record.ransack(params[:q])
     end
 end
