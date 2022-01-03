@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_02_144136) do
+ActiveRecord::Schema.define(version: 2022_01_03_071151) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2022_01_02_144136) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_folder_categories_on_category_id"
     t.index ["folder_id"], name: "index_folder_categories_on_folder_id"
+  end
+
+  create_table "folder_cotegories", force: :cascade do |t|
+    t.integer "folder_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_folder_cotegories_on_category_id"
+    t.index ["folder_id"], name: "index_folder_cotegories_on_folder_id"
   end
 
   create_table "folders", force: :cascade do |t|
@@ -77,6 +86,9 @@ ActiveRecord::Schema.define(version: 2022_01_02_144136) do
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["folder_id"], name: "index_records_on_folder_id"
     t.index ["user_id"], name: "index_records_on_user_id"
   end

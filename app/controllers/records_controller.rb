@@ -53,9 +53,6 @@ end
   def edit
   end
   
-  def sort
-  end
-
   # POST /records
   def create
     @record = @folder.records.new(record_params)
@@ -104,7 +101,7 @@ end
 
     # Only allow a trusted parameter "white list" through.
     def record_params
-      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, tag_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
+      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, tag_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
     end
     
 end

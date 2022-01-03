@@ -108,6 +108,7 @@ GEM
       fog-core
       nokogiri (>= 1.5.11, < 2.0.0)
     formatador (0.3.0)
+    geocoder (1.7.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.8.11)
@@ -264,6 +265,7 @@ DEPENDENCIES
   devise (~> 4.2)
   dotenv-rails
   fog-aws
+  geocoder
   jquery-rails
   kaminari
   listen (~> 3.0.5)

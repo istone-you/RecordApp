@@ -75,6 +75,14 @@
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <% end %>  
   </p>
+  
+  <h6>
+    <% if @record.address? %>
+      <strong>住所</strong>
+      <h6><%= @record.address %></h6>
+      <h6><%= @record.latitude %>,<%= @record.longitude %></h6>
+    <% end %> 
+  </h6>
  
   
   <h6>

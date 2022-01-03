@@ -14,9 +14,6 @@ Rails.application.routes.draw do
   resources :tags
   resources :folders do
     resources :records do
-      member do
-        get "sort"
-      end
     end 
   end  
   devise_for :users
