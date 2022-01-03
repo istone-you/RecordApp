@@ -58,7 +58,18 @@ end
   
   # GET /records/1
   def show
-  end
+    if @record.link?
+      agent = Mechanize.new
+      page = agent.get(@record.link)
+      @elements = page.search('title')
+    end
+    
+    if @record.title == "@@@" 
+      if @record.link? 
+        @record.update_columns(title: @elements.inner_text)
+      end 
+    end 
+  end  
 
   # GET /records/new
   def new
@@ -74,7 +85,7 @@ end
     @record = @folder.records.new(record_params)
     
     if @record.save
-      redirect_to folder_records_path(@record.folder, @record), notice: 'Record was successfully created.'
+      redirect_to folder_record_path(@record.folder, @record), notice: 'Record was successfully created.'
     else
       render :new
     end
@@ -114,7 +125,7 @@ end
     def set_record
       @record = @folder.records.find_by(id: params[:id])
     end
-
+      
     # Only allow a trusted parameter "white list" through.
     def record_params
       params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, tag_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)

@@ -13,7 +13,17 @@
 
 <div class="text-center folreccard">
   <h3 class="folder-title">
-    <%= @record.title %>
+      <% if @record.title == "@@@" %>
+        <% if @record.link? %>
+          <%= @elements.inner_text %>
+        <% else %>
+          @@@
+        <% end %>
+      <% else %>
+        <%= @record.title %>
+      <% end %>
+      
+
   </h3>
   
   <div class="co">
@@ -58,7 +68,8 @@
   
   <h6>
     <% if @record.link? %>
-      <strong>リンク</strong>
+      <strong>リンク</strong><br>
+      <%= @elements.inner_text %><br>
       <a href="<%= @record.link %>"><%= @record.link %></a>
     <% end %> 
   </h6>
@@ -78,7 +89,7 @@
   
   <h6>
     <% if @record.address? %>
-      <strong>住所</strong>
+      <strong>場所</strong>
       <h6><%= @record.address %></h6>
       <h6><%= @record.latitude %>,<%= @record.longitude %></h6>
     <% end %> 

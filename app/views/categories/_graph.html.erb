@@ -1,1 +1,3 @@
 <%= bar_chart @category.folders.group(:title).sum(:count_sum), id: "bar-chart", width: "80%", height: "", colors: ["#00CCFF", "#00CCFF"] %>
+
+<%= pie_chart @category.folders.group(:title).sum(:money_sum), id: "bar-chart", width: "80%", height: "", prefix: "¥" %>
