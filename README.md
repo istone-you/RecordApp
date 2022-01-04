@@ -43,17 +43,18 @@
 　・カテゴリごとに記録を一覧表示<br>
 <br>
 ◯記録できる情報<br>　　
-　・タイトル<br>　　
-　・コメント<br>　　
+　・タイトル(タイトル名を@@@とする事で、URLからタイトルを自動取得<br>
+　           タイトル名をyyyとする事で、YouTubeのURLからタイトルを自動取得)<br>　　
+　・コメント(コメントを@@@とする事で、URLから文章を自動取得)<br>　　
 　・画像<br>　　
 　・日付<br>　　
 　・数<br>　　
 　・時間<br>　　
 　・金額<br>　　
-　・住所<br>　　
-　・URL<br>　　
-　・YouTube<br>　　
-　・Twitter<br>　　
+　・住所(緯度・経度を自動取得)<br>　　
+　・URL(サイト名を自動取得)<br>　　
+　・YouTube(URLから動画を自動取得)<br>　　
+　・Twitter(URLからTweetを自動取得)<br>　　
 　・Done or Want To（欲しいものややりたい事）<br>
 <br>
 ◯記録のタグ付け<br>

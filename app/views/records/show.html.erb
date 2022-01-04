@@ -13,17 +13,7 @@
 
 <div class="text-center folreccard">
   <h3 class="folder-title">
-      <% if @record.title == "@@@" %>
-        <% if @record.link? %>
-          <%= @elements.inner_text %>
-        <% else %>
-          @@@
-        <% end %>
-      <% else %>
-        <%= @record.title %>
-      <% end %>
-      
-
+    <%= @record.title %>
   </h3>
   
   <div class="co">
@@ -68,8 +58,7 @@
   
   <h6>
     <% if @record.link? %>
-      <strong>リンク</strong><br>
-      <%= @elements.inner_text %><br>
+      <%= @elements.inner_text %>:<br>
       <a href="<%= @record.link %>"><%= @record.link %></a>
     <% end %> 
   </h6>

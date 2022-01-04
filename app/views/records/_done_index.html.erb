@@ -6,7 +6,13 @@
             <% if record.image? %>
               <%= link_to image_tag(record.image.url, class: "card-img-top record-img"),folder_record_path(record.folder,record)  %>
             <% else %>
-              <%=  link_to image_tag("no_image.png", class: "card-img-top record-img"),folder_record_path(record.folder,record) %>
+              <% if record.youtube? %>
+                <%=  link_to folder_record_path(record.folder,record) do%>
+                  <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "card-img-top record-img">
+                <% end %>  
+              <% else %>  
+                <%=  link_to image_tag("no_image.png", class: "card-img-top record-img"),folder_record_path(record.folder,record) %>
+              <% end %>  
             <% end %>
             <div class="card-body">
               <h5 class="card-title text-center"><%= record.title.truncate(16) %></h5>

@@ -19,7 +19,7 @@ class RecordsController < ApplicationController
     else
       
       if @folder.record_sort == 0
-        @records = @folder.records.all.order(created_at: :desc).page(params[:page]).per(5)
+        @records = @folder.records.all.order(created_at: :desc).page(params[:page]).per(25)
       elsif @folder.record_sort == 1
         @records = @folder.records.all.order(created_at: :asc).page(params[:page]).per(25)
       elsif @folder.record_sort == 2
@@ -62,13 +62,33 @@ end
       agent = Mechanize.new
       page = agent.get(@record.link)
       @elements = page.search('title')
+      @elements_p = page.search("p")
     end
     
-    if @record.title == "@@@" 
-      if @record.link? 
+    if @record.youtube?
+      agent_y = Mechanize.new
+      page_y = agent_y.get(@record.youtube)
+      @elements_y = page_y.search('title')
+    end
+    
+    if @record.link?
+      if @record.title == "@@@"
         @record.update_columns(title: @elements.inner_text)
       end 
     end 
+    
+    if @record.link?
+      if @record.coment== "@@@"
+         @record.update_columns(coment: @elements_p.inner_text.truncate(600))
+      end
+    end
+    
+    if @record.youtube?
+      if @record.title == "yyy"
+        @record.update_columns(title: @elements_y.inner_text)
+      end 
+    end 
+    
   end  
 
   # GET /records/new
