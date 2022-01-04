@@ -79,7 +79,9 @@ end
     
     if @record.link?
       if @record.coment== "@@@"
-         @record.update_columns(coment: @elements_p.inner_text.truncate(600))
+        @record.update_columns(coment: @elements_p.inner_text.truncate(600))
+      elsif @record.coment== "###"
+         @record.update_columns(coment: @elements_p.to_s)
       end
     end
     

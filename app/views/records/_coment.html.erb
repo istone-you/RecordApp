@@ -8,7 +8,7 @@
                       <% end %>
                       <div class="card-body">
                         <h5 class="card-title card-letter text-center"><%= record.title.truncate(38) %></h5>
-                        <p class="card-text card-letter"><%= record.coment.truncate(160) %></p>
+                        <p class="card-text card-letter"><%= sanitize(record.coment.truncate(160)) %></p>
                       </div>
                      <% end %> 
                  <% end %>
