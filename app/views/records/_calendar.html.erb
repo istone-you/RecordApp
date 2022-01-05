@@ -1,13 +1,15 @@
-<div class="rec-calendar">
-    <%= month_calendar events: @records do |date, records| %>
-      <%= date.day %>
-    
-      <% records.each do |record| %>
-        <% if record.done == 1 %>
-          <div class="cal-rec">
-            <%= link_to record.title.truncate(10),folder_record_path(record.folder,record), class: "cal-rec-link" %>
-          </div>
+<div class="">
+  <div>
+      <%= month_calendar events: @records do |date, records| %>
+        <%= date.day %>
+      
+        <% records.each do |record| %>
+          <% if record.done == 1 %>
+            <div class="">
+              <%= link_to record.title.truncate(10),folder_record_path(record.folder,record), class: "cal-rec-link" %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+  </div>    
 </div>    

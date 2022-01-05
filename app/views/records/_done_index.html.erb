@@ -39,9 +39,11 @@
 <% elsif @folder.record_view == 6 %>
   <%= render "records/calendar" %>
 <% elsif @folder.record_view == 7 %>
-  <%= render "records/graph" %>
+  <%= render "records/c_graph" %>
 <% elsif @folder.record_view == 8 %>
   <%= render "records/coment" %>
 <% elsif @folder.record_view == 9 %>
   <%= render "records/map" %>
+<% elsif @folder.record_view == 10 %>
+  <%= render "records/p_graph" %>
 <% end %>

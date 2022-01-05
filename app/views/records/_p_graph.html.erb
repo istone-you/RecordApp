@@ -1,0 +1,1 @@
+<%= pie_chart @folder.records.group(:title).sum(:money), id: "bar-chart", width: "100%", height: "", prefix: "¥" %>

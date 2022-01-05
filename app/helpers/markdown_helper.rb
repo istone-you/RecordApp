@@ -11,7 +11,7 @@ module MarkdownHelper
         hard_wrap: true,
         xhtml: true,
         lax_html_blocks: true,
-        strikethrough: true
+        strikethrough: true,
       }
       renderer = Redcarpet::Render::HTML.new(options)
       @markdown = Redcarpet::Markdown.new(renderer)

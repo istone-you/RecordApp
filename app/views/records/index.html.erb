@@ -13,7 +13,7 @@
         </div> 
         |
         <div class="d-inline-block">
-          <%= form.select :record_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Map', 9]], {}, {class: 'sel'} %>
+          <%= form.select :record_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], {}, {class: 'sel'} %>
         </div> 
         |
         <br>
@@ -25,8 +25,9 @@
 </div>
 
 
-
-<h3 class="text-center folder-title"><%= @folder.title %></h3>
+<div class="text-center">
+  <h3 class="text-center folder-title r-letter"><%= @folder.title %></h3>
+</div>
 <h5><span class="badge rounded-pill bg-secondary text-white"><% unless @folder.count_sum == 0 %><%= @folder.count_sum %><% end %></span></h5>
 <h5><% unless @folder.money_sum == 0 %>¥<%= @record_money_sum %><% end %></h5>
 <div class="flex-row">

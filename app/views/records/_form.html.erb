@@ -1,6 +1,7 @@
-
-<div class= "back-btn">
-  <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3 " %>
+<div class= "index-header">
+  <div class= "back-btn">
+    <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3 " %>
+  </div>
 </div>
 
 <div class="record-form text-center">
@@ -30,12 +31,12 @@
   </div>  
 
   <div class="field">
-    <%= form.label :title, "タイトル" %>
+    <%= form.label :title, "タイトル", class: "r-letter" %>
     <%= form.text_field :title %>
   </div>
   
   <div class="mb-3">
-    <%= form.label :coment, "コメント"%>
+    <%= form.label :coment, "コメント", class: "r-letter" %>
     <%= form.text_area :coment, class: "record-coment" %>
   </div>
   
@@ -44,7 +45,7 @@
     </div>
 
   <div class="field">
-    <h6>カウント</h6>
+    <h6 class="r-letter mr-2">カウント</h6>
     <%= form.number_field :count %> / <%= form.number_field :goal_count %>
   </div>
   
@@ -57,27 +58,27 @@
   </div>
   
   <div class="field">
-    <%= form.label :address, "場所"%>
+    <%= form.label :address, "場所", class: "r-letter" %>
     <%= form.text_area :address %>
   </div>
   
   <div class="field">
-    <%= form.label :link, "リンク"%>
+    <%= form.label :link, "リンク", class: "r-letter"%>
     <%= form.text_area :link %>
   </div>
   
   <div class="field">
-    <%= form.label :youtube, "Youtube"%>
+    <%= form.label :youtube, "Youtube", class: "r-letter" %>
     <%= form.text_area :youtube %>
   </div>
   
   <div class="field">
-    <%= form.label :twitter, "Twitter"%>
+    <%= form.label :twitter, "Twitter", class: "r-letter" %>
     <%= form.text_area :twitter %>
   </div>
   
   <div class="check_box">
-    <span>Tag</span>
+    <span class="r-letter">Tag</span>
     <div class="form-inline">
       <%= form.collection_check_boxes(:tag_ids, current_user.tags.all, :id, :name) do |tag| %>
        <div>
@@ -90,8 +91,8 @@
     </div>
  </div>
 
-  <div class="actions">
-    <%= form.submit "完了"%>
+  <div class="d-inline-block">
+    <%= form.submit "記録する", :class=>"record-submit"%>
   </div>
 <% end %>
 </div>
