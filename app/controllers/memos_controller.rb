@@ -56,7 +56,7 @@ class MemosController < ApplicationController
       
     # Use callbacks to share common setup or constraints between actions.
     def set_memo
-      @memo = @record.memos.find_by(params[:id])
+      @memo = @record.memos.find_by(id: params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

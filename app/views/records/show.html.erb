@@ -31,51 +31,56 @@
     <% end %>  
   </p>
   
-  <h4 style="width: 80%; margin: auto;">
-    <%= sanitize(@record.coment) %>
-  </h4>
-  
+  <% if @record.coment? %>
+  <div class="r-letter mb-3" style="width: 80%; margin: auto;">
+    <h4 style="width: 80%; margin: auto;">
+      <%= sanitize(@record.coment) %>
+    </h4>
+  </div>
+  <% end %>
 
-  <div class="co">
-  <div>
     
   <h3>
     <% if @record.start_time? %>
-      <h6 class="r-letter mr-1 ml-1">日時</h6><br>
-      <%= @record.start_time.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+      <span class="r-letter mb-5"><%= @record.start_time.strftime('%Y年%m月%d日 %H時%M分%S秒') %></span>
     <% end %>  
   </h3> 
   
   <h3>
     <% if @record.count? %> 
-    　<h6 class="r-letter mr-1 ml-1">カウント</h6><br>
-      <%= @record.count %><% end %><% if @record.goal_count? %> / <%= @record.goal_count %>
+      <span class="r-letter mb-5"><%= @record.count %><% end %><% if @record.goal_count? %> / <%= @record.goal_count %></span>
     <% end %> 
   </h3>   
     
   <h3>
     <% if @record.hours? %>
-    <h6 class="r-letter mr-1 ml-1">時間</h6><br>
-     <%= @record.hours %>時間<% end %><% if @record.minutes? %><%= @record.minutes %>分<% end %> 
+    <span class="r-letter mb-5"><%= @record.hours %>時間<% end %><% if @record.minutes? %><%= @record.minutes %>分<% end %></span>
   </h3> 
   
   <h3>
     <% if @record.money? %>
-    　<h6 class="r-letter mr-1 ml-1">金額</h6><br></h3>
-      ¥<%= @record.money %>
+      <span class="r-letter mb-5">¥<%= @record.money %></span>
     <% end %>   
   </h3> 
+
   
-  </div>
+  <% if @record.link? %>
+    <div class="r-letter mt-2 mb-4" style="width: 90%; margin: auto;">
+      <h6>
+        <%= sanitize(@elements.to_s) %><br>
+        <a href="<%= @record.link %>"><%= @record.link %></a>
+      </h6>
+    </div><br>
+  <% end %>
   
-  <div>
   
-  <p>
-    <% if @record.youtube? %>
+  <% if @record.youtube? %>
+    <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
       <iframe class="rec-youtube" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <% end %>  
-  </p>
-  <div class="mr-3 ml-3">
+    </div><br>
+  <% end %>  
+    
+  <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
     <% if @record.twitter? %> 
       <blockquote class="twitter-tweet tw-align-center">
       <a href="<%= @record.twitter %>"></a></blockquote>
@@ -83,27 +88,18 @@
     <% end %>  
   </div>
   
-  </div>
-  </div>
-  
-  
-  <h6>
-    <% if @record.link? %>
-      <%= sanitize(@elements.to_s) %><br>
-      <a href="<%= @record.link %>"><%= @record.link %></a>
-    <% end %> 
-  </h6>
-  
   <% if @record.address? %>
+  <div class="r-letter" style="width: 90%; margin: auto;">
   <h6>
       <h6><%= @record.address %></h6>
       <h6><%= @record.latitude %>,<%= @record.longitude %></h6>
   </h6>
-  <div class="rec-map">
+  <div class="rec-map mb-3">
     <div id='map'></div>
   </div>
-  <% end %>
- 
+  </div>
+  <% end %> 
+  
   <div>
     <% if @record.done == 1 %>
     <% end %> 
@@ -114,8 +110,7 @@
   <div class="co">
     <% @memos.each do |memo| %>
       <%= link_to edit_folder_record_memo_path(@folder,@record,memo), class: "memo-card-edit" do%> 
-        <div class="memo-card mr-2 ml-2">
-        <div class="memo-card_tape"> </div>
+        <div class="r-title mr-2 ml-2 mb-2">
           <p class="memo-card_title"><%= memo.title %></p>
           <p class="memo-card_subtitle"><%= memo.coment %></p>
           <p><%= memo.count %></p>

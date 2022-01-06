@@ -550,7 +550,7 @@ header {
   padding: 1px 10px;
   border: 2px solid #333333;
   color: black;
-  background-color: white;
+  background-color: snow;
   font-weight: bold;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
@@ -651,7 +651,7 @@ header {
 }
 
 .rec-map {
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
@@ -675,14 +675,15 @@ header {
   display: inline-block;
   padding: 1px 20px;
   border: 2px solid #333333;
-  background-color: floralwhite;
+  background-color: gray;
   font-weight: bold;
+  color: white;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
 
 .rec-cat {
   display: inline-block;
-  padding: 1px 20px;
+  padding: 1px 15px;
   border: 2px solid #333333;
   background-color: #f0f8ff;
   font-weight: bold;
@@ -690,10 +691,10 @@ header {
 }
 .rec-fol {
   display: inline-block;
-  padding: 1px 20px;
+  padding: 1px 15px;
   border: 2px solid #333333;
-  color: white;
-  background-color: gray;
+  color: black;
+  background-color: floralwhite;
   font-weight: bold;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
