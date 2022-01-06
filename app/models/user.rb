@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_many :records
   has_many :categories
   has_many :tags
+  has_many :memos
 end

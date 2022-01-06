@@ -35,7 +35,7 @@ class MemosController < ApplicationController
   # DELETE /memos/1
   def destroy
     @memo.destroy
-    redirect_to memos_url, notice: 'Memo was successfully destroyed.'
+    redirect_to folder_record_path(@folder,@record), notice: 'Memo was successfully destroyed.'
   end
 
   private
@@ -51,7 +51,7 @@ class MemosController < ApplicationController
       
     # Use callbacks to share common setup or constraints between actions.
     def set_memo
-      @memo = @record.memos.find_by(params[:id])
+      @memo = @record.memo.find_by(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

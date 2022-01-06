@@ -13,7 +13,9 @@ class FoldersController <  ApplicationController
 
   # GET /folders/new
   def new
-    @folder = current_user.folders.new
+    @folder = current_user.folders.new(
+      category_ids: params[:category_id]
+      )
   end
 
   # GET /folders/1/edit

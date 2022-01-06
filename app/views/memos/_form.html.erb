@@ -1,4 +1,4 @@
-<%= form_with(model: memo, local: true) do |form| %>
+<%= form_with(model: [@folder, @record, @memo], local: true) do |form| %>
   <% if memo.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h2>
@@ -44,11 +44,6 @@
   <div class="field">
     <%= form.label :minutes %>
     <%= form.number_field :minutes %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
   </div>
 
   <div class="actions">

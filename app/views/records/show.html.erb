@@ -106,10 +106,24 @@
     <%= @record.updated_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
   </p> 
   
-  <div><%= link_to "メモを作成", new_folder_record_memo_path(@record.folder,@record) %></div>
+  <div><%= link_to "メモを作成", new_folder_record_memo_path(@folder,@record) %></div>
   
-  <div><%= @memos %></div>
-  
+  <div class="co">
+  <% @memos.each do |memo| %>
+  <div class="sample_box11">
+  <div class="sample_box11_tape"> </div>
+        <p class="sample_box11_title"><%= memo.title %></p>
+        <p class="sample_box11_subtitle"><%= memo.coment %></p>
+        <p><%= memo.count %></p>
+        <p><%= memo.image %></p>
+        <p><%= memo.money %></p>
+        <p><%= memo.hours %></p>
+        <p><%= memo.minutes %></p>
+        <p><%= link_to 'Edit', edit_folder_record_memo_path(@folder,@record) %></p>
+        <p><%= link_to 'Destroy', folder_record_memo_path(@folder,@record), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+  <% end %>
+  </div>
 </div>
 
 

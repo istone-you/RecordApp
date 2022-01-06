@@ -57,6 +57,7 @@
 　・YouTube(URLから動画を自動取得)<br>　　
 　・Twitter(URLからTweetを自動取得)<br>　　
 　・Done or Want To（欲しいものややりたい事）<br>
+　・メモ(付箋のようなメモを複数作成できる)<br>
 <br>
 ◯記録のタグ付け<br>
 　・タグアイコンに好きな画像を設定できる<br>

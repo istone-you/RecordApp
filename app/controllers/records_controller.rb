@@ -32,6 +32,7 @@ class RecordsController < ApplicationController
       
       @record_sum = @records.where(done: 1).sum(:done)
       @record_count_sum = @records.where(done: 1).sum(:count)
+      @record_money_sum = @records.where(done: 1).sum(:money)
       @record_hours_sum = @records.where(done: 1).sum(:hours)+@records.where(done: 1).sum(:minutes)/60
       @record_minutes_sum = 
        if @records.where(done: 1).sum(:minutes) < 60
@@ -39,21 +40,11 @@ class RecordsController < ApplicationController
        else
         @records.where(done: 1).sum(:minutes)%60
        end
-      @record_money_sum = @records.where(done: 1).sum(:money)
       @folder.update_columns(record_sum: @record_sum,count_sum: @record_count_sum,money_sum: @record_money_sum,hour_sum: @record_hours_sum,minute_sum: @record_minutes_sum)
   end
   
 def all_index
   @records =  Record.all
-    @record_count_sum = @records.where(done: 1).sum(:count)
-    @record_hours_sum = @records.where(done: 1).sum(:hours)+@records.where(done: 1).sum(:minutes)/60
-    @record_minutes_sum = 
-     if @records.where(done: 1).sum(:minutes) < 60
-      @records.where(done: 1).sum(:minutes)
-     else
-      @records.where(done: 1).sum(:minutes)%60
-     end  
-    @record_money_sum = @records.where(done: 1).sum(:money)
 end
   
   # GET /records/1
@@ -61,10 +52,33 @@ end
     
     @memos = @record.memo.all
     
+    @memo_count_sum = @memos.sum(:count)
+    @memo_money_sum = @memos.sum(:money)
+    @memo_hours_sum = @memos.sum(:hours)+@memos.sum(:minutes)/60
+    @memo_minutes_sum = 
+     if @memos.sum(:minutes) < 60
+      @memos.sum(:minutes)
+     else
+      @memos.sum(:minutes)%60
+     end  
+     
+    if @memo_count_sum > 0
+      @record.update_columns(count: @memo_count_sum)  
+    end
+    if @memo_money_sum > 0
+      @record.update_columns(money: @memo_money_sum)  
+    end
+    if @memo_hours_sum > 0
+      @record.update_columns(hours: @memo_hours_sum)  
+    end
+    if @memo_minutes_sum > 0
+      @record.update_columns(money: @memo_minutes_sum)  
+    end
+  
     if @record.link?
       agent = Mechanize.new
       page = agent.get(@record.link)
-      @elements = page.search('title')
+      @elements = page.at('title')
       @elements_p = page.search("p")
     end
     

@@ -10,7 +10,7 @@
             <% end %>
             <div class="card-body">
               <h5 class="card-title text-center"><%= record.title.truncate(16) %></h5>
-              <h4><span class="badge rounded-pill bg-secondary text-white record-count"><%= record.count %></span></h4>
+              <h4><span class="badge rounded-pill bg-secondary text-white record-count"><% if record.count? %><%= record.count %><% end %></span></h4>
               
             　<h6 class="record-hour"><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
             </div>

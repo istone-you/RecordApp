@@ -23,5 +23,4 @@
   
 
 <a><%= link_to  image_tag("show-edit.png", class: "edit-btn-img"), edit_category_path(@category), class: "edit-btn" %></a>
-<div><%= link_to image_tag("plus.png"), new_folder_path, class: "fixed-btn"  %></div>
-
+<div><%= link_to image_tag("plus.png"), new_folder_path(category_id: @category.id), class: "fixed-btn"  %></div>
