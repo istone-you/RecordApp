@@ -11,15 +11,15 @@
   <%= link_to image_tag("show-edit.png"),edit_folder_record_path, class: "d-inline-block" %>
 </div>
 
-<div class="text-center folreccard rec-show-card">
-  <h3 class="folder-title r-letter">
+<div class="text-center rec-show-card">
+  <h3 class="folder-title r-letter mb-3">
     <%= @record.title %>
   </h3>
   
   <div class="co">
     <% @record.tags.each do |tag| %>
         <div>
-          <h6 class="badge badge-secondary mr-1"><%= tag.name %></h6>
+          <h6 class="rec-tag mr-1"><%= tag.name %></h6>
         </div>
     <% end %>
   </div><br>
@@ -31,74 +31,103 @@
     <% end %>  
   </p>
   
-  <h6>
+  <h4 style="width: 80%; margin: auto;">
     <%= sanitize(@record.coment) %>
-  </h6>
+  </h4>
   
+
+  <div class="co">
   <div>
+    
+  <h3>
+    <% if @record.start_time? %>
+      <h6 class="r-letter mr-1 ml-1">日時</h6><br>
+      <%= @record.start_time.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+    <% end %>  
+  </h3> 
+  
+  <h3>
     <% if @record.count? %> 
-      <h3 class=""><%= @record.count %><% end %><% if @record.goal_count? %> / <%= @record.goal_count %></h3>
+    　<h6 class="r-letter mr-1 ml-1">カウント</h6><br>
+      <%= @record.count %><% end %><% if @record.goal_count? %> / <%= @record.goal_count %>
     <% end %> 
-  </div>  
+  </h3>   
     
   <h3>
     <% if @record.hours? %>
-     <%= @record.hours %>時間
-    <% end %> 
-    <% if @record.minutes? %>
-     <%= @record.minutes %>分
-    <% end %> 
-  </h3>
+    <h6 class="r-letter mr-1 ml-1">時間</h6><br>
+     <%= @record.hours %>時間<% end %><% if @record.minutes? %><%= @record.minutes %>分<% end %> 
+  </h3> 
   
   <h3>
     <% if @record.money? %>
+    　<h6 class="r-letter mr-1 ml-1">金額</h6><br></h3>
       ¥<%= @record.money %>
     <% end %>   
-  </h3>
+  </h3> 
   
-  <h6>
-    <% if @record.link? %>
-      <%= sanitize(@elements.to_s) %>:<br>
-      <a href="<%= @record.link %>"><%= @record.link %></a>
-    <% end %> 
-  </h6>
+  </div>
+  
+  <div>
   
   <p>
     <% if @record.youtube? %>
-      <iframe width="400" height="250" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe class="rec-youtube" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     <% end %>  
   </p>
-  <p>
+  <div class="mr-3 ml-3">
     <% if @record.twitter? %> 
       <blockquote class="twitter-tweet tw-align-center">
       <a href="<%= @record.twitter %>"></a></blockquote>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <% end %>  
-  </p>
+  </div>
+  
+  </div>
+  </div>
+  
   
   <h6>
-    <% if @record.address? %>
-      <strong>場所</strong>
-      <h6><%= @record.address %></h6>
-      <h6><%= @record.latitude %>,<%= @record.longitude %></h6>
+    <% if @record.link? %>
+      <%= sanitize(@elements.to_s) %><br>
+      <a href="<%= @record.link %>"><%= @record.link %></a>
     <% end %> 
   </h6>
- 
   
+  <% if @record.address? %>
   <h6>
-    <% if @record.start_time? %>
-      <strong>カレンダー</strong>
-      <%= @record.start_time.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
-    <% end %>  
-  </h6> 
-  
+      <h6><%= @record.address %></h6>
+      <h6><%= @record.latitude %>,<%= @record.longitude %></h6>
+  </h6>
+  <div class="rec-map">
+    <div id='map'></div>
+  </div>
+  <% end %>
+ 
   <div>
     <% if @record.done == 1 %>
-     <%= image_tag "done.png", class: "mb-2" %>
     <% end %> 
   </div>
   
-
+  <div><%= link_to "メモを作成", new_folder_record_memo_path(@folder,@record) %></div>
+  
+  <div class="co">
+    <% @memos.each do |memo| %>
+      <%= link_to edit_folder_record_memo_path(@folder,@record,memo), class: "memo-card-edit" do%> 
+        <div class="memo-card mr-2 ml-2">
+        <div class="memo-card_tape"> </div>
+          <p class="memo-card_title"><%= memo.title %></p>
+          <p class="memo-card_subtitle"><%= memo.coment %></p>
+          <p><%= memo.count %></p>
+          <p><%= memo.image %></p>
+          <p><%= memo.money %></p>
+          <p><%= memo.hours %></p>
+          <p><%= memo.minutes %></p>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  
   <p>
     <strong>作成時間</strong>
     <%= @record.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
@@ -106,27 +135,59 @@
     <%= @record.updated_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
   </p> 
   
-  <div><%= link_to "メモを作成", new_folder_record_memo_path(@folder,@record) %></div>
-  
-  <div class="co">
-  <% @memos.each do |memo| %>
-  <%= link_to edit_folder_record_memo_path(memo.record.folder,memo.record,memo), class: "memo-card-edit" do%>
-  <div class="memo-card mr-2 ml-2">
-  <div class="memo-card_tape"> </div>
-        <p class="memo-card_title"><%= memo.title %></p>
-        <p class="memo-card_subtitle"><%= memo.coment %></p>
-        <p><%= memo.count %></p>
-        <p><%= memo.image %></p>
-        <p><%= memo.money %></p>
-        <p><%= memo.hours %></p>
-        <p><%= memo.minutes %></p>
-  </div>
-  <% end %>
-  <% end %>
-  </div>
   
   </div>  
   
+  
+<style>
+#map {
+  height: 250px;
+  width: 100%;
+}
+
+@media screen and (min-width:480px) {
+#map {
+  height: 400px;
+  width: 100%;
+}}
+</style>
+
+<script>
+  let map
+
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @record.latitude %>, lng: <%= @record.longitude %>},
+          zoom: 12,
+      });
+
+
+      <% if @record.address? %>
+          (function(){
+          var contentString = "住所：<%= @record.address %>"; 
+
+          var marker = new google.maps.Marker({
+              position:{lat: <%= @record.latitude %>, lng: <%= @record.longitude %>},
+              map: map,
+              title: contentString
+          });
+          
+          var infoWindow = new google.maps.InfoWindow({
+		      content: `<%= @record.title %>`
+      	  });
+      	  
+          google.maps.event.addListener(marker, 'click', function() { //マーカークリック時の動作
+		      infoWindow.open(map, marker); //情報ウィンドウを開く
+ 	      });
+          
+          })();
+      <% end %>
+      }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API']%>&callback=initMap" async defer></script>
+
 
 
 

@@ -40,21 +40,26 @@
     <%= form.text_area :coment, class: "record-coment" %>
   </div>
   
-  <div class="mb-3">
-      <%= form.datetime_field :start_time %>
+  <div class="co">
+  <div class="mb-3 mr-3">
+    <h6 class="r-letter mr-1 ml-1">日時</h6><br>
+    <%= form.datetime_field :start_time %>
     </div>
 
-  <div class="field">
-    <h6 class="r-letter mr-2">カウント</h6>
+  <div class="field mr-3">
+    <h6 class="r-letter mr-1 ml-1">カウント</h6><br>
     <%= form.number_field :count %> / <%= form.number_field :goal_count %>
   </div>
   
-  <div class="field">
+  <div class="field mr-3">
+    <h6 class="r-letter mr-1 ml-1">時間</h6><br>
     <%= form.number_field :hours %> 時間 <%= form.number_field :minutes, max: "59" %> 分
   </div>
   
-  <div class="field">
+  <div class="field mr-3">
+    <h6 class="r-letter mr-1 ml-1">金額</h6><br>
     ¥<%= form.number_field :money %>
+  </div>
   </div>
   
   <div class="field">

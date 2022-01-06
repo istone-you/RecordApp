@@ -14,12 +14,10 @@
 <div class="record-form text-center">
 
   <div class="field">
-    <%= form.label :title, "タイトル" %>
     <%= form.text_field :title %>
   </div>
   
   <div class="field">
-    <%= form.label :image, "画像をアップロード" %><br>
     <%= form.file_field :image %>
   </div>
   
@@ -37,8 +35,8 @@
    </div>
  </div>
 
-  <div class="actions">
-    <%= form.submit "完了"%>
+  <div class="d-inline-block">
+    <%= form.submit "完了", :class=>"record-submit" %>
   </div>
 <% end %>
 

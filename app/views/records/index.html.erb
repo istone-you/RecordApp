@@ -24,15 +24,18 @@
     </div>
 </div>
 
+<div class="fol-show-card">
 
 <div class="text-center">
-  <h3 class="text-center folder-title r-letter"><%= @folder.title %></h3>
+  <h3 class="folder-title rec-fol"><%= @folder.title %></h3>
 </div>
-<h5><span class="badge rounded-pill bg-secondary text-white"><% unless @folder.count_sum == 0 %><%= @folder.count_sum %><% end %></span></h5>
-<h5><% unless @folder.money_sum == 0 %>¥<%= @record_money_sum %><% end %></h5>
-<div class="flex-row">
-  <h5 class="d-inline-flex"><% unless @folder.hour_sum == 0 %><%= @record_hours_sum %>時間<% end %></h5>
-  <h5 class="d-inline-flex"><% unless @folder.minute_sum == 0 %><%= @record_minutes_sum %>分<% end %></h5>
+<div style="width: 80%; margin: auto;">
+  <h5><span class="badge rounded-pill bg-secondary text-white"><% unless @folder.count_sum == 0 %><%= @folder.count_sum %><% end %></span></h5>
+  <h5><% unless @folder.money_sum == 0 %>¥<%= @record_money_sum %><% end %></h5>
+  <div class="flex-row">
+    <h5 class="d-inline-flex"><% unless @folder.hour_sum == 0 %><%= @record_hours_sum %>時間<% end %></h5>
+    <h5 class="d-inline-flex"><% unless @folder.minute_sum == 0 %><%= @record_minutes_sum %>分<% end %></h5>
+  </div>
 </div>
 <div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 <div class="co">
@@ -41,7 +44,7 @@
 <% end %>   
 <% @folder.categories.each do |category| %>
     <div>
-      <h6 class="badge badge-secondary mr-1"><%=link_to category.name,category_path(category.id), class: "folder-to-category" %></h6>
+      <h6 class="rec-cat mr-1"><%=link_to category.name,category_path(category.id), class: "folder-to-category" %></h6>
     </div>
 <% end %>
 </div><br>
@@ -71,3 +74,4 @@
 <a><%= link_to  image_tag("tag.png", class: "manage-tag-img"), tags_path, class: "manage-tag" %></a>
 <a><%= link_to  image_tag("show-edit.png", class: "edit-btn-img"), edit_folder_path(@folder), class: "edit-btn" %></a>
 
+</div>

@@ -1,11 +1,16 @@
 class MemosController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_folder
   before_action :set_record
-  before_action :set_memo, only: [:edit, :update, :destroy]
+  before_action :set_memo, only: [:show, :edit, :update, :destroy]
+
+  def show
+    @memos = @record.memos.all
+  end
 
   # GET /memos/new
   def new
-    @memo = @record.memo.new
+    @memo = @record.memos.new
   end
 
   # GET /memos/1/edit
@@ -14,7 +19,7 @@ class MemosController < ApplicationController
 
   # POST /memos
   def create
-    @memo = @record.memo.new(memo_params)
+    @memo = @record.memos.new(memo_params)
 
     if @memo.save
       redirect_to folder_record_path(@memo.record.folder,@memo.record), notice: 'Memo was successfully created.'
@@ -51,11 +56,11 @@ class MemosController < ApplicationController
       
     # Use callbacks to share common setup or constraints between actions.
     def set_memo
-      @memo = @record.memo.find_by(params[:id])
+      @memo = @record.memos.find_by(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def memo_params
-      params.require(:memo).permit(:title, :coment, :count, :image, :money, :hours, :minutes, :user_id)
+      params.require(:memo).permit(:title, :coment, :count, :image, :money, :hours, :minutes).merge(record_id: params[:record_id],folder_id: params[:folder_id],user_id: current_user.id)
     end
 end

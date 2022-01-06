@@ -49,8 +49,8 @@ end
   
   # GET /records/1
   def show
-    
-    @memos = @record.memo.all.order(created_at: :desc)
+    @memo = @record.memos.all.find_by(params[:memo_id])
+    @memos = @record.memos.all.order(created_at: :desc)
     
     @memo_count_sum = @memos.sum(:count)
     @memo_money_sum = @memos.sum(:money)

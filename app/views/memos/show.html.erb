@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= @memo.id %>
 <p>
   <strong>Title:</strong>
   <%= @memo.title %>
@@ -40,5 +40,3 @@
   <%= @memo.user %>
 </p>
 
-<%= link_to 'Edit', edit_memo_path(@memo) %> |
-<%= link_to 'Back', memos_path %>
