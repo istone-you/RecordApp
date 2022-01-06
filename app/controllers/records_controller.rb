@@ -58,6 +58,9 @@ end
   
   # GET /records/1
   def show
+    
+    @memos = @record.memo.all
+    
     if @record.link?
       agent = Mechanize.new
       page = agent.get(@record.link)
@@ -69,7 +72,6 @@ end
       agent_y = Mechanize.new
       page_y = agent_y.get(@record.youtube)
       @elements_y = page_y.search('title')
-      @elemebts_yd = page_y.at("description")
     end
     
     if @record.link?
@@ -87,10 +89,6 @@ end
     if @record.youtube?
       if @record.title == "@@y"
         @record.update_columns(title: @elements_y.inner_text)
-      end 
-      
-      if @record.coment == "@@y"
-        @record.update_columns(coment: @elements_yd)
       end 
     end 
     

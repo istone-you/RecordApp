@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :tags
   resources :folders do
     resources :records do
+      resources :memo, only: [:new, :edit, :create, :update, :destroy] do
+      end  
     end 
   end  
   devise_for :users

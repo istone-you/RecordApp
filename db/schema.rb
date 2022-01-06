@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_071151) do
+ActiveRecord::Schema.define(version: 2022_01_06_013454) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -57,6 +57,22 @@ ActiveRecord::Schema.define(version: 2022_01_03_071151) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
+  create_table "memos", force: :cascade do |t|
+    t.string "title"
+    t.text "coment"
+    t.integer "count"
+    t.string "image"
+    t.integer "money"
+    t.integer "hours"
+    t.integer "minutes"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "record_id"
+    t.index ["record_id"], name: "index_memos_on_record_id"
+    t.index ["user_id"], name: "index_memos_on_user_id"
   end
 
   create_table "record_tags", force: :cascade do |t|
