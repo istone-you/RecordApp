@@ -551,35 +551,61 @@ header {
   left: 2px;
 }
 
-.sample_box11 {
+.memo-card {
    width: 260px;/* 紙の横幅 100%にすると全幅表示に */
    padding: 15px;
    margin: 2em auto;
-   background: white;/* 紙の色 */
+   background: rgba(0.01,0.01,0.01,0.01);/* 紙の色 */
    color: #000;/* 文字色 */
-   box-shadow: 4px 4px 4px rgba(0,0,0,0.07);transform:rotate(2deg);
+   box-shadow: 4px 4px 4px rgba(0,0,0,0.07);
    word-break: break-all;
 }
-.sample_box11 p {
+.memo-card p {
     margin: 0; 
     padding: 0;
     font-size: 0.9em;
 }
-.sample_box11_tape {
+.memo-card_tape {
     width: 50%;
     height: 35px;
     margin: -25px auto 0;
     background: #989898;
-    transform: rotate(-3deg);
     opacity: 0.1;
 }
-.sample_box11_title {
+.memo-card_title {
     text-align: center;
     font-size: 1.3em!important;
     margin-top: 10px!important;
 }
-.sample_box11_subtitle {
+.memo-card_subtitle {
     text-align: center;
     font-size: 0.7em!important;
     margin-bottom: 1em!important;
+}
+
+.memo-card_form {
+   width: 50%;/* 紙の横幅 100%にすると全幅表示に */
+   padding: 15px;
+   margin: 2em auto;
+   background: rgba(0.01,0.01,0.01,0.01);/* 紙の色 */
+   color: #000;/* 文字色 */
+   box-shadow: 4px 4px 4px rgba(0,0,0,0.20);
+}
+
+.memo-card_tape_form {
+    width: 50%;
+    height: 35px;
+    margin: -25px auto 0;
+    background: #989898;
+    opacity: 0.1;
+}
+
+.memo-card-edit:hover {
+  color: black;
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+.rec-show-card {
+  border: 2px solid #333333;
 }

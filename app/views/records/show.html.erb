@@ -11,8 +11,8 @@
   <%= link_to image_tag("show-edit.png"),edit_folder_record_path, class: "d-inline-block" %>
 </div>
 
-<div class="text-center folreccard">
-  <h3 class="folder-title">
+<div class="text-center folreccard rec-show-card">
+  <h3 class="folder-title r-letter">
     <%= @record.title %>
   </h3>
   
@@ -110,20 +110,23 @@
   
   <div class="co">
   <% @memos.each do |memo| %>
-  <div class="sample_box11">
-  <div class="sample_box11_tape"> </div>
-        <p class="sample_box11_title"><%= memo.title %></p>
-        <p class="sample_box11_subtitle"><%= memo.coment %></p>
+  <%= link_to edit_folder_record_memo_path(memo.record.folder,memo.record,memo), class: "memo-card-edit" do%>
+  <div class="memo-card mr-2 ml-2">
+  <div class="memo-card_tape"> </div>
+        <p class="memo-card_title"><%= memo.title %></p>
+        <p class="memo-card_subtitle"><%= memo.coment %></p>
         <p><%= memo.count %></p>
         <p><%= memo.image %></p>
         <p><%= memo.money %></p>
         <p><%= memo.hours %></p>
         <p><%= memo.minutes %></p>
-        <p><%= link_to 'Edit', edit_folder_record_memo_path(@folder,@record) %></p>
-        <p><%= link_to 'Destroy', folder_record_memo_path(@folder,@record), method: :delete, data: { confirm: 'Are you sure?' } %></p>
   </div>
   <% end %>
+  <% end %>
   </div>
-</div>
+  
+  </div>  
+  
+
 
 

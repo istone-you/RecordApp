@@ -50,7 +50,7 @@ end
   # GET /records/1
   def show
     
-    @memos = @record.memo.all
+    @memos = @record.memo.all.order(created_at: :desc)
     
     @memo_count_sum = @memos.sum(:count)
     @memo_money_sum = @memos.sum(:money)

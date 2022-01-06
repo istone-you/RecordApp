@@ -1,52 +1,51 @@
-<%= form_with(model: [@folder, @record, @memo], local: true) do |form| %>
-  <% if memo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h2>
-
-      <ul>
-      <% memo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="record-form text-center memo-card_form">
+<div class="memo-card_tape_form"> </div>  
+  <%= form_with(model: [@folder, @record, @memo], local: true) do |form| %>
+    <% if memo.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(memo.errors.count, "error") %> prohibited this memo from being saved:</h2>
+  
+        <ul>
+        <% memo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="field mt-2">
+      <%= form.label :image %><br>
+      <%= form.file_field :image %>
+    </div>
+  
+  
+    <div class="field">
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :coment %>
+      <%= form.text_area :coment %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :count %><br>
+      <%= form.number_field :count %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :money %><br>
+      ¥<%= form.number_field :money %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :hours %>
+      <%= form.number_field :hours %> 時間 <%= form.number_field :minutes, max: "59" %> 分
+    </div>
+  
+    <div class="d-inline-block">
+      <%= form.submit "完了", :class=>"record-submit" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div class="field">
-    <%= form.label :coment %>
-    <%= form.text_area :coment %>
-  </div>
-
-  <div class="field">
-    <%= form.label :count %>
-    <%= form.number_field :count %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :money %>
-    <%= form.number_field :money %>
-  </div>
-
-  <div class="field">
-    <%= form.label :hours %>
-    <%= form.number_field :hours %>
-  </div>
-
-  <div class="field">
-    <%= form.label :minutes %>
-    <%= form.number_field :minutes %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
