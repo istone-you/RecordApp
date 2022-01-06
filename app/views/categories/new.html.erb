@@ -1,5 +1,7 @@
-<h3 class="text-center">カテゴリーを作成</h3>
+<h3 class="text-center folder-title">カテゴリーを作成</h3>
 
 <%= render 'form', category: @category %>
 
-<a href="javascript:history.back()" style="color:black">戻る</a>
+<div class= "back-btn">
+    <%= link_to image_tag("back.png"),categories_path, class: "d-inline-block  mb-3 " %>
+</div>

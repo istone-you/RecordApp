@@ -1,3 +1,6 @@
+<div class= "index-header">
+</div>
+
 <%= form_with(model: category, local: true) do |form| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
@@ -13,17 +16,16 @@
 
 <div class="record-form text-center">
   <div class="field">
-    <%= form.label :name, "カテゴリー名" %>
+    <%= form.label :name, "カテゴリー名", class: "r-letter" %>
     <%= form.text_field :name %>
   </div>
   
   <div class="field">
-    <%= form.label :image, "画像をアップロード" %><br>
     <%= form.file_field :image %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "完了" %>
+  <div class="d-inline-block">
+    <%= form.submit "完了", :class=>"record-submit" %>
   </div>
 </div>  
 <% end %>

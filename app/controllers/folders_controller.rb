@@ -13,8 +13,13 @@ class FoldersController <  ApplicationController
 
   # GET /folders/new
   def new
+    if params[:category_id] == nil
+      @category = nil
+    else
+      @category = params[:category_id]
+    end  
     @folder = current_user.folders.new(
-      category_ids: params[:category_id]
+      category_ids: @category
       )
   end
 
