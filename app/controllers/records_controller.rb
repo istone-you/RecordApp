@@ -76,24 +76,19 @@ end
     end
   
     if @record.link?
-      agent = Mechanize.new
-      page = agent.get(@record.link)
-      @elements = page.at('title')
-      @elements_p = page.search("p")
-    end
-    
-    if @record.youtube?
-      agent_y = Mechanize.new
-      page_y = agent_y.get(@record.youtube)
-      @elements_y = page_y.search('title')
-    end
-    
-    if @record.link?
       if @record.title == "@@@"
+        agent = Mechanize.new
+        page = agent.get(@record.link)
+        @elements = page.at('title')
+        @elements_p = page.search("p")
         @record.update_columns(title: @elements.inner_text)
       end 
     
       if @record.coment== "@@@"
+        agent = Mechanize.new
+        page = agent.get(@record.link)
+        @elements = page.at('title')
+        @elements_p = page.search("p")
         @record.update_columns(coment: @elements_p.inner_text.truncate(600))
       elsif @record.coment== "###"
          @record.update_columns(coment: @elements_p.to_s)
@@ -102,6 +97,9 @@ end
     
     if @record.youtube?
       if @record.title == "@@y"
+        agent_y = Mechanize.new
+        page_y = agent_y.get(@record.youtube)
+        @elements_y = page_y.search('title')
         @record.update_columns(title: @elements_y.inner_text)
       end 
     end 
