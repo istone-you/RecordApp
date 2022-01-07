@@ -1,3 +1,10 @@
+
+<div class= "index-header">
+  <div class= "back-btn">
+    <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3 " %>
+  </div>
+</div>
+
 <h4 class="text-center folder-title"><span class="rec-fol mr-2"><%= @folder.title %></span>に記録</h4>
 
 <%= render 'form', record: @record %>

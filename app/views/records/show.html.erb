@@ -12,9 +12,12 @@
 </div>
 
 <div class="text-center rec-show-card">
-  <h3 class="folder-title r-letter mb-3">
-    <%= @record.title %>
-  </h3>
+  
+  <% if @record.title? %>
+    <h3 class="folder-title r-letter mb-3">
+      <%= @record.title %>
+    </h3>
+  <% end %>
   
   <div class="co">
     <% @record.tags.each do |tag| %>
@@ -32,36 +35,43 @@
   </p>
   
   <% if @record.coment? %>
-  <div class="r-letter mb-3" style="width: 80%; margin: auto;">
+  <div class="r-letter mb-3 pt-5 pb-5" style="width: 80%; margin: auto;">
     <h4 style="width: 80%; margin: auto;">
       <%= sanitize(@record.coment) %>
     </h4>
   </div>
   <% end %>
 
-    
-  <h3>
+  <div class="text-center">
+  <h5>
     <% if @record.start_time? %>
       <span class="r-letter mb-5"><%= @record.start_time.strftime('%Y年%m月%d日 %H時%M分%S秒') %></span>
     <% end %>  
-  </h3> 
+  </h5> 
+  </div> 
   
-  <h3>
+  <div class="text-center">
+  <h5>
     <% if @record.count? %> 
       <span class="r-letter mb-5"><%= @record.count %><% end %><% if @record.goal_count? %> / <%= @record.goal_count %></span>
     <% end %> 
-  </h3>   
-    
-  <h3>
+  </h5> 
+  </div> 
+   
+  <div class="text-center"> 
+  <h5>
     <% if @record.hours? %>
     <span class="r-letter mb-5"><%= @record.hours %>時間<% end %><% if @record.minutes? %><%= @record.minutes %>分<% end %></span>
-  </h3> 
+  </h5> 
+  </div> 
   
-  <h3>
+  <div class="text-center">
+  <h5>
     <% if @record.money? %>
       <span class="r-letter mb-5">¥<%= @record.money %></span>
     <% end %>   
-  </h3> 
+  </h5> 
+  </div> 
 
   
   <% if @record.link? %>
@@ -80,13 +90,13 @@
     </div><br>
   <% end %>  
     
-  <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
-    <% if @record.twitter? %> 
+  <% if @record.twitter? %> 
+    <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
       <blockquote class="twitter-tweet tw-align-center">
       <a href="<%= @record.twitter %>"></a></blockquote>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <% end %>  
-  </div>
+    </div>  
+  <% end %>
   
   <% if @record.address? %>
   <div class="r-letter" style="width: 90%; margin: auto;">
@@ -114,7 +124,7 @@
           <p class="memo-card_title"><%= memo.title %></p>
           <p class="memo-card_subtitle"><%= memo.coment %></p>
           <p><%= memo.count %></p>
-          <p><%= memo.image %></p>
+          <%= image_tag memo.image.url, class: "memo-img" %>
           <p><%= memo.money %></p>
           <p><%= memo.hours %></p>
           <p><%= memo.minutes %></p>
