@@ -2,23 +2,23 @@
   <div class="co folreccard">
     <% @records.each do |record| %>
       <% if record.done == 1 %>
-          <div class="card text-dark bg-light folder record-card">
+          <div class="r-letter ml-2 mr-2 mb-2 mt-2" style="width: 198px; height: 300px; ">
+            <div class="mt-2">  
             <% if record.image? %>
-              <%= link_to image_tag(record.image.url, class: "card-img-top record-img"),folder_record_path(record.folder,record)  %>
+              <%= link_to image_tag(record.image.url, class: "record-img"),folder_record_path(record.folder,record)  %>
             <% else %>
               <% if record.youtube? %>
                 <%=  link_to folder_record_path(record.folder,record) do%>
-                  <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "card-img-top record-img">
+                  <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "record-img">
                 <% end %>  
               <% else %>  
-                <%=  link_to image_tag("no_image.png", class: "card-img-top record-img"),folder_record_path(record.folder,record) %>
+                <%=  link_to image_tag("no_image.png", class: "record-img"),folder_record_path(record.folder,record) %>
               <% end %>  
             <% end %>
-            <div class="card-body">
-              <h5 class="card-title text-center"><%= record.title.truncate(16) %></h5>
-              <h4><span class="badge rounded-pill bg-secondary text-white record-count"><% if record.count? %><%= record.count %><% end %></span></h4>
-              
-            　<h6 class="record-hour"><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
+            </div>
+            <div class="text-center">
+              <h5 class=""><%= record.title.truncate(16) %></h5>
+            　<h6 style="margin-top: -20px;"><span class="badge rounded-pill bg-secondary text-white"><% if record.count? %><%= record.count %><% end %></span><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
             </div>
           </div> 
       <% end %>
@@ -46,6 +46,4 @@
   <%= render "records/map" %>
 <% elsif @folder.record_view == 10 %>
   <%= render "records/p_graph" %>
-<% elsif @folder.record_view == 11 %>
-  <%= render "records/default" %>
 <% end %>

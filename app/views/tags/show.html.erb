@@ -29,7 +29,7 @@
 
       <div class="">
         <% if @tag.all_records_view == 0 %>
-          <%= render "tags/normal_index" %>
+          <%= render "users/normal_index" %>
         <% elsif @tag.all_records_view == 1 %>
           <%=render "records/all_info" %>
         <% elsif @tag.all_records_view == 2 %>
