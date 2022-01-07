@@ -76,10 +76,7 @@
   
   <% if @record.link? %>
     <div class="r-letter mt-2 mb-4" style="width: 90%; margin: auto;">
-      <h6>
-        <%= sanitize(@elements.to_s) %><br>
-        <a href="<%= @record.link %>"><%= @record.link %></a>
-      </h6>
+      <h6><a href="<%= @record.link %>"><%= @record.link %></a></h6>
     </div><br>
   <% end %>
   

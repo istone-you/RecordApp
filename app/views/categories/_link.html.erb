@@ -3,9 +3,9 @@
         <% folder.records.all.each do |record| %>
             <% if record.done == 1 %>
                 <% if record.link? %>
-                    <div class ="folder-card mr-1 ml-1">
+                    <div class ="folder-card text-center mt-2 mr-1 ml-1">
                     　 <% if record.image? %><%=link_to image_tag(record.image.url, class: "folder-img"),record.link %><% else %><%= link_to image_tag("link-img.png", class:"folder-img"), record.link %><% end %>
-                    　 <h5 class=" text-center mt-2"><%= record.title.truncate(15)%></h5>
+                    　 <h5 class="r-letter text-center mt-2"><%= record.title.truncate(15)%></h5>
                     </div>　  
                 <% end %>  
             <% end %> 
