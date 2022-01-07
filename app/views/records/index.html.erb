@@ -13,7 +13,7 @@
         </div> 
         |
         <div class="d-inline-block">
-          <%= form.select :record_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], {}, {class: 'sel'} %>
+          <%= form.select :record_view, [['Normal', 0],['Default', 11],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], {}, {class: 'sel'} %>
         </div> 
         |
         <br>
@@ -40,7 +40,7 @@
 <div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 <div class="co">
 <% if @folder.category_ids.empty? %>
-  <h6 class="badge badge-secondary"><%=link_to "Not Category",folders_path, class: "folder-to-category" %></h6>
+  <h6 class="rec-cat"><%=link_to "Not Category",folders_path, class: "folder-to-category" %></h6>
 <% end %>   
 <% @folder.categories.each do |category| %>
     <div>
