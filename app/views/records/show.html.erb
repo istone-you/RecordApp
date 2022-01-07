@@ -121,7 +121,7 @@
           <p class="memo-card_title"><%= memo.title %></p>
           <p class="memo-card_subtitle"><%= memo.coment %></p>
           <p><%= memo.count %></p>
-          <%= image_tag memo.image.url, class: "memo-img" %>
+          <% if memo.image? %><%= image_tag memo.image.url, class: "memo-img" %><% end %>
           <p><%= memo.money %></p>
           <p><%= memo.hours %></p>
           <p><%= memo.minutes %></p>
