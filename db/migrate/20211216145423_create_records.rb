@@ -16,6 +16,9 @@ class CreateRecords < ActiveRecord::Migration[5.0]
       t.string :youtube
       t.string :twitter
       t.datetime :start_time
+      t.string :address
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

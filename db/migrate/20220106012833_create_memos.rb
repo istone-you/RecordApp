@@ -9,6 +9,8 @@ class CreateMemos < ActiveRecord::Migration[5.2]
       t.integer :hours
       t.integer :minutes
       t.references :user, foreign_key: true
+      t.references :record, foreign_key: true
+      t.references :folder, foreign_key: true
 
       t.timestamps
     end
