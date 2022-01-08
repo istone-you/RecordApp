@@ -7,11 +7,9 @@
   <%= link_to image_tag("back.png"),folder_records_path, class: "d-inline-block  mb-3" %>
 </div>
 
-<div class= "fixed-btn">
-  <%= link_to image_tag("show-edit.png"),edit_folder_record_path, class: "d-inline-block" %>
-</div>
-
 <div class="text-center rec-show-card">
+  
+  <a><%= link_to  "編集", edit_folder_record_path, class: "r-btn", style: "position: absolute; top: 4px; right: 10px;" %></a>
   
   <% if @record.title? %>
     <h3 class="folder-title r-letter mb-3">
@@ -114,9 +112,9 @@
     <% end %> 
   </div>
   
-  <div><%= link_to "メモを作成", new_folder_record_memo_path(@folder,@record) %></div>
+  <div><%= link_to "メモを作成", new_folder_record_memo_path(@folder,@record), class: "r-btn" %></div>
   
-  <div class="co">
+  <div class="co mt-3">
     <% @memos.each do |memo| %>
       <%= link_to edit_folder_record_memo_path(@folder,@record,memo), class: "memo-card-edit" do%> 
         <div class="r-title mr-2 ml-2 mb-2">

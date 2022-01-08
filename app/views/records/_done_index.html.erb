@@ -11,7 +11,9 @@
                 <%=  link_to folder_record_path(record.folder,record) do%>
                   <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "record-img">
                 <% end %>  
-              <% else %>  
+              <% elsif record.twitter? %> 
+                <%=  link_to image_tag("tweet.png", class: "record-img pt-5 pb-5"),folder_record_path(record.folder,record) %>  
+              <% else %>
                 <%=  link_to image_tag("no_image.png", class: "record-img"),folder_record_path(record.folder,record) %>
               <% end %>  
             <% end %>

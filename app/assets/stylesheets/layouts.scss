@@ -423,15 +423,15 @@ header {
 
 .edit-btn {
   position: absolute;
-  top: 218px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
 }
 
 @media screen and (min-width:480px) {
 .edit-btn {
   position: absolute;
-  top: 150px;
-  right: 60px;
+  top: 10px;
+  right: 10px;
 }
 }
 
@@ -441,15 +441,15 @@ header {
 
 .manage-tag {
   position: absolute;
-  top: 263px;
+  top: 70px;
   right: 10px;
 }
 
 @media screen and (min-width:480px) {
 .manage-tag {
   position: absolute;
-  top: 195px;
-  right: 60px;
+  top: 100px;
+  right: 30px;
 }
 }
 .manage-tag-img {  
@@ -528,6 +528,7 @@ header {
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
   background-color: #dcdcdc;
   }
+  
 .record-submit:hover{
   box-shadow: 0 0 #333;
   color: #fff;
@@ -557,8 +558,8 @@ header {
 
 .r-btn{
   z-index: 50;
-  width: 80px;
-  height: 25px;
+  padding: 1px 10px;
+  text-align: center;
   align-items: center;
   justify-content: center;
   line-height: 1;
@@ -572,7 +573,9 @@ header {
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
   background-color: #dcdcdc;
   }
+  
 .r-btn:hover{
+  text-decoration: none;
   box-shadow: 0 0 #333;
   color: #fff;
   background-color: #333;
@@ -639,17 +642,27 @@ header {
 }
 
 .rec-show-card {
+  position: relative;
   margin: 50px 5px;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
 .cat-show-card {
+  position: relative;
   margin: 50px 5px;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
 
 .fol-show-card {
+  position: relative;
+  margin: 50px 5px;
+  border: 2px solid #333333;
+  box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
+}
+
+.tag-show-card {
+  position: relative;
   margin: 50px 5px;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
@@ -658,18 +671,28 @@ header {
 
 @media screen and (min-width:480px) {
 .rec-show-card {
+  position: relative;
   width: 80%; 
   margin: 50px auto;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
 .cat-show-card {
+  position: relative;
   width: 90%; 
   margin: 50px auto;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }  
 .fol-show-card {
+  position: relative;
+  width: 90%; 
+  margin: 50px auto;
+  border: 2px solid #333333;
+  box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
+}  
+.tag-show-card {
+  position: relative;
   width: 90%; 
   margin: 50px auto;
   border: 2px solid #333333;
@@ -700,7 +723,7 @@ header {
 
 .rec-tag {
   display: inline-block;
-  padding: 1px 20px;
+  padding: 1px 15px;
   border: 2px solid #333333;
   background-color: gray;
   font-weight: bold;
