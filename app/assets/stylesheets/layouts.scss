@@ -372,7 +372,7 @@ header {
 
 
 .record-form {
-  margin: 50px 1px;
+  margin: 50px 5px;
   border: 2px solid #333333;
   padding: 50px;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
@@ -612,21 +612,25 @@ header {
 }
 
 .memo-card_form {
+   width: 80%;/* 紙の横幅 100%にすると全幅表示に */
+   padding: 15px;
+   margin: 2em auto;
+   background: rgba(0.01,0.01,0.01,0.01);/* 紙の色 */
+   color: #000;/* 文字色 */
+   border: 2px solid #333333;
+   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
+}
+
+@media screen and (min-width:480px) {
+.memo-card_form {
    width: 50%;/* 紙の横幅 100%にすると全幅表示に */
    padding: 15px;
    margin: 2em auto;
    background: rgba(0.01,0.01,0.01,0.01);/* 紙の色 */
    color: #000;/* 文字色 */
-   box-shadow: 4px 4px 4px rgba(0,0,0,0.20);
-}
-
-.memo-card_tape_form {
-    width: 50%;
-    height: 35px;
-    margin: -25px auto 0;
-    background: #989898;
-    opacity: 0.1;
-}
+   border: 2px solid #333333;
+   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
+}}
 
 .memo-card-edit:hover {
   color: black;
@@ -635,18 +639,18 @@ header {
 }
 
 .rec-show-card {
-  margin: 50px 1px;
+  margin: 50px 5px;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
 .cat-show-card {
-  margin: 50px 1px;
+  margin: 50px 5px;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
 
 .fol-show-card {
-  margin: 50px 1px;
+  margin: 50px 5px;
   border: 2px solid #333333;
   box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }

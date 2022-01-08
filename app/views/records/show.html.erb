@@ -99,10 +99,12 @@
   <div class="r-letter" style="width: 90%; margin: auto;">
   <h6>
       <h6><%= @record.address %></h6>
-      <h6><%= @record.latitude %>,<%= @record.longitude %></h6>
+      <% if @record.latitude? %><h6><%= @record.latitude %>,<%= @record.longitude %></h6><% end %>
   </h6>
   <div class="rec-map mb-3">
+    <% if @record.latitude? %>
     <div id='map'></div>
+    <% end %>
   </div>
   </div>
   <% end %> 

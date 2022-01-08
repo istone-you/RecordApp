@@ -1,6 +1,5 @@
 
-<div class="record-form text-center memo-card_form">
-<div class="memo-card_tape_form"> </div>  
+<div class="text-center memo-card_form">
   <%= form_with(model: [@folder, @record, @memo], local: true) do |form| %>
     <% if memo.errors.any? %>
       <div id="error_explanation">
