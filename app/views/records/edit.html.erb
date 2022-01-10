@@ -9,5 +9,6 @@
 
 <%= render 'form', record: @record %>
 
-
-<%= link_to '削除', folder_record_path, method: :delete, data: { confirm: '削除しますか?' }%>
+<div class="text-center d-inline-box">
+<%= link_to '削除', folder_record_path, method: :delete, data: { confirm: '削除しますか?' }, class: "r-btn" %>
+</div>

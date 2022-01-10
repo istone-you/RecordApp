@@ -76,5 +76,9 @@
 <% end %>
 </div>
 
-<%= link_to 'Show', @public_record %> |
+<div class="text-center d-inline-box">
+<%= link_to '削除', public_record_path, method: :delete, data: { confirm: '削除しますか?' }, class: "r-btn"%>
+</div>
+
+<%= link_to 'Show', @public_record %> 
 <%= link_to 'Back', public_records_path %>

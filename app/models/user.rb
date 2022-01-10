@@ -10,4 +10,5 @@ class User < ApplicationRecord
   has_many :tags
   has_many :memos
   has_many :public_records
+  has_many :public_folders
 end

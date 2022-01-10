@@ -13,6 +13,7 @@ class PublicRecordsController < ApplicationController
 
   # GET /public_records/new
   def new
+    @folder = Folder.find_by(id: params[:folder_id]) 
     @record = Record.find_by(id: params[:record_id]) 
     @public_record = current_user.public_records.new(
       title: @record.title,
@@ -28,7 +29,7 @@ class PublicRecordsController < ApplicationController
       twitter: @record.twitter,
       address: @record.address,
       done: @record.done,
-      
+      folder_id: @folder.id
       )
   end
 

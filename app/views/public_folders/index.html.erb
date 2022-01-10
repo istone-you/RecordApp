@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Public Folders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @public_folders.each do |public_folder| %>
+      <tr>
+        <td><%= public_folder.title %></td>
+        <td><%= link_to 'Show', public_folder %></td>
+        <td><%= link_to 'Edit', edit_public_folder_path(public_folder) %></td>
+        <td><%= link_to 'Destroy', public_folder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Public Folder', new_public_folder_path %>

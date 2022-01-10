@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_09_160149) do
+ActiveRecord::Schema.define(version: 2022_01_10_065617) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -76,6 +76,24 @@ ActiveRecord::Schema.define(version: 2022_01_09_160149) do
     t.index ["folder_id"], name: "index_memos_on_folder_id"
     t.index ["record_id"], name: "index_memos_on_record_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
+  create_table "public_folders", force: :cascade do |t|
+    t.string "title"
+    t.integer "user_id"
+    t.integer "count_sum"
+    t.integer "hour_sum"
+    t.integer "money_sum"
+    t.integer "minute_sum"
+    t.integer "record_view", default: 0
+    t.integer "record_sum"
+    t.integer "done_view", default: 0
+    t.integer "record_sort", default: 0
+    t.string "image"
+    t.datetime "start_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_public_folders_on_user_id"
   end
 
   create_table "public_records", force: :cascade do |t|
