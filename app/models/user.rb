@@ -9,4 +9,5 @@ class User < ApplicationRecord
   has_many :categories
   has_many :tags
   has_many :memos
+  has_many :public_records
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_06_031341) do
+ActiveRecord::Schema.define(version: 2022_01_09_160149) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2022_01_06_031341) do
     t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "public_show", default: 0
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
@@ -75,6 +76,31 @@ ActiveRecord::Schema.define(version: 2022_01_06_031341) do
     t.index ["folder_id"], name: "index_memos_on_folder_id"
     t.index ["record_id"], name: "index_memos_on_record_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
+  end
+
+  create_table "public_records", force: :cascade do |t|
+    t.string "title"
+    t.integer "count"
+    t.text "coment"
+    t.string "image"
+    t.integer "folder_id"
+    t.integer "user_id"
+    t.integer "money"
+    t.integer "done", default: 1
+    t.integer "goal_count"
+    t.integer "minutes"
+    t.integer "hours"
+    t.text "link"
+    t.string "youtube"
+    t.string "twitter"
+    t.datetime "start_time"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["folder_id"], name: "index_public_records_on_folder_id"
+    t.index ["user_id"], name: "index_public_records_on_user_id"
   end
 
   create_table "record_tags", force: :cascade do |t|

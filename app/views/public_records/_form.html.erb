@@ -1,0 +1,82 @@
+<div class="record-form text-center">
+<%= form_with(model: @public_record, local: true) do |form| %>
+  
+  <div>
+  
+    <div class="mb-3 mr-3 d-inline-block">
+      <%= form.select :done, [['Want to', 0],['Done', 1]]%>
+    </div> 
+    
+    
+  </div>  
+  
+  <div class="field">
+    <%= form.label :title, "画像", class: "r-letter" %>
+    <p>
+      <% if @record.image? %>
+        <%= image_tag @record.image.url, class: "record-img-show" %>
+      <% else %>
+        <%= image_tag("no_image.png", class: "record-img-show") %>
+      <% end %>  
+    </p>
+    <%= form.hidden_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title, "タイトル", class: "r-letter" %>
+    <%= form.text_field :title %>
+  </div>
+  
+  <div class="mb-3">
+    <%= form.label :coment, "コメント", class: "r-letter" %>
+    <%= form.text_area :coment, class: "record-coment" %>
+  </div>
+  
+  <div class="co">
+  <div class="mb-3 mr-3">
+    <h6 class="r-letter mr-1 ml-1">日時</h6><br>
+    <%= form.datetime_field :start_time %>
+    </div>
+
+  <div class="field mr-3">
+    <h6 class="r-letter mr-1 ml-1">カウント</h6><br>
+    <%= form.number_field :count %> / <%= form.number_field :goal_count %>
+  </div>
+  
+  <div class="field mr-3">
+    <h6 class="r-letter mr-1 ml-1">時間</h6><br>
+    <%= form.number_field :hours %> 時間 <%= form.number_field :minutes, max: "59" %> 分
+  </div>
+  
+  <div class="field mr-3">
+    <h6 class="r-letter mr-1 ml-1">金額</h6><br>
+    ¥<%= form.number_field :money %>
+  </div>
+  </div>
+  
+  <div class="field">
+    <%= form.label :address, "場所", class: "r-letter" %>
+    <%= form.text_area :address %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :link, "リンク", class: "r-letter"%>
+    <%= form.text_area :link %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :youtube, "Youtube", class: "r-letter" %>
+    <%= form.text_area :youtube %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :twitter, "Twitter", class: "r-letter" %>
+    <%= form.text_area :twitter %>
+  </div>
+  
+
+  <div class="d-inline-block">
+    <%= form.submit "記録する", :class=>"record-submit" %>
+  </div>
+<% end %>
+</div>

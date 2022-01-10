@@ -1,0 +1,168 @@
+<p id="notice"><%= notice %></p>
+
+<div class= "index-header">
+</div>  
+
+<div class= "back-btn">
+  <%= link_to image_tag("back.png"),public_records_path, class: "d-inline-block  mb-3" %>
+</div>
+
+<div class="text-center rec-show-card">
+  
+  <% if @public_record.title? %>
+    <h3 class="folder-title r-letter mb-3">
+      <%= @public_record.title %>
+    </h3>
+  <% end %>
+  
+  <p> 
+    <% if @public_record.image? %>
+      <%= image_tag @public_record.image, class: "record-img-show" %>
+    <% end %>  
+  </p>
+  
+  <% if @public_record.coment? %>
+  <div class="r-letter mb-3 pt-5 pb-5" style="width: 80%; margin: auto;">
+    <h4 style="width: 80%; margin: auto;">
+      <%= sanitize(@public_record.coment) %>
+    </h4>
+  </div>
+  <% end %>
+
+  <div class="text-center">
+  <h5>
+    <% if @public_record.start_time? %>
+      <span class="r-letter mb-5"><%= @public_record.start_time.strftime('%Y年%m月%d日 %H時%M分%S秒') %></span>
+    <% end %>  
+  </h5> 
+  </div> 
+  
+  <div class="text-center">
+  <h5>
+    <% if @public_record.count? %> 
+      <span class="r-letter mb-5"><%= @public_record.count %><% end %><% if @public_record.goal_count? %> / <%= @public_record.goal_count %></span>
+    <% end %> 
+  </h5> 
+  </div> 
+   
+  <div class="text-center"> 
+  <h5>
+    <% if @public_record.hours? %>
+    <span class="r-letter mb-5"><%= @public_record.hours %>時間<% end %><% if @public_record.minutes? %><%= @public_record.minutes %>分<% end %></span>
+  </h5> 
+  </div> 
+  
+  <div class="text-center">
+  <h5>
+    <% if @public_record.money? %>
+      <span class="r-letter mb-5">¥<%= @public_record.money %></span>
+    <% end %>   
+  </h5> 
+  </div> 
+
+  
+  <% if @public_record.link? %>
+    <div class="r-letter mt-2 mb-4" style="width: 90%; margin: auto;">
+      <h6><a href="<%= @public_record.link %>"><%= @public_record.link %></a></h6>
+    </div><br>
+  <% end %>
+  
+  
+  <% if @public_record.youtube? %>
+    <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
+      <iframe class="rec-youtube" src="https://www.youtube.com/embed/<%= @public_record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div><br>
+  <% end %>  
+    
+  <% if @public_record.twitter? %> 
+    <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
+      <blockquote class="twitter-tweet tw-align-center">
+      <a href="<%= @public_record.twitter %>"></a></blockquote>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>  
+  <% end %>
+  
+  <% if @public_record.address? %>
+  <div class="r-letter" style="width: 90%; margin: auto;">
+  <h6>
+      <h6><%= @public_record.address %></h6>
+      <% if @public_record.latitude? %><h6><%= @public_record.latitude %>,<%= @public_record.longitude %></h6><% end %>
+  </h6>
+  <div class="rec-map mb-3">
+    <% if @public_record.latitude? %>
+    <div id='map'></div>
+    <% end %>
+  </div>
+  </div>
+  <% end %> 
+  
+  <div>
+    <% if @public_record.done == 1 %>
+    <% end %> 
+  </div>
+  
+ 
+  <p>
+    <strong>作成時間</strong>
+    <%= @public_record.created_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+    <strong>最終更新時間</strong>
+    <%= @public_record.updated_at.strftime('%Y年%m月%d日 %H時%M分%S秒') %>
+  </p> 
+  
+  
+  </div>  
+  
+  
+<style>
+#map {
+  height: 250px;
+  width: 100%;
+}
+
+@media screen and (min-width:480px) {
+#map {
+  height: 400px;
+  width: 100%;
+}}
+</style>
+
+<script>
+  let map
+
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @public_record.latitude %>, lng: <%= @public_record.longitude %>},
+          zoom: 12,
+      });
+
+
+      <% if @public_record.address? %>
+          (function(){
+          var contentString = "住所：<%= @public_record.address %>"; 
+
+          var marker = new google.maps.Marker({
+              position:{lat: <%= @public_record.latitude %>, lng: <%= @public_record.longitude %>},
+              map: map,
+              title: contentString
+          });
+          
+          var infoWindow = new google.maps.InfoWindow({
+		      content: `<%= @public_record.title %>`
+      	  });
+      	  
+          google.maps.event.addListener(marker, 'click', function() { //マーカークリック時の動作
+		      infoWindow.open(map, marker); //情報ウィンドウを開く
+ 	      });
+          
+          })();
+      <% end %>
+      }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API']%>&callback=initMap" async defer></script>
+
+
+
+
+

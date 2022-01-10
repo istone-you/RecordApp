@@ -1,0 +1,27 @@
+<div class="co folreccard">
+    <% @records.each do |record| %>
+      <% if record.done == 1 %>
+          <div class="r-letter ml-2 mr-2 mb-2 mt-4" style="width: 198px; height: 300px; position: relative;">
+            <p style="position: absolute; top: -20px; "><%= record.user.email.truncate(16) %></p>
+            <div class="mt-2">  
+            <% if record.image? %>
+              <%= link_to image_tag(record.image, class: "record-img"), public_record_path(record.id)  %>
+            <% else %>
+              <% if record.youtube? %>
+                <%=  link_to public_record_path(record.id) do%>
+                  <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "record-img">
+                <% end %>  
+              <% else %>  
+                <%=  link_to image_tag("no_image.png", class: "record-img"),public_record_path(record.id) %>
+              <% end %>  
+            <% end %>
+            </div>
+            <div class="text-center">
+              <h5 class=""><%= record.title.truncate(16) %></h5>
+            　<h6 style="margin-top: -20px;"><span class="badge rounded-pill bg-secondary text-white"><% if record.count? %><%= record.count %><% end %></span><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
+            </div>
+          </div> 
+      <% end %>
+    <% end %>
+  </div>
+  <%= paginate @records %>

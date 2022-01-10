@@ -4,6 +4,7 @@ class Record < ApplicationRecord
   
   mount_uploader :image, ImageUploader
   
+  has_one :public_records
   has_many :record_tags, dependent: :destroy
   has_many :tags, through: :record_tags
   accepts_nested_attributes_for :record_tags
