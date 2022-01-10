@@ -8,7 +8,7 @@
 
 <div class="co folreccard">
     <% @records.each do |record| %>
-      <% if record.user.id == current_user.id %>
+      <% if record.user.id == @public_folder.user.id %>
       <% if record.public_id == @public_folder.public_id %>
       <% if record.done == 1 %>
           <div class="r-letter ml-2 mr-2 mb-2 mt-5" style="width: 198px; height: 300px; position: relative;">
