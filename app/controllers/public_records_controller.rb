@@ -4,7 +4,7 @@ class PublicRecordsController < ApplicationController
 
   # GET /public_records
   def index
-    @records = PublicRecord.all.page(params[:page]).per(25)
+    @records = PublicRecord.all.order(created_at: :desc).page(params[:page]).per(25)
   end
 
   # GET /public_records/1

@@ -441,7 +441,13 @@ header {
 
 .manage-tag {
   position: absolute;
-  top: 70px;
+  top: 90px;
+  right: 10px;
+}
+
+.public-btn {
+  position: absolute;
+  top: 60px;
   right: 10px;
 }
 
@@ -449,6 +455,11 @@ header {
 .manage-tag {
   position: absolute;
   top: 100px;
+  right: 30px;
+}
+.public-btn {
+  position: absolute;
+  top: 70px;
   right: 30px;
 }
 }
