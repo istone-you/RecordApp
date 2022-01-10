@@ -11,5 +11,8 @@
 
 <%= render 'form', memo: @memo %>
 
+<div class="text-center d-inline-box pb-3">
+<%= link_to '削除', folder_record_memo_path(@folder,@record), method: :delete, data: { confirm: '削除しますか?' }, class: "r-btn" %>
+</div>
+
 <%= link_to '戻る', folder_record_path(@folder,@record) %>
-<%= link_to '削除', folder_record_memo_path(@folder,@record), method: :delete, data: { confirm: '削除しますか？' } %>

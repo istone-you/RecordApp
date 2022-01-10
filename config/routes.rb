@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :public_folders
+  resources :public_folders do
+    member do
+      post '' => 'users#public_index_update'
+    end  
+  end  
   resources :public_records
   resources :categories
   get 'users/index'

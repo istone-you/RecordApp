@@ -1,14 +1,38 @@
+<div class= "index-header">
+        <div class= "back-btn">
+            <%= link_to image_tag("back.png"),public_folders_path, class: "d-inline-block  mb-3" %>
+        </div>
+        <div class="text-center select-div">  
+          <%= form_with(model: @user,local: true) do |form| %>
+            |
+            <div class="d-inline-block">
+              <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel'}%>
+            </div>
+            |
+            <div class="d-inline-block">
+            <%= form.select :all_records_view, options_for_select([['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], selected: current_user.all_records_view), {}, {class: 'sel'}%>
+            </div>
+            |
+            <br>
+            <div class="d-inline-block">
+              <%= form.submit "◯", :class=>"view-btn"%>
+            </div>  
+          <% end %>
+        </div>  
+</div>
+
 <div class="fol-show-card">
 
 <% if @public_folder.user.id == current_user.id %>
 <a><%= link_to  "編集", edit_public_folder_path(@public_folder), class: "r-btn", style: "position: absolute; top: 4px; right: 10px;" %></a>
 <% end %>
 
-<div class="text-center">
+<div class="text-center mb-3">
   <h3 class="folder-title rec-fol"><%= @public_folder.title %></h3>
 </div>
 
-<div class="co folreccard">
+<% if current_user.all_records_view == 0 %>
+  <div class="co folreccard">
     <% @records.each do |record| %>
       <% if record.done == 1 %>
           <div class="r-letter ml-2 mr-2 mb-2 mt-5" style="width: 198px; height: 300px; position: relative;">
@@ -33,7 +57,27 @@
       <% end %>
     <% end %>
   </div>
+  <% elsif current_user.all_records_view == 1 %>
+    <%=render "records/all_info" %>
+  <% elsif current_user.all_records_view == 2 %>
+  <%= render "records/only_img" %>
+  <% elsif current_user.all_records_view == 3 %>
+    <%= render "records/link" %>
+  <% elsif current_user.all_records_view == 4 %>
+    <%= render "records/youtube" %>
+  <% elsif current_user.all_records_view == 5 %>
+    <%= render "records/twitter" %>
+  <% elsif current_user.all_records_view == 6 %>
+    <%= render "records/calendar" %>
+  <% elsif current_user.all_records_view == 7 %>
+    <%= render "public_folders/c_graph" %>
+  <% elsif current_user.all_records_view == 8 %>
+    <%= render "records/coment" %>
+  <% elsif current_user.all_records_view == 9 %>
+    <%= render "public_folders/map" %>
+  <% elsif current_user.all_records_view == 10 %>
+    <%= render "records/p_graph" %>
+  <% end %>
+  
   
 </div>  
-  
-<%= link_to 'Back', public_folders_path %>

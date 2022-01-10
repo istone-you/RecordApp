@@ -35,6 +35,13 @@ class UsersController < ApplicationController
     end  
   end
   
+  def public_index_update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to public_folder_path
+    end  
+  end
+  
   def all_records
     @record = current_user.records
     

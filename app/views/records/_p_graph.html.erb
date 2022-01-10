@@ -1,1 +1,3 @@
-<%= pie_chart @folder.records.group(:title).sum(:money), id: "bar-chart", width: "100%", height: "", prefix: "¥" %>
+<div class="mb-4">
+    <%= pie_chart @folder.records.group(:title).sum(:money), id: "bar-chart", width: "100%", height: "", prefix: "¥" %>
+</div>

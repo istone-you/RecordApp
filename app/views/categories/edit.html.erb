@@ -1,8 +1,12 @@
-<h3 class="text-center folder-title">カテゴリーを編集</h3>
+<h3 class="text-center folder-title fw-bold"><span class="rec-cat mr-2">カテゴリー</span>を編集</h3>
 
 <%= render 'form', category: @category %>
 
-<a><%= link_to '削除', @category, method: :delete, data: { confirm: '削除しますか?' } %></a>
+<div class="text-center d-inline-box pb-3">
+<%= link_to '削除', @category, method: :delete, data: { confirm: '削除しますか?' }, class: "r-btn" %>
+</div>
+
+
 <div class= "back-btn">
     <%= link_to image_tag("back.png"),category_path, class: "d-inline-block  mb-3 " %>
 </div>

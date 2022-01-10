@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>    
+    
     <div class= "index-header">
         <div class= "back-btn">
             <%= link_to image_tag("back.png"),category_path(@category), class: "d-inline-block  mb-3" %>
@@ -21,28 +23,32 @@
         </div>  
     </div>
     
+    <div class="fol-show-card">
+    
     <div class="text-center">
       <h3 class="rec-cat folder-title"><%= @category.name %></h3>
     </div>
     
-    <div class="">
-          <% if @category.all_records_view == 0 %>
-            <%= render "categories/normal_index" %>
-          <% elsif @category.all_records_view == 1 %>
-            <%=render "categories/all_info" %>
-          <% elsif @category.all_records_view == 2 %>
-          <%= render "categories/only_img" %>
-          <% elsif @category.all_records_view == 3 %>
-            <%= render "categories/link" %>
-          <% elsif @category.all_records_view == 4 %>
-            <%= render "categories/youtube" %>
-          <% elsif @category.all_records_view == 5 %>
-            <%= render "categories/twitter" %>
-          <% elsif @category.all_records_view == 6 %>
-            <%= render "categories/calendar" %>
-          <% elsif @category.all_records_view == 7 %>
-            <%= render "categories/graph" %>
-          <% elsif @category.all_records_view == 8 %>
-            <%= render "categories/coment" %>
-          <% end %>
+      <div class="">
+            <% if @category.all_records_view == 0 %>
+              <%= render "categories/normal_index" %>
+            <% elsif @category.all_records_view == 1 %>
+              <%=render "categories/all_info" %>
+            <% elsif @category.all_records_view == 2 %>
+            <%= render "categories/only_img" %>
+            <% elsif @category.all_records_view == 3 %>
+              <%= render "categories/link" %>
+            <% elsif @category.all_records_view == 4 %>
+              <%= render "categories/youtube" %>
+            <% elsif @category.all_records_view == 5 %>
+              <%= render "categories/twitter" %>
+            <% elsif @category.all_records_view == 6 %>
+              <%= render "categories/calendar" %>
+            <% elsif @category.all_records_view == 7 %>
+              <%= render "categories/graph" %>
+            <% elsif @category.all_records_view == 8 %>
+              <%= render "categories/coment" %>
+            <% end %>
+      </div>
+    
     </div>

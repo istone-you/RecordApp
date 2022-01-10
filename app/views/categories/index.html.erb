@@ -10,13 +10,14 @@
     <a><%= link_to  "タグを管理", tags_path, class: "manage-tag r-btn" %></a>
     
     <div class="co folreccard">
-          <div class ="tag-card text-center mr-4 ml-4 mb-4"> <%=link_to folders_path do %><img class="tag-img" src="assets/category.png"><% end %>
-        　 <div><h6 class= "mt-2 rec-cat">ALL</h6></div>
+          <div class ="tag-card text-center mr-2 ml-2 mb-4">
+            <div class="mt-2"><%=link_to folders_path do %><img class="tag-img" src="assets/category.png"><% end %></div>
+        　   <div style="margin-top: -15px;"><p class="rec-cat mr-2 ml-2" style="font-weight: bold;" >ALL</p></div>
         　</div>  
       <% @categories.each do |category| %>
-          <div class ="tag-card mr-4 ml-4 mb-4"> 
-            <% if category.image? %><%=link_to image_tag(category.image.url, class: "tag-img"),category %><% else %> <%=link_to category do %><img class="tag-img" src="assets/category.png"><% end %><% end %>   
-        　   <div class="text-center"><h6 class="rec-cat mt-2"><%=category.name.truncate(14) %></h6></div>
+          <div class ="tag-card mr-2 ml-2 mb-4 text-center"> 
+            <div class="mt-2"><% if category.image? %><%=link_to image_tag(category.image.url, class: "tag-img"),category %><% else %> <%=link_to category do %><img class="tag-img" src="assets/category.png"><% end %><% end %></div>  
+        　   <div style="margin-top: -15px;"><p class="rec-cat mr-2 ml-2" style="font-weight: bold;" ><%=category.name.truncate(10) %></p></div>
         　</div>  
       <% end %> 
     </div>

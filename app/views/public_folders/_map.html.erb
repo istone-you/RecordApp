@@ -1,0 +1,47 @@
+<div class="rec-map mb-5" >
+  <div class=""id='map'></div>
+</div>  
+
+<style>
+#map {
+  height: 400px;
+  width: 100%;
+}
+</style>
+
+<script>
+  let map
+
+    function initMap(){
+      geocoder = new google.maps.Geocoder()
+
+      map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 35.68123620000001, lng:139.7671248},
+          zoom: 6,
+      });
+
+      <% @records.each do |record| %>
+      <% if record.address? %>
+          (function(){
+          var contentString = "住所：<%= record.address %>"; 
+
+          var marker = new google.maps.Marker({
+              position:{lat: <%= record.latitude %>, lng: <%= record.longitude %>},
+              map: map,
+              title: contentString
+          });
+          
+          var infoWindow = new google.maps.InfoWindow({
+		      content: `<a href='<%= public_record_path(record) %>'><%= record.title %></a>`
+      	  });
+      	  
+          google.maps.event.addListener(marker, 'click', function() { //マーカークリック時の動作
+		      infoWindow.open(map, marker); //情報ウィンドウを開く
+ 	      });
+          
+          })();
+      <% end %>
+      <% end %>
+      }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_MAP_API']%>&callback=initMap" async defer></script>
