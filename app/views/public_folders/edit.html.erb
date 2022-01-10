@@ -1,6 +1,31 @@
 <h1>Editing Public Folder</h1>
 
-<%= render 'form', public_folder: @public_folder %>
+<%= form_with(model: @public_folder, local: true) do |form| %>
+  
+<div class="record-form text-center">
+
+  <div class="field">
+    <%= form.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= form.hidden_field :image %>
+  </div>
+  
+  <div class="field">
+    <%= form.hidden_field :public_id %>
+  </div>
+
+  <div class="d-inline-block">
+    <%= form.submit "完了", :class=>"record-submit" %>
+  </div>
+<% end %>
+
+</div>
+
+
+  
+
 
 <div class="text-center d-inline-box">
 <%= link_to '削除', public_folder_path, method: :delete, data: { confirm: '削除しますか?' }, class: "r-btn" %>

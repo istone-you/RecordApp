@@ -1,5 +1,57 @@
 <h1>New Public Folder</h1>
 
-<%= render 'form', public_folder: @public_folder %>
+<%= form_with(model: @public_folder, local: true) do |form| %>
+  
+<div class="record-form text-center">
+
+  <div class="field">
+    <%= form.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= form.hidden_field :image %>
+  </div>
+  
+  <div class="field">
+    <%= form.hidden_field :public_id %>
+  </div>
+  
+  
+  <% @records.each do |record|%>
+  <%= form.fields_for :public_records,@public_folder.public_records.build do |form| %>
+  
+    <%= form.hidden_field :done, value: record.done %>
+    <%= form.hidden_field :image, value: record.image %>
+    <%= form.hidden_field :title, value: record.title %>
+    <%= form.hidden_field :coment, value: record.coment %>
+    <%= form.hidden_field :start_time, value: record.start_time %>
+    <%= form.hidden_field :count, value: record.count %>
+    <%= form.hidden_field :goal_count, value: record.goal_count %>
+    <%= form.hidden_field :hours, value: record.hours %>
+    <%= form.hidden_field :minutes, value: record.minutes %>
+    <%= form.hidden_field :money, value: record.money %>
+    <%= form.hidden_field :address, value: record.address %>
+    <%= form.hidden_field :link, value: record.link %>
+    <%= form.hidden_field :youtube, value: record.youtube %>
+    <%= form.hidden_field :twitter, value: record.twitter %>
+    <%= form.hidden_field :public_id, value: record.user.id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+
+  <% end %>
+  <% end %>
+  
+  
+  
+
+  <div class="d-inline-block">
+    <%= form.submit "完了", :class=>"record-submit" %>
+  </div>
+<% end %>
+
+</div>
+
+
+  
+
 
 <%= link_to 'Back', public_folders_path %>

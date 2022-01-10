@@ -1,20 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Public Folders</h1>
-
-<table>
-  <tbody>
-    <div class="cat-show-card">
-    <div class="co folreccard">
-    <% @public_folders.each do |folder| %>
-      <div class ="folder-card mr-1 ml-1 text-center">
-        <% if folder.image? %><%=link_to image_tag(folder.image, class: "folder-img"),public_folder_path(folder.id) %><% else %><%= link_to image_tag("folder.png", class:"folder-img"), public_folder_path(folder.id) %><% end %>   
-      　<div><h5 class="rec-fol mt-2"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)</h5></div>
-      　<div class="fol-info"><p class=""><span class="badge rounded-pill bg-secondary text-white"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span> <% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></p></div>
-      </div>  
-    <% end %>  
-    </div>
-    </div>
-  </tbody>
-</table>
+<div class="cat-show-card">
+<div class="d-inline-box text-center folder-title"><h3 class="r-letter">みんなのフォルダ</h3></div>
+  <a><%= link_to  "みんなの記録", public_records_path, class: "r-btn", style: "position: absolute; top: 4px; right: 10px;" %></a>
+      <div class="co folreccard">
+      <% @public_folders.each do |folder| %>
+        <div class ="folder-card mr-1 ml-1 text-center">
+          <% if folder.image? %><%=link_to image_tag(folder.image, class: "folder-img"),public_folder_path(folder.id) %><% else %><%= link_to image_tag("folder.png", class:"folder-img"), public_folder_path(folder.id) %><% end %>   
+        　<div><h5 class="rec-fol mt-2"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)</h5></div>
+        　</div>  
+      <% end %>  
+      </div>
+  </div>
+</div>
 

@@ -9,18 +9,23 @@ class PublicFoldersController < ApplicationController
 
   # GET /public_folders/1
   def show
-    @records = PublicRecord.all.order(created_at: :desc).page(params[:page]).per(25)
+    @records = @public_folder.public_records.all
+    @record_sum = @records.where(done: 1).sum(:done)
+    @public_folder.update_columns(record_sum: @record_sum)
   end
 
   # GET /public_folders/new
   def new
-    @folder = Folder.find_by(id: params[:folder_id]) 
+    @folder = current_user.folders.find_by(id: params[:folder_id]) 
     @public_folder = current_user.public_folders.new(
       title: @folder.title,
       record_view: @folder.record_view,
       image: @folder.image,
       public_id: @folder.id
       )
+    @public_folder.public_records.build  
+    
+    @records = @folder.records.all
    
   end
 
@@ -62,7 +67,9 @@ class PublicFoldersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def public_folder_params
-      params.require(:public_folder).permit(:title,:image, :user_id,:record_view,:done_view,:record_sort,:public_id)
+      params.require(:public_folder).permit(:title,:image, :user_id,:record_view,:done_view,:record_sort,:public_id,public_records_attributes: [
+        :user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_id
+        ])
     end
     
 end

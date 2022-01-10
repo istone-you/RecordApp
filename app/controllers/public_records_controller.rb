@@ -9,10 +9,12 @@ class PublicRecordsController < ApplicationController
 
   # GET /public_records/1
   def show
+     @user = User.find_by(id: params[:public_id])
   end
 
   # GET /public_records/new
   def new
+    @user = User.find_by(id: params[:public_id])
     @folder = Folder.find_by(id: params[:folder_id]) 
     @record = Record.find_by(id: params[:record_id]) 
     @public_record = current_user.public_records.new(
@@ -28,8 +30,7 @@ class PublicRecordsController < ApplicationController
       youtube: @record.youtube,
       twitter: @record.twitter,
       address: @record.address,
-      done: @record.done,
-      public_id: @folder.id
+      done: @record.done
       )
   end
 
