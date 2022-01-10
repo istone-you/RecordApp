@@ -3,25 +3,18 @@
 <h1>Public Folders</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
-    <% @public_folders.each do |public_folder| %>
-      <tr>
-        <td><%= public_folder.title %></td>
-        <td><%= link_to 'Show', public_folder %></td>
-        <td><%= link_to 'Edit', edit_public_folder_path(public_folder) %></td>
-        <td><%= link_to 'Destroy', public_folder, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+    <div class="cat-show-card">
+    <div class="co folreccard">
+    <% @public_folders.each do |folder| %>
+      <div class ="folder-card mr-1 ml-1 text-center">
+        <% if folder.image? %><%=link_to image_tag(folder.image, class: "folder-img"),public_folder_path(folder.id) %><% else %><%= link_to image_tag("folder.png", class:"folder-img"), public_folder_path(folder.id) %><% end %>   
+      　<div><h5 class="rec-fol mt-2"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)</h5></div>
+      　<div class="fol-info"><p class=""><span class="badge rounded-pill bg-secondary text-white"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span> <% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></p></div>
+      </div>  
+    <% end %>  
+    </div>
+    </div>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Public Folder', new_public_folder_path %>

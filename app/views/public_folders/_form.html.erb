@@ -1,18 +1,25 @@
 <%= form_with(model: @public_folder, local: true) do |form| %>
+  
+<div class="record-form text-center">
 
   <div class="field">
-    <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
   
   <div class="field">
     <%= form.hidden_field :image %>
   </div>
+  
+  <div class="field">
+    <%= form.hidden_field :public_id %>
+  </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="d-inline-block">
+    <%= form.submit "完了", :class=>"record-submit" %>
   </div>
 <% end %>
+
+</div>
 
 
   

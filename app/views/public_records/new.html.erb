@@ -75,6 +75,10 @@
     <%= form.label :twitter, "Twitter", class: "r-letter" %>
     <%= form.text_area :twitter %>
   </div>
+  
+  <div class="field">
+    <%= form.hidden_field :public_id %>
+  </div>
 
   <div class="d-inline-block">
     <%= form.submit "公開する", :class=>"record-submit" %>

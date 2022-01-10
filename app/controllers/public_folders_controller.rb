@@ -18,7 +18,8 @@ class PublicFoldersController < ApplicationController
     @public_folder = current_user.public_folders.new(
       title: @folder.title,
       record_view: @folder.record_view,
-      image: @folder.image
+      image: @folder.image,
+      public_id: @folder.id
       )
    
   end
@@ -61,7 +62,7 @@ class PublicFoldersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def public_folder_params
-      params.require(:public_folder).permit(:title,:image, :user_id,:record_view,:done_view,:record_sort)
+      params.require(:public_folder).permit(:title,:image, :user_id,:record_view,:done_view,:record_sort,:public_id)
     end
     
 end
