@@ -443,7 +443,7 @@ header {
 
 .manage-tag {
   position: absolute;
-  top: 90px;
+  top: 95px;
   right: 10px;
 }
 
@@ -456,7 +456,7 @@ header {
 @media screen and (min-width:480px) {
 .manage-tag {
   position: absolute;
-  top: 100px;
+  top: 105px;
   right: 30px;
 }
 .public-btn {
@@ -782,4 +782,13 @@ header {
 
 .memo-img {
   height: 150px;
+}
+
+
+
+@media screen and (min-width:480px) {
+.cat-index {
+  width: 70%; 
+  margin: auto;
+}
 }
