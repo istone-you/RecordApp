@@ -7,8 +7,10 @@
   <%= link_to image_tag("back.png"),public_records_path, class: "d-inline-block  mb-3" %>
 </div>
 
+<div class="text-center mt-5"><p class="r-letter"><%= @public_record.user.email %></p></div>
+
 <div class="text-center rec-show-card">
-  
+
   <% if @public_record.title? %>
     <h3 class="folder-title r-letter mb-3">
       <%= @public_record.title %>
