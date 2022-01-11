@@ -2,7 +2,7 @@
       <% @records.each do |record| %>
         <% if record.done == 1 %>
          <% if record.youtube? %>
-          <div class ="link-card text-center">
+          <div class ="text-center">
             <p class="r-letter"><%= record.title.truncate(37) %></p><br> 
         　  <iframe class="youtube_card" src="https://www.youtube.com/embed/<%= record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         　</div>  

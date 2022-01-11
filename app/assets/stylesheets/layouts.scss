@@ -418,9 +418,11 @@ header {
 }
 
 .folder-card {
-  width: 198px;
+  width: 220px;
   height: 171px;
   margin-bottom: 20px;
+  border: 2px solid #333333;
+  box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
 }
 
 .edit-btn {
@@ -791,4 +793,27 @@ header {
   width: 70%; 
   margin: auto;
 }
+}
+
+.rec-calendar {
+  width: 70%; 
+  margin: auto;
+  font-weight: bold;
+  border: 2px solid #333333;
+  box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
+}
+
+.rec-graph {
+  width: 90%; 
+  margin: auto; 
+  padding: 10px;
+  font-weight: bold;
+  border: 2px solid #333333;
+  box-shadow: 5px 5px 0px 0px rgba(51, 51, 51, 1);
+}
+
+.link-card {
+  width: 220px;
+  height: 171px;
+  margin-bottom: 20px;
 }

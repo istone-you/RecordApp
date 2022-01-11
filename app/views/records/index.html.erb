@@ -8,14 +8,14 @@
         </div>
         <div class="d-inline-block mr-1">
           <%= form.select :done_view, [[' Done', 0],['Want to', 1]], {}, {class: 'sel r-btn'}%>
-        </div> 
+        </div>
         <div class="d-inline-block mr-1">
           <%= form.select :record_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9],['none', 11]], {}, {class: 'sel r-btn'} %>
-        </div> 
+        </div>
         <br>
         <div class="d-inline-block">
           <%= form.submit "◯", :class=>"view-btn"%>
-        </div>  
+        </div>
       <% end %> 
     </div>
 </div>
@@ -68,4 +68,6 @@
 
 </div>
 
+<% unless @folder.record_view == 6 %>
 <div class="text-center pb-5"><%= link_to "公開する", new_public_folder_path(folder_id: @folder.id),class: "r-btn"  %></div>
+<% end %>

@@ -11,14 +11,24 @@
     <h3 class="folder-title rec-cat">ALL</h3>
   </div>
   <div class="co folreccard">
-    <div class ="folder-card mr-1 ml-1 text-center"><%= link_to image_tag("folder.png", class:"folder-img"), users_all_records_path %>
-      <h5 class="mt-2 rec-fol">ALL</h5>
-    </div>  
+    <div class ="folder-card text-center mr-1 ml-1">
+      <div><%= link_to image_tag("folder.png", class:"folder-img"), users_all_records_path %></div>
+      <div class="mt-3">
+        <h5 class="rec-fol">ALL</h5>
+      </div>
+    </div>
     <% @folders.each do |folder| %>
-      <div class ="folder-card mr-1 ml-1 text-center">
-        <% if folder.image? %><%=link_to image_tag(folder.image.url, class: "folder-img"),folder_records_path(folder.id) %><% else %><%= link_to image_tag("folder.png", class:"folder-img"), folder_records_path(folder.id) %><% end %>   
-      　<div><h5 class="rec-fol mt-2"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)</h5></div>
-      　<div class="fol-info"><p class=""><span class="badge rounded-pill bg-secondary text-white"><% unless folder.count_sum == 0 %><%= folder.count_sum %><% end %></span> <% unless folder.hour_sum == 0 %><%= folder.hour_sum %>時間<% end %><% unless folder.minute_sum == 0 %><%= folder.minute_sum %>分<% end %>　<% unless folder.money_sum == 0 %>¥<%= folder.money_sum %><% end %></p></div>
+      <div class ="folder-card mr-2 ml-2 text-center">
+        <div>
+          <% if folder.image? %>
+            <%=link_to image_tag(folder.image.url, class: "folder-img"),folder_records_path(folder.id) %>
+          <% else %>
+            <%= link_to image_tag("folder.png", class:"folder-img"), folder_records_path(folder.id) %>
+          <% end %>
+        </div>
+        <div class="mt-3">
+          <h5 class="rec-fol"><%= folder.title.truncate(15)%>(<%= folder.record_sum %>)</h5>
+        </div>
       </div>  
     <% end %>  
   </div>
