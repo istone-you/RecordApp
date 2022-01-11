@@ -57,7 +57,13 @@
       <% end %>
     <% end %>
   </div>
- <% elsif current_user.all_records_view == 4 %>
+  <% elsif current_user.all_records_view == 1 %>
+    <%=render "public_folders/all_info" %>
+  <% elsif current_user.all_records_view == 2 %>
+  <%= render "public_folders/only_img" %>
+  <% elsif current_user.all_records_view == 3 %>
+    <%= render "records/link" %>
+  <% elsif current_user.all_records_view == 4 %>
     <%= render "records/youtube" %>
   <% elsif current_user.all_records_view == 5 %>
     <%= render "records/twitter" %>
@@ -65,6 +71,8 @@
     <%= render "records/calendar" %>
   <% elsif current_user.all_records_view == 7 %>
     <%= render "public_folders/c_graph" %>
+  <% elsif current_user.all_records_view == 8 %>
+    <%= render "records/coment" %>
   <% elsif current_user.all_records_view == 9 %>
     <%= render "public_folders/map" %>
   <% elsif current_user.all_records_view == 10 %>
