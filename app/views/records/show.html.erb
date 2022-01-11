@@ -78,7 +78,6 @@
     </div><br>
   <% end %>
   
-  
   <% if @record.youtube? %>
     <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
       <iframe class="rec-youtube" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
