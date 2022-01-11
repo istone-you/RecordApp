@@ -5,20 +5,13 @@
             <%= link_to image_tag("back.png"),category_path(@category), class: "d-inline-block  mb-3" %>
         </div>
         <div class="text-center select-div">  
-          <%= form_with(model: @category,local: true) do |form| %>
-            |
-            <div class="d-inline-block">
-              <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel'}%>
+          <%= form_with(model: @category,remote: true,class: 'form1') do |form| %>
+            <div class="d-inline-block mr-1">
+              <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel select r-btn'}%>
             </div>
-            |
             <div class="d-inline-block">
-            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel'}%>
-            </div>
-            |
-            <br>
-            <div class="d-inline-block">
-              <%= form.submit "◯", :class=>"view-btn"%>
-            </div>  
+              <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel select r-btn'}%>
+            </div> 
           <% end %>
         </div>  
     </div>
