@@ -20,7 +20,7 @@ class PublicRecordsController < ApplicationController
     @public_record = current_user.public_records.new(
       title: @record.title,
       coment: @record.coment,
-      image: @record.image.file,
+      image: @record.image.url,
       start_time: @record.start_time,
       count: @record.count,
       hours: @record.hours,
