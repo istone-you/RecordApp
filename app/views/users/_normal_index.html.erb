@@ -17,7 +17,7 @@
             </div>
             <div class="text-center">
               <h5 class=""><%= record.title.truncate(16) %></h5>
-            　<h6 style="margin-top: -20px;"><span class="badge rounded-pill bg-secondary text-white"><% if record.count? %><%= record.count %><% end %></span><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
+              <h6><span class="badge rounded-pill bg-secondary text-white"><% if record.count? %><%= record.count %><% end %></span><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
             </div>
           </div> 
       <% end %>

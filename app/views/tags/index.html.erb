@@ -11,11 +11,11 @@
     
     <div class="co folreccard">  
       <% @tags.each do |tag| %>
-          <div class ="tag-card mr-4 ml-4 mb-4"> 
-            <% if tag.image? %><%=link_to image_tag(tag.image.url, class: "tag-img"),tag %><% else %> <%=link_to tag do %><img class="tag-img" src="assets/folder.png"><% end %><% end %>   
-        　   <h6 class=" text-center mt-2"><%= tag.name.truncate(14) %></h6>    
-        　</div>  
-         <% end %>  
+        <div class ="tag-card mr-4 ml-4 mb-4"> 
+          <% if tag.image? %><%=link_to image_tag(tag.image.url, class: "tag-img"),tag %><% else %> <%=link_to tag do %><img class="tag-img" src="assets/folder.png"><% end %><% end %>   
+          <h6 class=" text-center mt-2"><%= tag.name.truncate(14) %></h6>
+        </div>
+        <% end %>  
     </div>
     
   </tbody>

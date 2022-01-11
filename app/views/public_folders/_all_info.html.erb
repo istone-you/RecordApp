@@ -10,14 +10,14 @@
                     <% end %>
                 </div>
                 <div class="text-center mb-4">
-                      <h5 class=""><%= record.title.truncate(25) %></h5>
-                      <% if record.coment? %><h6><%= sanitize(record.coment.truncate(160)) %></h6><% end %>
-                      <h4><span class="badge rounded-pill bg-secondary text-white"><%= record.count %></span></h4>
-                      <h6 class=""><% if record.money? %><h6 >¥<%= record.money %></h6><% end %></h6>
-                    　<h6 class=""><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %></h6>
-                    　<p><% if record.link? %><a href="<%= record.link %>" class=""><img src="/assets/link.png"width="20"></a><% end %> 
-                    　<% if record.youtube? %><a href="<%= record.youtube %>" class=""><img src="/assets/youtube.png"width="20"></a><% end %> 
-                    　<% if record.twitter? %> <a href="<%= record.twitter %>" class=""><img src="/assets/twitter.png"width="20"></a><% end %></p>
+                  <h5 class=""><%= record.title.truncate(25) %></h5>
+                  <% if record.coment? %><h6><%= sanitize(record.coment.truncate(160)) %></h6><% end %>
+                  <h4><span class="badge rounded-pill bg-secondary text-white"><%= record.count %></span></h4>
+                  <h6 class=""><% if record.money? %><h6 >¥<%= record.money %></h6><% end %></h6>
+                  <h6 class=""><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %></h6>
+                  <p><% if record.link? %><a href="<%= record.link %>" class=""><img src="/assets/link.png"width="20"></a><% end %>
+                  <% if record.youtube? %><a href="<%= record.youtube %>" class=""><img src="/assets/youtube.png"width="20"></a><% end %>
+                  <% if record.twitter? %> <a href="<%= record.twitter %>" class=""><img src="/assets/twitter.png"width="20"></a><% end %></p>
                 </div>
           </div>
       <% end %>
