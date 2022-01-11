@@ -1,0 +1,3 @@
+<div class="mb-4 mb-4 rec-graph" >
+    <%= pie_chart @public_folder.public_records.group(:title).sum(:money), id: "bar-chart", width: "100%", height: "", prefix: "¥" %>
+</div>

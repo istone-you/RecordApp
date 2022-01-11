@@ -3,12 +3,10 @@
     <% if record.done == 1 %>
     <% if record.link? %>
          <div class ="link-card text-center mt-2 mr-1 ml-1">
-        　  <div><% if record.image? %><%=link_to image_tag(record.image.url, class: "folder-img"),record.link %><% else %><%= link_to image_tag("link-img.png", class:"folder-img"), record.link %><% end %></div>
+        　  <div><% if record.image? %><%=link_to image_tag(record.image, class: "folder-img"),record.link %><% else %><%= link_to image_tag("link-img.png", class:"folder-img"), record.link %><% end %></div>
             <h6 class="r-letter text-center mt-2"><%= record.title.truncate(30)%></h6>
          </div>　  
     <% end %>
     <% end %> 
   <% end %>
 </div>
-    
-   

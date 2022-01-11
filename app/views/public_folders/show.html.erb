@@ -62,21 +62,21 @@
   <% elsif current_user.all_records_view == 2 %>
   <%= render "public_folders/only_img" %>
   <% elsif current_user.all_records_view == 3 %>
-    <%= render "records/link" %>
+    <%= render "public_folders/link" %>
   <% elsif current_user.all_records_view == 4 %>
     <%= render "records/youtube" %>
   <% elsif current_user.all_records_view == 5 %>
     <%= render "records/twitter" %>
   <% elsif current_user.all_records_view == 6 %>
-    <%= render "records/calendar" %>
+    <%= render "public_folders/calendar" %>
   <% elsif current_user.all_records_view == 7 %>
     <%= render "public_folders/c_graph" %>
   <% elsif current_user.all_records_view == 8 %>
-    <%= render "records/coment" %>
+    <%= render "public_folders/coment" %>
   <% elsif current_user.all_records_view == 9 %>
     <%= render "public_folders/map" %>
   <% elsif current_user.all_records_view == 10 %>
-    <%= render "records/p_graph" %>
+    <%= render "public_folders/p_graph" %>
   <% end %>
   
   

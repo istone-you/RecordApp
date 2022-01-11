@@ -38,33 +38,23 @@
 <% end %>
 </div>
 <div style="width: 80%; margin: auto;">
-  <h6 class="r-letter"><% unless @folder.count_sum == 0 %><%= @folder.count_sum %><% end %></h6><br>
-  <h6 class="r-letter"><% unless @folder.money_sum == 0 %>¥<%= @record_money_sum %><% end %></h6><br>
-  <h6 class="r-letter"><% unless @folder.hour_sum == 0 %><%= @record_hours_sum %>時間<% end %><% unless @folder.minute_sum == 0 %><%= @record_minutes_sum %>分<% end %></h6>
+  <% unless @folder.count_sum == 0 %><h6 class="r-letter"><%= @folder.count_sum %></h6><% end %><br>
+  <% unless @folder.money_sum == 0 %><h6 class="r-letter">¥<%= @record_money_sum %></h6><% end %><br>
+  <% unless  @folder.hour_sum == 0||@folder.minute_sum == 0 %><h6 class="r-letter"><% unless @folder.hour_sum == 0 %><%= @record_hours_sum %>時間<% end %><% unless @folder.minute_sum == 0 %><%= @record_minutes_sum %>分<% end %></h6><% end %>
 </div>
 <div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    
-    <% if @folder.done_view == 0 %>
-     <%= render "records/done_index" %>
-    <% elsif @folder.done_view == 1 %>
-      <%= render "records/want_index" %>
-    <% end %> 
-    
-    <% if @folder.record_view == 6 or @folder.record_view == 7 or @folder.record_view == 9 %>
-    <% else %>
-      <%= paginate @records %>
-    <% end %>  
-  </tbody>
-</table>
+  <% if @folder.done_view == 0 %>
+   <%= render "records/done_index" %>
+  <% elsif @folder.done_view == 1 %>
+    <%= render "records/want_index" %>
+  <% end %>
+  
+  <% if @folder.record_view == 6 or @folder.record_view == 7 or @folder.record_view == 9 %>
+  <% else %>
+    <%= paginate @records %>
+  <% end %>
 
 </div>
 
