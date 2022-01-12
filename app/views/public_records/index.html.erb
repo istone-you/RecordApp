@@ -9,7 +9,7 @@
              <% else %><p class="r-letter text-center" style="position: absolute; top: -35px; left: -35px; width: 198px; "><%= record.user.email.truncate(16) %>の記録</p><% end %>
             <div class="mt-2">  
             <% if record.image? %>
-              <%= link_to image_tag(record.image, class: "record-img"), public_record_path(record.id) %>
+              <%= link_to image_tag("folder.png", class: "record-img"), public_record_path(record.id) %>
             <% else %>
               <% if record.youtube? %>
                 <%=  link_to public_record_path(record.id) do%>
