@@ -17,18 +17,20 @@
     <%= form.text_field :title %>
   </div>
   
-  <div class="field">
-    <%= form.file_field :image %>
+  <div class="mb-3">
+    <%= form.label :image, class: "r-file" do %>
+      <h6>画像を選択</h6>
+      <%= form.file_field :image %>
+    <% end %>  
   </div>
   
-  <div class="check_box">
-    <span>Category</span>
+  <div class="co">
     <div class="form-inline">
     <%= form.collection_check_boxes(:category_ids, current_user.categories.all, :id, :name) do |category| %>
      <div class="mr-3">
-       <%= category.label do %>
+       <%= category.label class: "rec-cat" do %>
          <%= category.check_box %>
-         <%= category.text %>
+         <%= category.text  %>
        <% end %>
      </div>
    <% end %>

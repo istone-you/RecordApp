@@ -1,4 +1,4 @@
-<h1>Editing Public Folder</h1>
+<h3 class="text-center folder-title"><span class="rec-fol mr-2"><%= @public_folder.title %></span>を編集</h3>
 
 <%= form_with(model: @public_folder, local: true) do |form| %>
   
@@ -9,13 +9,12 @@
   </div>
   
   <div class="field">
-    <%= form.hidden_field :image %>
+    <%= form.label :image, class: "r-file" do %>
+      <h6>画像を選択</h6>
+      <%= form.file_field :image %>
+    <% end %>  
   </div>
   
-  <div class="field">
-    <%= form.hidden_field :public_id %>
-  </div>
-
   <div class="d-inline-block">
     <%= form.submit "完了", :class=>"record-submit" %>
   </div>
@@ -28,6 +27,6 @@
 
 
 <div class="text-center d-inline-box pb-3">
-<%= link_to '削除', public_folder_path, method: :delete, data: { confirm: '削除しますか?' }, class: "r-btn" %>
+<%= link_to '削除', public_folder_path, method: :delete, data: { confirm: '削除しますか?' }, class: "d-btn" %>
 </div>
 

@@ -19,7 +19,10 @@
     </div> 
     
     <div class="d-inline-block">
+      <%= form.label :image, class: "r-file" do %>
+      <h6>画像を選択</h6>
       <%= form.file_field :image %>
+    <% end %> 
     </div>
     
   </div>  
@@ -76,8 +79,8 @@
     <%= form.text_area :twitter %>
   </div>
   
-  <div class="check_box">
-    <span class="r-letter">Tag</span>
+  <span class="r-letter">Tag</span>
+  <div class="co">
     <div class="form-inline">
       <%= form.collection_check_boxes(:tag_ids, current_user.tags.all, :id, :name) do |tag| %>
        <div>
