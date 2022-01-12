@@ -2,7 +2,7 @@
   <div class="co folreccard">
     <% @records.each do |record| %>
       <% if record.done == 1 %>
-          <div class="r-letter ml-2 mr-2 mb-2 mt-2" style="width: 198px; height: 300px; ">
+          <div class="r-letter ml-2 mr-2 mb-2 mt-2 rec-size">
             <div class="mt-2">  
             <% if record.image? %>
               <%= link_to image_tag(record.image.url, class: "record-img"),folder_record_path(record.folder,record)  %>

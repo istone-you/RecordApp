@@ -4,7 +4,7 @@
           <div class="r-letter mb-3 mr-4 ml-4 mb-3" style="width: 100%;">
                 <div class="record-img mt-3">
                     <% if record.image? %>
-                      <%= link_to image_tag(record.image, class: "coment-img"),public_record_path(record.id) %>
+                      <%= link_to image_tag(record.image.url, class: "coment-img"),public_record_path(record.id) %>
                     <% else %>
                       <%=  link_to image_tag("no_image.png", class: "coment-img"),public_record_path(record.id) %>
                     <% end %>

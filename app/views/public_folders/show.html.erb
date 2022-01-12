@@ -24,6 +24,16 @@
   <h3 class="folder-title rec-fol"><%= @public_folder.title %></h3>
 </div>
 
+<% if @public_folder.comment? %>
+<div class="text-center">
+  <div class="text-center r-letter mb-3 pt-5 pb-5" style="width: 80%; margin: auto;">
+    <h6 style="width: 80%; margin: auto; font-weight: bold;">
+      <%= sanitize(@public_folder.comment) %>
+    </h6>
+  </div>
+</div>
+<% end %>
+
 <% if current_user.all_records_view == 0 %>
   <div class="co folreccard">
     <% @records.each do |record| %>

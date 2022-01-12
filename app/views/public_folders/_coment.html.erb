@@ -4,7 +4,7 @@
             <% if record.done == 1 %> 
                 <%= link_to public_record_path(record.id), class: "card-letter" do %>
                   <% if record.image? %>
-                      <%= link_to image_tag(record.image, class: "card-img-top record--coment-img"),public_record_path(record.id)  %>
+                      <%= link_to image_tag(record.image.url, class: "card-img-top record--coment-img"),public_record_path(record.id)  %>
                   <% end %>
                   <div class=" text-center mt-3">  
                     <h5 class="card-title card-letter"><%= record.title.truncate(38) %></h5>
