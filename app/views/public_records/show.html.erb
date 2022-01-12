@@ -23,8 +23,7 @@
   
   <p> 
     <% if @public_record.image? %>
-      <%= image_tag @public_record.image.url, class: "record-img-show" %>
-      <%= @public_record %>
+      <%= image_tag @public_record.image, class: "record-img-show" %>
     <% end %>  
   </p>
   

@@ -20,6 +20,7 @@ class PublicRecordsController < ApplicationController
     @public_record = current_user.public_records.new(
       title: @record.title,
       coment: @record.coment,
+      image: @record.image,
       start_time: @record.start_time,
       count: @record.count,
       hours: @record.hours,
@@ -31,7 +32,6 @@ class PublicRecordsController < ApplicationController
       address: @record.address,
       done: @record.done
       )
-    @public_record.image = @record.image.file  
   end
 
   # GET /public_records/1/edit
