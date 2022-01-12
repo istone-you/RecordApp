@@ -31,7 +31,7 @@
           <div class="r-letter ml-2 mr-2 mb-2 mt-5" style="width: 198px; height: 300px; position: relative;">
             <div class="mt-2">  
             <% if record.image? %>
-              <%= link_to image_tag(record.image, class: "record-img"), public_record_path(record.id)  %>
+              <%= link_to image_tag(record.image.url, class: "record-img"), public_record_path(record.id)  %>
             <% else %>
               <% if record.youtube? %>
                 <%=  link_to public_record_path(record.id) do%>

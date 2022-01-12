@@ -20,7 +20,7 @@ class PublicFoldersController < ApplicationController
     @public_folder = current_user.public_folders.new(
       title: @folder.title,
       record_view: @folder.record_view,
-      image: @folder.image.url,
+      image: @folder.image.file,
       public_id: @folder.id
       )
     @public_folder.public_records.build  

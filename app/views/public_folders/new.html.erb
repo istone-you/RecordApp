@@ -21,7 +21,7 @@
   <%= form.fields_for :public_records,@public_folder.public_records.build do |form| %>
   
     <%= form.hidden_field :done, value: record.done %>
-    <%= form.hidden_field :image, value: record.image %>
+    <%= form.hidden_field :image, value: record.image.file %>
     <%= form.hidden_field :title, value: record.title %>
     <%= form.hidden_field :coment, value: record.coment %>
     <%= form.hidden_field :start_time, value: record.start_time %>

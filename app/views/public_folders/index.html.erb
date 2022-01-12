@@ -6,7 +6,7 @@
       <div class ="folder-card mr-2 ml-2 text-center">
         <div>
           <% if folder.image? %>
-            <%=link_to image_tag(folder.image, class: "folder-img"),public_folder_path(folder.id) %>
+            <%=link_to image_tag(folder.image.url, class: "folder-img"),public_folder_path(folder.id) %>
           <% else %>
             <%= link_to image_tag("folder.png", class:"folder-img"), public_folder_path(folder.id) %>
           <% end %>
