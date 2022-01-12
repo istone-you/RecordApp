@@ -9,11 +9,7 @@
   </div>
   
   <div class="field">
-    <%= form.hidden_field :image %>
-  </div>
-  
-  <div class="field">
-    <%= form.hidden_field :public_id %>
+    <%= form.hidden_field :folder_id %>
   </div>
   
   
@@ -21,7 +17,6 @@
   <%= form.fields_for :public_records,@public_folder.public_records.build do |form| %>
   
     <%= form.hidden_field :done, value: record.done %>
-    <%= form.hidden_field :image, value: record.image %>
     <%= form.hidden_field :title, value: record.title %>
     <%= form.hidden_field :coment, value: record.coment %>
     <%= form.hidden_field :start_time, value: record.start_time %>
@@ -35,6 +30,7 @@
     <%= form.hidden_field :youtube, value: record.youtube %>
     <%= form.hidden_field :twitter, value: record.twitter %>
     <%= form.hidden_field :public_id, value: record.user.id %>
+    <%= form.hidden_field :record_id, value: record.id %>
     <%= form.hidden_field :user_id, value: current_user.id %>
 
   <% end %>

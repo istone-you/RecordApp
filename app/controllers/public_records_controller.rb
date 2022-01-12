@@ -20,7 +20,6 @@ class PublicRecordsController < ApplicationController
     @public_record = current_user.public_records.new(
       title: @record.title,
       coment: @record.coment,
-      image: @record.image,
       start_time: @record.start_time,
       count: @record.count,
       hours: @record.hours,
@@ -30,7 +29,8 @@ class PublicRecordsController < ApplicationController
       youtube: @record.youtube,
       twitter: @record.twitter,
       address: @record.address,
-      done: @record.done
+      done: @record.done,
+      record_id: @record.id
       )
   end
 
@@ -41,9 +41,10 @@ class PublicRecordsController < ApplicationController
   # POST /public_records
   def create
     @public_record = current_user.public_records.new(public_record_params)
+    @public_record.image = @public_record.record.image.file
 
     if @public_record.save
-      redirect_to public_records_path, notice: 'Public record was successfully created.'
+      redirect_to public_record_path(@public_record), notice: 'Public record was successfully created.'
     else
       render :new
     end
@@ -72,6 +73,6 @@ class PublicRecordsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def public_record_params
-      params.require(:public_record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_id)
+      params.require(:public_record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_id, :record_id)
     end
 end

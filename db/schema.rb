@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_10_110901) do
+ActiveRecord::Schema.define(version: 2022_01_12_054604) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -32,15 +32,6 @@ ActiveRecord::Schema.define(version: 2022_01_10_110901) do
     t.index ["folder_id"], name: "index_folder_categories_on_folder_id"
   end
 
-  create_table "folder_cotegories", force: :cascade do |t|
-    t.integer "folder_id"
-    t.integer "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_folder_cotegories_on_category_id"
-    t.index ["folder_id"], name: "index_folder_cotegories_on_folder_id"
-  end
-
   create_table "folders", force: :cascade do |t|
     t.string "title"
     t.integer "user_id"
@@ -57,6 +48,8 @@ ActiveRecord::Schema.define(version: 2022_01_10_110901) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "public_show", default: 0
+    t.integer "public_folder_id"
+    t.index ["public_folder_id"], name: "index_folders_on_public_folder_id"
     t.index ["user_id"], name: "index_folders_on_user_id"
   end
 
@@ -69,10 +62,10 @@ ActiveRecord::Schema.define(version: 2022_01_10_110901) do
     t.integer "hours"
     t.integer "minutes"
     t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "record_id"
     t.integer "folder_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["folder_id"], name: "index_memos_on_folder_id"
     t.index ["record_id"], name: "index_memos_on_record_id"
     t.index ["user_id"], name: "index_memos_on_user_id"
@@ -94,6 +87,8 @@ ActiveRecord::Schema.define(version: 2022_01_10_110901) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "public_id"
+    t.integer "folder_id"
+    t.index ["folder_id"], name: "index_public_folders_on_folder_id"
     t.index ["user_id"], name: "index_public_folders_on_user_id"
   end
 
@@ -120,8 +115,10 @@ ActiveRecord::Schema.define(version: 2022_01_10_110901) do
     t.datetime "updated_at", null: false
     t.integer "public_id"
     t.integer "public_folder_id"
+    t.integer "record_id"
     t.index ["folder_id"], name: "index_public_records_on_folder_id"
     t.index ["public_folder_id"], name: "index_public_records_on_public_folder_id"
+    t.index ["record_id"], name: "index_public_records_on_record_id"
     t.index ["user_id"], name: "index_public_records_on_user_id"
   end
 
@@ -150,12 +147,14 @@ ActiveRecord::Schema.define(version: 2022_01_10_110901) do
     t.string "youtube"
     t.string "twitter"
     t.datetime "start_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "address"
     t.float "latitude"
     t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "public_record_id"
     t.index ["folder_id"], name: "index_records_on_folder_id"
+    t.index ["public_record_id"], name: "index_records_on_public_record_id"
     t.index ["user_id"], name: "index_records_on_user_id"
   end
 

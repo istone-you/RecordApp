@@ -20,8 +20,7 @@ class PublicFoldersController < ApplicationController
     @public_folder = current_user.public_folders.new(
       title: @folder.title,
       record_view: @folder.record_view,
-      image: @folder.image.url,
-      public_id: @folder.id
+      folder_id: @folder.id
       )
     @public_folder.public_records.build  
     
@@ -36,9 +35,14 @@ class PublicFoldersController < ApplicationController
   # POST /public_folders
   def create
     @public_folder = current_user.public_folders.new(public_folder_params)
+    @public_folder.image = @public_folder.folder.image.file 
 
     if @public_folder.save
       redirect_to @public_folder, notice: 'Public folder was successfully created.'
+      @public_folder.public_records.all.each do |r|
+          r.image = r.record.image.file
+          r.save
+      end  
     else
       render :new
     end
@@ -67,8 +71,8 @@ class PublicFoldersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def public_folder_params
-      params.require(:public_folder).permit(:title,:image, :user_id,:record_view,:done_view,:record_sort,:public_id,public_records_attributes: [
-        :user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_id
+      params.require(:public_folder).permit(:title,:image, :user_id,:record_view,:done_view,:record_sort,:public_id,:folder_id,public_records_attributes: [
+        :user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_id, :record_id
         ])
     end
     
