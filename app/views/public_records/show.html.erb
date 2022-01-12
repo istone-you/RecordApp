@@ -11,9 +11,11 @@
 
 <div class="text-center rec-show-card">
   
-  <% if @public_record.user.id == current_user.id %>
-  <a><%= link_to  "編集", edit_public_record_path, class: "r-btn", style: "position: absolute; top: 4px; right: 10px;" %></a>
-  <% end %>
+  <% unless current_user == nil %>
+    <% if @public_record.user.id == current_user.id %>
+    <a><%= link_to  "編集", edit_public_record_path, class: "r-btn", style: "position: absolute; top: 4px; right: 10px;" %></a>
+    <% end %>
+  <% end %>  
   
   <% if @public_record.title? %>
     <h3 class="folder-title r-letter mb-3">

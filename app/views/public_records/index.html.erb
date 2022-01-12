@@ -5,8 +5,10 @@
     <% @records.each do |record| %>
       <% if record.done == 1 %>
           <div class="r-letter ml-2 mr-2 mb-2 mt-5 rec-size" style="position: relative;">
-            <% if record.user.id == current_user.id %><p class="r-letter text-center" style="position: absolute; top: -35px; left: -35px; width: 198px; background-color: #989898;">あなたの記録</p>
-            <% else %><p class="r-letter text-center" style="position: absolute; top: -35px; left: -35px; width: 198px; "><%= record.user.email.truncate(16) %>の記録</p><% end %>
+            <% unless current_user == nil %>
+              <% if record.user.id == current_user.id %><p class="r-letter text-center" style="position: absolute; top: -35px; left: -35px; width: 198px; background-color: #989898;">あなたの記録</p>
+              <% else %><p class="r-letter text-center" style="position: absolute; top: -35px; left: -35px; width: 198px; "><%= record.user.email.truncate(16) %>の記録</p><% end %>
+            <% end %>
             <div class="mt-2">  
             <% if record.image? %>
               <%= link_to image_tag(record.image.url, class: "record-img"), public_record_path(record.id) %>

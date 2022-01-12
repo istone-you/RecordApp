@@ -2,23 +2,28 @@
         <div class= "back-btn">
             <%= link_to image_tag("back.png"),public_folders_path, class: "d-inline-block  mb-3" %>
         </div>
-        <div class="text-center select-div">  
-          <%= form_with(model: @user,remote: true,class: 'form1') do |form| %>
-            <div class="d-inline-block mr-1">
-              <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel select r-btn'}%>
-            </div>
-            <div class="d-inline-block">
-              <%= form.select :all_records_view, options_for_select([['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], selected: current_user.all_records_view), {}, {class: 'sel select r-btn'}%>
-            </div>  
-          <% end %>
-        </div>  
+        
+        <% unless current_user == nil %>
+          <div class="text-center select-div">  
+            <%= form_with(model: @user,remote: true,class: 'form1') do |form| %>
+              <div class="d-inline-block mr-1">
+                <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel select r-btn'}%>
+              </div>
+              <div class="d-inline-block">
+                <%= form.select :all_records_view, options_for_select([['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], selected: current_user.all_records_view), {}, {class: 'sel select r-btn'}%>
+              </div>  
+            <% end %>
+          </div>  
+        <% end %>
+        
 </div>
 
 <div class="fol-show-card">
-
-<% if @public_folder.user.id == current_user.id %>
-<a><%= link_to  "編集", edit_public_folder_path(@public_folder), class: "r-btn", style: "position: absolute; top: 4px; right: 10px;" %></a>
-<% end %>
+<% unless current_user == nil %>
+  <% if @public_folder.user.id == current_user.id %>
+    <a><%= link_to  "編集", edit_public_folder_path(@public_folder), class: "r-btn", style: "position: absolute; top: 4px; right: 10px;" %></a>
+  <% end %>
+<% end %>  
 
 <div class="text-center mb-3">
   <h3 class="folder-title rec-fol"><%= @public_folder.title %></h3>
@@ -34,32 +39,34 @@
 </div>
 <% end %>
 
-<% if current_user.all_records_view == 0 %>
-  <div class="co folreccard">
-    <% @records.each do |record| %>
-      <% if record.done == 1 %>
-          <div class="r-letter ml-2 mr-2 mb-2 mt-5" style="width: 198px; height: 300px; position: relative;">
-            <div class="mt-2">  
-            <% if record.image? %>
-              <%= link_to image_tag(record.image.url, class: "record-img"), public_record_path(record.id)  %>
-            <% else %>
-              <% if record.youtube? %>
-                <%=  link_to public_record_path(record.id) do%>
-                  <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "record-img">
+<% unless current_user == nil %>
+  <% if current_user.all_records_view == 0 %>
+    <div class="co folreccard">
+      <% @records.each do |record| %>
+        <% if record.done == 1 %>
+            <div class="r-letter ml-2 mr-2 mb-2 mt-5" style="width: 198px; height: 300px; position: relative;">
+              <div class="mt-2">  
+              <% if record.image? %>
+                <%= link_to image_tag(record.image.url, class: "record-img"), public_record_path(record.id)  %>
+              <% else %>
+                <% if record.youtube? %>
+                  <%=  link_to public_record_path(record.id) do%>
+                    <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "record-img">
+                  <% end %>  
+                <% else %>  
+                  <%=  link_to image_tag("no_image.png", class: "record-img"),public_record_path(record.id) %>
                 <% end %>  
-              <% else %>  
-                <%=  link_to image_tag("no_image.png", class: "record-img"),public_record_path(record.id) %>
-              <% end %>  
-            <% end %>
-            </div>
-            <div class="text-center">
-              <h5 class=""><%= record.title.truncate(16) %></h5>
-              <h6 style="margin-top: -20px;"><span class="badge rounded-pill bg-secondary text-white"><% if record.count? %><%= record.count %><% end %></span><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
-            </div>
-          </div> 
+              <% end %>
+              </div>
+              <div class="text-center">
+                <h5 class=""><%= record.title.truncate(16) %></h5>
+                <h6 style="margin-top: -20px;"><span class="badge rounded-pill bg-secondary text-white"><% if record.count? %><%= record.count %><% end %></span><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
+              </div>
+            </div> 
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+    
   <% elsif current_user.all_records_view == 1 %>
     <%=render "public_folders/all_info" %>
   <% elsif current_user.all_records_view == 2 %>
@@ -81,6 +88,36 @@
   <% elsif current_user.all_records_view == 10 %>
     <%= render "public_folders/p_graph" %>
   <% end %>
+  
+<% else %>
+
+  <div class="co folreccard">
+      <% @records.each do |record| %>
+        <% if record.done == 1 %>
+            <div class="r-letter ml-2 mr-2 mb-2 mt-5" style="width: 198px; height: 300px; position: relative;">
+              <div class="mt-2">  
+              <% if record.image? %>
+                <%= link_to image_tag(record.image.url, class: "record-img"), public_record_path(record.id)  %>
+              <% else %>
+                <% if record.youtube? %>
+                  <%=  link_to public_record_path(record.id) do%>
+                    <img src="https://i.ytimg.com/vi/<%= record.youtube.last(11) %>/hqdefault.jpg" class= "record-img">
+                  <% end %>  
+                <% else %>  
+                  <%=  link_to image_tag("no_image.png", class: "record-img"),public_record_path(record.id) %>
+                <% end %>  
+              <% end %>
+              </div>
+              <div class="text-center">
+                <h5 class=""><%= record.title.truncate(16) %></h5>
+                <h6 style="margin-top: -20px;"><span class="badge rounded-pill bg-secondary text-white"><% if record.count? %><%= record.count %><% end %></span><% if record.hours? %><%= record.hours %>時間<% end %><% if record.minutes? %><%= record.minutes %>分<% end %> <% if record.money? %>¥<%= record.money %><% end %></h6>
+              </div>
+            </div> 
+        <% end %>
+      <% end %>
+    </div>
+    
+<% end %>
   
   
 </div>  

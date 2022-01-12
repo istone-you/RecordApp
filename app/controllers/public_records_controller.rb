@@ -1,5 +1,4 @@
 class PublicRecordsController < ApplicationController
-  before_action :authenticate_user!
   before_action :set_public_record, only: [:show, :edit, :update, :destroy]
 
   # GET /public_records
