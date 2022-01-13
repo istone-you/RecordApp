@@ -12,7 +12,7 @@
             </div>
             |
             <div class="d-inline-block">
-            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel'}%>
+            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Comment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel'}%>
             </div>
             |
             <br>
@@ -49,7 +49,7 @@
         <% elsif @tag.all_records_view == 7 %>
           <%= render "records/graph" %>
         <% elsif @tag.all_records_view == 8 %>
-          <%= render "records/coment" %>
+          <%= render "records/comment" %>
         <% end %>
       </div>
       

@@ -61,6 +61,6 @@ class MemosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def memo_params
-      params.require(:memo).permit(:title, :coment, :count, :image, :money, :hours, :minutes).merge(record_id: params[:record_id],folder_id: params[:folder_id],user_id: current_user.id)
+      params.require(:memo).permit(:title, :comment, :count, :image, :money, :hours, :minutes).merge(record_id: params[:record_id],folder_id: params[:folder_id],user_id: current_user.id)
     end
 end

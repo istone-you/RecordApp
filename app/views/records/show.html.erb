@@ -32,10 +32,10 @@
     <% end %>  
   </p>
   
-  <% if @record.coment? %>
+  <% if @record.comment? %>
   <div class="r-letter mb-3 pt-5 pb-5" style="width: 80%; margin: auto;">
     <h4 style="width: 80%; margin: auto;">
-      <%= sanitize(@record.coment) %>
+      <%= sanitize(@record.comment) %>
     </h4>
   </div>
   <% end %>
@@ -118,7 +118,7 @@
       <%= link_to edit_folder_record_memo_path(@folder,@record,memo), class: "memo-card-edit" do%> 
         <div class="r-title mr-2 ml-2 mb-2">
           <p class="memo-card_title"><%= memo.title %></p>
-          <p class="memo-card_subtitle"><%= memo.coment %></p>
+          <p class="memo-card_subtitle"><%= memo.comment %></p>
           <p><%= memo.count %></p>
           <% if memo.image? %><%= image_tag memo.image.url, class: "memo-img" %><% end %>
           <p><%= memo.money %></p>

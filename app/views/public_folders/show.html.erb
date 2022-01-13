@@ -10,7 +10,7 @@
           <%= form.select :records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel select r-btn'}%>
         </div>
         <div class="d-inline-block">
-          <%= form.select :record_view, options_for_select([['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], selected: @public_folder.record_view), {}, {class: 'sel select r-btn'}%>
+          <%= form.select :record_view, options_for_select([['Normal', 0],['All info', 1],['Comment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['C.Graph', 7],['P.Graph', 10],['Map', 9]], selected: @public_folder.record_view), {}, {class: 'sel select r-btn'}%>
         </div>  
       <% end %>
     </div>  
@@ -80,7 +80,7 @@
 <% elsif @public_folder.record_view == 7 %>
   <%= render "public_folders/c_graph" %>
 <% elsif @public_folder.record_view == 8 %>
-  <%= render "public_folders/coment" %>
+  <%= render "public_folders/comment" %>
 <% elsif @public_folder.record_view == 9 %>
   <%= render "public_folders/map" %>
 <% elsif @public_folder.record_view == 10 %>

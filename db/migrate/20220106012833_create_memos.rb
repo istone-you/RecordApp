@@ -2,7 +2,7 @@ class CreateMemos < ActiveRecord::Migration[5.2]
   def change
     create_table :memos do |t|
       t.string :title
-      t.text :coment
+      t.text :comment
       t.integer :count
       t.string :image
       t.integer :money

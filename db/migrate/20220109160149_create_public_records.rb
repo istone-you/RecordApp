@@ -3,7 +3,7 @@ class CreatePublicRecords < ActiveRecord::Migration[5.2]
     create_table :public_records do |t|
       t.string :title
       t.integer :count
-      t.text :coment
+      t.text :comment
       t.string :image
       t.references :folder
       t.references :user

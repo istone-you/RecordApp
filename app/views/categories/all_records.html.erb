@@ -10,7 +10,7 @@
               <%= form.select :all_records_sort, [['Create Desc', 0],['Create Asc', 1],['Update Desc', 2],['Update Asc', 3]], {}, {class: 'sel select r-btn'}%>
             </div>
             <div class="d-inline-block">
-              <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Coment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel select r-btn'}%>
+              <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Comment', 8],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7]], {}, {class: 'sel select r-btn'}%>
             </div> 
           <% end %>
         </div>  
@@ -40,7 +40,7 @@
             <% elsif @category.all_records_view == 7 %>
               <%= render "categories/graph" %>
             <% elsif @category.all_records_view == 8 %>
-              <%= render "categories/coment" %>
+              <%= render "categories/comment" %>
             <% end %>
       </div>
     

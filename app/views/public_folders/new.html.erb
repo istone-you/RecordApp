@@ -11,7 +11,7 @@
   
   <div class="">
     <%= form.label :comment, "コメント", class: "r-letter" %>
-    <%= form.text_area :comment, class: "record-coment" %>
+    <%= form.text_area :comment, class: "record-comment" %>
   </div>
   
   <div class="field">
@@ -28,7 +28,7 @@
   
     <%= form.hidden_field :done, value: record.done %>
     <%= form.hidden_field :title, value: record.title %>
-    <%= form.hidden_field :coment, value: record.coment %>
+    <%= form.hidden_field :comment, value: record.comment %>
     <%= form.hidden_field :start_time, value: record.start_time %>
     <%= form.hidden_field :count, value: record.count %>
     <%= form.hidden_field :goal_count, value: record.goal_count %>

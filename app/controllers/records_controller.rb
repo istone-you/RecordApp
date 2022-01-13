@@ -84,14 +84,14 @@ end
         @record.update_columns(title: @elements.inner_text)
       end 
     
-      if @record.coment== "@@@"
+      if @record.comment== "@@@"
         agent = Mechanize.new
         page = agent.get(@record.link)
         @elements = page.at('title')
         @elements_p = page.search("p")
-        @record.update_columns(coment: @elements_p.inner_text.truncate(600))
-      elsif @record.coment== "###"
-         @record.update_columns(coment: @elements_p.to_s)
+        @record.update_columns(comment: @elements_p.inner_text.truncate(600))
+      elsif @record.comment== "###"
+         @record.update_columns(comment: @elements_p.to_s)
       end
     end
     
@@ -164,7 +164,7 @@ end
       
     # Only allow a trusted parameter "white list" through.
     def record_params
-      params.require(:record).permit(:user_id, :title, :count, :goal_count, :coment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_record_id, tag_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
+      params.require(:record).permit(:user_id, :title, :count, :goal_count, :comment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_record_id, tag_ids: []).merge(folder_id: params[:folder_id],user_id: current_user.id)
     end
     
 end

@@ -10,7 +10,7 @@
             </div>
             |
             <div class="d-inline-block">
-            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Coment', 8]], {}, {class: 'sel'}%>
+            <%= form.select :all_records_view, [['Normal', 0],['All info', 1],['Image', 2],['Link', 3],['Youtube', 4],['Twitter', 5],['Calendar', 6],['Graph', 7],['Comment', 8]], {}, {class: 'sel'}%>
             </div>
             |
             <br>
@@ -23,7 +23,7 @@
       
       <div class="text-center mt-5 pt-3">
           <%= search_form_for @q, url: users_search_path do |f| %>
-            <%= f.search_field :title_or_coment_cont, class: "s" %>
+            <%= f.search_field :title_or_comment_cont, class: "s" %>
             <%= f.submit '検索', class: "searchsubmit" %>
           <% end %>
       </div>
@@ -56,7 +56,7 @@
           <%= render "records/graph" %>
         <% end %>
         <% if current_user.all_records_view == 8 %>
-          <%= render "records/coment" %>
+          <%= render "records/comment" %>
         <% end %>
         
       </div>
