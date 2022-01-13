@@ -4,9 +4,9 @@ class CreatePublicFolders < ActiveRecord::Migration[5.2]
       t.string :title
       t.references :user, foreign_key: true
       t.integer :count_sum
-      t.integer :hour_sum
+      t.integer :hours_sum
       t.integer :money_sum
-      t.integer :minute_sum
+      t.integer :minutes_sum
       t.integer :record_view, default: 0
       t.integer :record_sum
       t.integer :done_view, default: 0

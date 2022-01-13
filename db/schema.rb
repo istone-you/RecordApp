@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_090415) do
     t.string "title"
     t.integer "user_id"
     t.integer "count_sum"
-    t.integer "hour_sum"
+    t.integer "hours_sum"
     t.integer "money_sum"
-    t.integer "minute_sum"
+    t.integer "minutes_sum"
     t.integer "record_view", default: 0
     t.integer "record_sum"
     t.integer "done_view", default: 0
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_090415) do
 
   create_table "memos", force: :cascade do |t|
     t.string "title"
-    t.text "coment"
+    t.text "comment"
     t.integer "count"
     t.string "image"
     t.integer "money"
@@ -75,9 +75,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_090415) do
     t.string "title"
     t.integer "user_id"
     t.integer "count_sum"
-    t.integer "hour_sum"
+    t.integer "hours_sum"
     t.integer "money_sum"
-    t.integer "minute_sum"
+    t.integer "minutes_sum"
     t.integer "record_view", default: 0
     t.integer "record_sum"
     t.integer "done_view", default: 0
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_090415) do
   create_table "public_records", force: :cascade do |t|
     t.string "title"
     t.integer "count"
-    t.text "coment"
+    t.text "comment"
     t.string "image"
     t.integer "folder_id"
     t.integer "user_id"
@@ -135,7 +135,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_090415) do
   create_table "records", force: :cascade do |t|
     t.string "title"
     t.integer "count"
-    t.text "coment"
+    t.text "comment"
     t.string "image"
     t.integer "folder_id"
     t.integer "user_id"

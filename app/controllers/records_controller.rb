@@ -40,7 +40,7 @@ class RecordsController < ApplicationController
        else
         @records.where(done: 1).sum(:minutes)%60
        end
-      @folder.update_columns(record_sum: @record_sum,count_sum: @record_count_sum,money_sum: @record_money_sum,hour_sum: @record_hours_sum,minute_sum: @record_minutes_sum)
+      @folder.update_columns(record_sum: @record_sum,count_sum: @record_count_sum,money_sum: @record_money_sum,hours_sum: @record_hours_sum,minutes_sum: @record_minutes_sum)
   end
   
 def all_index

@@ -36,7 +36,7 @@
 <div style="width: 80%; margin: auto;">
   <% unless @folder.count_sum == 0 %><h6 class="r-letter"><%= @folder.count_sum %></h6><% end %><br>
   <% unless @folder.money_sum == 0 %><h6 class="r-letter">¥<%= @record_money_sum %></h6><% end %><br>
-  <% unless  @folder.hour_sum == 0||@folder.minute_sum == 0 %><h6 class="r-letter"><% unless @folder.hour_sum == 0 %><%= @record_hours_sum %>時間<% end %><% unless @folder.minute_sum == 0 %><%= @record_minutes_sum %>分<% end %></h6><% end %>
+  <% unless  @folder.hours_sum == 0||@folder.minutes_sum == 0 %><h6 class="r-letter"><% unless @folder.hours_sum == 0 %><%= @record_hours_sum %>時間<% end %><% unless @folder.minutes_sum == 0 %><%= @record_minutes_sum %>分<% end %></h6><% end %>
 </div>
 <div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 
