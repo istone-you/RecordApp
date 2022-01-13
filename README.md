@@ -21,6 +21,13 @@
 　YouTubeとTwitterのブックマークとして<br>
 　地図の記録アプリとして<br>
 <br>
+https://recevery.herokuapp.com/<br>
+こちらがherokuにデプロイしたものになります。<br>
+新規登録が煩わしい場合は<br>
+email : test@example.com<br>
+password : 123456<br>
+でログインしてください。<br>
+<br>
 ## 目指した問題解決
 本や映画や漫画の記録アプリ、会計アプリ、勉強時間の記録アプリを<br>
 ぞれぞれ別のアプリで利用しているのですが、<br>
