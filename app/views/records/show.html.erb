@@ -80,7 +80,7 @@
   
   <% if @record.youtube? %>
     <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
-      <iframe class="rec-youtube" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe class="rec-youtube pt-2 pb-2" src="https://www.youtube.com/embed/<%= @record.youtube.last(11) %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div><br>
   <% end %>  
     
@@ -89,6 +89,12 @@
       <blockquote class="twitter-tweet tw-align-center">
       <a href="<%= @record.twitter %>"></a></blockquote>
       <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    </div>  
+  <% end %>
+  
+  <% if @record.applemusic? %> 
+    <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
+        <iframe class="pt-2 pb-2" allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/<%= @record.applemusic.slice(27..-1) %>"></iframe>
     </div>  
   <% end %>
   
