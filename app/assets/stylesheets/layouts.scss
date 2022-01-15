@@ -878,3 +878,15 @@ header {
   height: 310px;
 }
 
+.applemusic {
+  width: 80%; 
+  margin: auto;
+}  
+
+@media screen and (min-width:480px) {
+
+.applemusic {
+  width: 60%; 
+  margin: auto;
+}
+}
