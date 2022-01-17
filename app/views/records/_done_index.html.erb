@@ -13,6 +13,8 @@
                 <% end %>  
               <% elsif record.twitter? %> 
                 <%=  link_to image_tag("tweet.png", class: "record-img pt-5 pb-5"),folder_record_path(record.folder,record) %>  
+              <% elsif record.applemusic? %> 
+                <%=  link_to image_tag("music.png", class: "record-img pt-5 pb-5"),folder_record_path(record.folder,record) %>  
               <% else %>
                 <%=  link_to image_tag("no_image.png", class: "record-img"),folder_record_path(record.folder,record) %>
               <% end %>  
