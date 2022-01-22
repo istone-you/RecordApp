@@ -27,6 +27,7 @@ class PublicRecordsController < ApplicationController
       link: @record.link,
       youtube: @record.youtube,
       twitter: @record.twitter,
+      applemusic: @record.applemusic,
       address: @record.address,
       done: @record.done,
       record_id: @record.id
@@ -72,6 +73,6 @@ class PublicRecordsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def public_record_params
-      params.require(:public_record).permit(:user_id, :title, :count, :goal_count, :comment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_id, :record_id)
+      params.require(:public_record).permit(:user_id, :title, :count, :goal_count, :comment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :applemusic, :start_time, :address, :public_id, :record_id)
     end
 end

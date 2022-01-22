@@ -90,6 +90,12 @@
     </div>  
   <% end %>
   
+  <% if @public_record.applemusic? %> 
+    <div class="r-letter mr-1 ml-1 mb-4" style="width: 90%; margin: auto;">
+        <iframe class="pt-2 pb-2" allow="autoplay *; encrypted-media *; fullscreen *" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;background:transparent;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/jp/<%= @public_record.applemusic.slice(27..-1) %>"></iframe>
+    </div>  
+  <% end %>
+  
   <% if @public_record.address? %>
   <div class="r-letter" style="width: 90%; margin: auto;">
   <h6>

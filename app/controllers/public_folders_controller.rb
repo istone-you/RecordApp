@@ -73,7 +73,7 @@ class PublicFoldersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def public_folder_params
       params.require(:public_folder).permit(:title,:comment,:image, :user_id,:record_view,:done_view,:record_sort,:public_id,:folder_id,public_records_attributes: [
-        :user_id, :title, :count, :goal_count, :comment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :start_time, :address, :public_id, :record_id
+        :user_id, :title, :count, :goal_count, :comment, :image, :money, :done, :minutes, :hours, :link, :created_at, :youtube, :twitter, :applemusic, :start_time, :address, :public_id, :record_id
         ])
     end
     

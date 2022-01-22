@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_22_101944) do
+ActiveRecord::Schema.define(version: 2022_01_22_104428) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -118,6 +118,7 @@ ActiveRecord::Schema.define(version: 2022_01_22_101944) do
     t.integer "public_id"
     t.integer "public_folder_id"
     t.integer "record_id"
+    t.string "applemusic"
     t.index ["folder_id"], name: "index_public_records_on_folder_id"
     t.index ["public_folder_id"], name: "index_public_records_on_public_folder_id"
     t.index ["record_id"], name: "index_public_records_on_record_id"
