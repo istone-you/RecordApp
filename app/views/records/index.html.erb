@@ -23,6 +23,7 @@
 <div class="text-center">
   <h3 class="folder-title rec-fol mb-2"><%= @folder.title %></span></h3>
 </div>
+
 <div class="co">
 <% if @folder.category_ids.empty? %>
   <h6 class="rec-cat"><%=link_to "Not Category",folders_path, class: "folder-to-category" %></h6>
@@ -33,11 +34,23 @@
     </div>
 <% end %>
 </div>
+
+<% if @folder.comment? %>
+<div class="text-center mt-3">
+  <div class="text-center r-letter mb-3 pt-5 pb-5" style="width: 80%; margin: auto;">
+    <h6 style="width: 80%; margin: auto; font-weight: bold;">
+      <%= sanitize(@folder.comment) %>
+    </h6>
+  </div>
+</div>
+<% end %>
+
 <div style="width: 80%; margin: auto;">
   <% unless @folder.count_sum == 0 %><h6 class="r-letter"><%= @folder.count_sum %></h6><% end %><br>
   <% unless @folder.money_sum == 0 %><h6 class="r-letter">¥<%= @record_money_sum %></h6><% end %><br>
   <% unless  @folder.hours_sum == 0||@folder.minutes_sum == 0 %><h6 class="r-letter"><% unless @folder.hours_sum == 0 %><%= @record_hours_sum %>時間<% end %><% unless @folder.minutes_sum == 0 %><%= @record_minutes_sum %>分<% end %></h6><% end %>
 </div>
+
 <div><%= link_to image_tag("plus.png"), new_folder_record_path, class: "fixed-btn"  %></div>
 
 

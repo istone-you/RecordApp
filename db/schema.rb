@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_152938) do
+ActiveRecord::Schema.define(version: 2022_01_22_101944) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2022_01_14_152938) do
     t.datetime "updated_at", null: false
     t.integer "public_show", default: 0
     t.integer "public_folder_id"
+    t.text "comment"
     t.index ["public_folder_id"], name: "index_folders_on_public_folder_id"
     t.index ["user_id"], name: "index_folders_on_user_id"
   end

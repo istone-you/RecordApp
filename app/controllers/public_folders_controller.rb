@@ -18,6 +18,7 @@ class PublicFoldersController < ApplicationController
     @folder = current_user.folders.find_by(id: params[:folder_id]) 
     @public_folder = current_user.public_folders.new(
       title: @folder.title,
+      comment: @folder.comment,
       record_view: @folder.record_view,
       public_id: @folder.record_view,
       folder_id: @folder.id
