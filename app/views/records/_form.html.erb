@@ -20,9 +20,12 @@
     
     <div class="d-inline-block">
       <%= form.label :image, class: "r-file" do %>
-      <h6>画像を選択</h6>
-      <%= form.file_field :image %>
-    <% end %> 
+        <h6>画像を選択</h6>
+        <%= form.file_field :image, onchange: 'previewImage(preview)' %>
+      <% end %> 
+      <% if @record.image? %>
+        <%= image_tag @record.image.url, id: 'preview',class: "record-img" %>
+      <% end %>
     </div>
     
   </div>  

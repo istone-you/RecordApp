@@ -17,6 +17,11 @@
     <%= form.text_field :title %>
   </div>
   
+  <div class="">
+    <%= form.label :comment, "コメント", class: "r-letter" %>
+    <%= form.text_area :comment, class: "record-comment" %>
+  </div>
+  
   <div class="mb-3">
     <%= form.label :image, class: "r-file" do %>
       <h6>画像を選択</h6>
