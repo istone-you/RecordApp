@@ -38,6 +38,7 @@ group :development, :test do
       gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -79,5 +80,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
   
   gem 'redcarpet', '~> 2.3.0'  
   gem 'coderay'
-
-  gem 'rspec-rails'
