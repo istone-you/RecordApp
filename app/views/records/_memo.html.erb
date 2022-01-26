@@ -1,0 +1,20 @@
+<div class="co mt-3 mb-3">
+    <% @folder.records.each do |record| %>
+    <% if record.done == 1 %>
+        <% record.memos.all.each do |memo| %>
+            <%= link_to edit_folder_record_memo_path(@folder,record,memo), class: "memo-card-edit" do%> 
+                <div class="r-title mr-2 ml-2 mb-2 text-center">
+                    <p><%= record.title.truncate(10) %></p>
+                    <p class="memo-card_title"><%= memo.title %></p>
+                    <p class="memo-card_subtitle"><%= memo.comment %></p>
+                    <p><%= memo.count %></p>
+                    <% if memo.image? %><%= image_tag memo.image.url, class: "memo-img" %><% end %>
+                    <p><%= memo.money %></p>
+                    <p><%= memo.hours %></p>
+                    <p><%= memo.minutes %></p>
+                </div>
+            <% end %>
+        <% end %>
+    <% end %>
+    <% end %>
+  </div>
